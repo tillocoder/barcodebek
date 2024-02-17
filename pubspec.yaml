@@ -27,6 +27,7 @@ dependencies:
   google_fonts: ^6.1.0
   flutter_barcode_scanner: ^2.0.0
   shared_preferences: ^2.0.8
+  flutter_svg: ^2.0.9
 
 dev_dependencies:
   flutter_test:
