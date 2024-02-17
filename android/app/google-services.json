@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "877494086901",
+    "project_id": "barcodbek",
+    "storage_bucket": "barcodbek.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877494086901:android:a0bc8c64a60696fb0ae9bc",
+        "android_client_info": {
+          "package_name": "com.example.barcodbek"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo3jsrJB0U9aqoYXUkisVn-MMhm6TFlMI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
