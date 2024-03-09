@@ -3,6 +3,7 @@
 A new Flutter project.
 
 ## Getting Started
+FIGMA IS THIS https://www.figma.com/file/UiaGqy8ZY4HAFuMu7fh699/Bookhub?type=design&node-id=0-1&mode=design&t=APEPtEVMimw5Rs5A-0
 
 This project is a starting point for a Flutter application.
 
