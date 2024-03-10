@@ -1,7 +1,6 @@
-import 'package:barcodbek/src/future/home/view/pages/home_Page.dart';
+import 'package:barcodbek/src/future/onbording/view/pages/onbording_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SplashPages extends StatefulWidget {
   const SplashPages({super.key});
@@ -13,9 +12,9 @@ class SplashPages extends StatefulWidget {
 class _SplashPagesState extends State<SplashPages> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const HomePage()));
+    Future.delayed(const Duration(seconds: 1), () {
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => const OnbordingPages()));
     });
     super.initState();
   }
@@ -23,11 +22,31 @@ class _SplashPagesState extends State<SplashPages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          "Hello",
-          style: GoogleFonts.aBeeZee(fontSize: 20.sp),
-        ),
+      backgroundColor: const Color.fromRGBO(151, 69, 255, 1),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Spacer(
+            flex: 10,
+          ),
+          Center(
+            child: Image.asset("assets/images/img.png"),
+          ),
+          const Spacer(
+            flex: 7,
+          ),
+          Text(
+            "KESKAL",
+            style: TextStyle(
+              fontSize: 22.sp,
+              color: const Color.fromRGBO(255, 255, 255, 1),
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+          const Spacer(
+            flex: 2,
+          ),
+        ],
       ),
     );
   }

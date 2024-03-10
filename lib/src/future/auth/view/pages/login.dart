@@ -1,5 +1,8 @@
+import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
+import 'package:barcodbek/src/future/auth/view/widgets/wtext_fild.dart';
 import 'package:flutter/material.dart';
-import 'package:svg_flutter/svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,127 +14,37 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SizedBox(
-        width: double.infinity,
-        height: double.maxFinite,
-        child: DecoratedBox(
-          decoration: const BoxDecoration(
-            image: DecorationImage(image: AssetImage('assets/images_png/keremas.png'), fit: BoxFit.fill),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Column(
-              children: [
-                const Spacer(),
-                const Text(
-                  'salom',
-                  style: TextStyle(fontSize: 70),
+    return CustomScaffold(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Padding(
+          padding: REdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              Text(
+                "Assalomualaykum",
+                style: TextStyle(
+                  fontSize: 30.sp,
+                  color: const Color.fromRGBO(38, 38, 38, 1),
+                  fontWeight: FontWeight.w700,
                 ),
-                const Text(
-                  'Akkountga kirish',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                "Hisobga Kirish",
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  color: const Color.fromRGBO(38, 38, 38, 1),
+                  fontWeight: FontWeight.w400,
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                const WTextFild(
-                  hintText: 'email@gmail.com',
-                  iconPath: 'assets/icons/mail.svg',
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.06,
-                ),
-                const WTextFild(
-                  hintText: 'Password',
-                  iconPath: 'assets/icons/key.svg',
-                ),
-                const Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    const Text(
-                      'Kirish',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.06,
-                    ),
-                    InkWell(
-                      onTap: () {},
-                      child: SizedBox(
-                        height: 41,
-                        width: 72,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            gradient: const LinearGradient(begin: Alignment(-3, -9), transform: GradientRotation(1), colors: [
-                              Color(0xFFC3E6FF),
-                              Color(0xFF0F598E),
-                              Color(0xFF9745FF),
-                            ]),
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                          child: const Center(
-                            child: Icon(
-                              Icons.arrow_forward_sharp,
-                              size: 20,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                const Text(
-                  'Ro’yhatdan O’tish',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class WTextFild extends StatelessWidget {
-  final String hintText;
-  final String iconPath;
-  const WTextFild({
-    super.key,
-    required this.hintText,
-    required this.iconPath,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      elevation: 10,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      borderOnForeground: true,
-      shadowColor: const Color.fromARGB(255, 125, 160, 126),
-      child: TextField(
-        decoration: InputDecoration(
-          prefixIcon: Padding(
-            padding: const EdgeInsets.all(10),
-            child: SvgPicture.asset(
-              iconPath,
-              height: 12,
-              width: 14,
-            ),
-          ),
-          hintText: hintText,
-          border: const OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.all(
-              Radius.circular(40),
-            ),
+              ),
+              const WTextFild(
+                  hintText: "+998 XX XXX XXXX",
+                  iconPath: "assets/icons/auth/phone.svg"),
+              Gap(25),
+              const WTextFild(
+                  hintText: "Password",
+                  iconPath: "assets/icons/auth/phone.svg"),
+            ],
           ),
         ),
       ),
