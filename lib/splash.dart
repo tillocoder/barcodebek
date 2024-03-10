@@ -1,6 +1,7 @@
+import 'package:barcodbek/src/core/style/app_colors.dart';
+import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/future/onbording/view/pages/onbording_pages.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashPages extends StatefulWidget {
   const SplashPages({super.key});
@@ -22,7 +23,7 @@ class _SplashPagesState extends State<SplashPages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(151, 69, 255, 1),
+      backgroundColor: AppColorss.c_9745FF,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -35,14 +36,7 @@ class _SplashPagesState extends State<SplashPages> {
           const Spacer(
             flex: 7,
           ),
-          Text(
-            "KESKAL",
-            style: TextStyle(
-              fontSize: 22.sp,
-              color: const Color.fromRGBO(255, 255, 255, 1),
-              fontWeight: FontWeight.w800,
-            ),
-          ),
+          Text("KESKAL", style: AppTextStyle.textStyle1),
           const Spacer(
             flex: 2,
           ),
