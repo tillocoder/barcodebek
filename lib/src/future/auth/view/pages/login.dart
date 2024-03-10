@@ -1,9 +1,5 @@
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
-import 'package:barcodbek/src/core/style/app_colors.dart';
-import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/future/auth/view/widgets/wtext_fild.dart';
-import 'package:barcodbek/src/future/home/view/pages/home_Page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -111,6 +107,19 @@ class _LoginPageState extends State<LoginPage> {
                 )
               ],
             ),
+          child: Column(
+            children: [
+              Text("Assalomualaykum", style: AppTextStyle.textStyle2),
+              Text("Hisobga Kirish", style: AppTextStyle.textStyle5),
+              const WTextFild(
+                  hintText: "+998 XX XXX XXXX",
+                  iconPath: "assets/icons/auth/phone.svg"),
+              Gap(25.w),
+              WTextFild(
+                hintText: "Password",
+                iconPath: "assets/icons/auth/phone.svg",
+              ),
+            ],
           ),
         ),
       ),
