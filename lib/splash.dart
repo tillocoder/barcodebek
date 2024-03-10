@@ -11,18 +11,24 @@ class SplashPages extends StatefulWidget {
 }
 
 class _SplashPagesState extends State<SplashPages> {
-
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2),(){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const HomePage()));
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    return   Scaffold(
-      body: Center(child: Text("alik",style: GoogleFonts.aBeeZee(fontSize:20.sp ),),),
+    return Scaffold(
+      body: Center(
+        child: Text(
+          "Hello",
+          style: GoogleFonts.aBeeZee(fontSize: 20.sp),
+        ),
+      ),
     );
   }
 }
