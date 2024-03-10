@@ -23,7 +23,6 @@ dependencies:
   firebase_core: ^2.24.2
   firebase_auth: ^4.16.0
   cloud_firestore: ^4.14.0
-  svg_flutter: ^0.0.1
   google_fonts: ^6.2.0
   shared_preferences: ^2.0.8
   flutter_svg: ^2.0.10+1
@@ -52,5 +51,4 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/icons/
-    - assets/icons/auth/
+    - assets/icons/auth/phone.svg

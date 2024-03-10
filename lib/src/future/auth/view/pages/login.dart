@@ -1,4 +1,5 @@
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
+import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/future/auth/view/widgets/wtext_fild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,29 +22,16 @@ class _LoginPageState extends State<LoginPage> {
           padding: REdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              Text(
-                "Assalomualaykum",
-                style: TextStyle(
-                  fontSize: 30.sp,
-                  color: const Color.fromRGBO(38, 38, 38, 1),
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              Text(
-                "Hisobga Kirish",
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  color: const Color.fromRGBO(38, 38, 38, 1),
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              Text("Assalomualaykum", style: AppTextStyle.textStyle2),
+              Text("Hisobga Kirish", style: AppTextStyle.textStyle5),
               const WTextFild(
                   hintText: "+998 XX XXX XXXX",
                   iconPath: "assets/icons/auth/phone.svg"),
-              Gap(25),
-              const WTextFild(
-                  hintText: "Password",
-                  iconPath: "assets/icons/auth/phone.svg"),
+              Gap(25.w),
+              WTextFild(
+                hintText: "Password",
+                iconPath: "assets/icons/auth/phone.svg",
+              ),
             ],
           ),
         ),

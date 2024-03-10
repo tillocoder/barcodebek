@@ -1,5 +1,6 @@
+import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:svg_flutter/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class WTextFild extends StatelessWidget {
   final String hintText;
@@ -13,13 +14,19 @@ class WTextFild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      elevation: 6,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColorss.c_FFFFFF,
+        borderRadius: BorderRadius.circular(40),
+        boxShadow: const [
+          BoxShadow(
+            color: Color.fromRGBO(203, 203, 203, 100),
+            offset: Offset(2, 2),
+            blurRadius: 20,
+            spreadRadius: 6,
+          )
+        ],
       ),
-      borderOnForeground: true,
-      shadowColor: const Color(0xFFC8C8C8),
       child: TextField(
         decoration: InputDecoration(
           prefixIcon: Padding(
@@ -32,11 +39,9 @@ class WTextFild extends StatelessWidget {
           ),
           hintText: hintText,
           hintStyle: const TextStyle(color: Color.fromRGBO(200, 200, 200, 1)),
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
             borderSide: BorderSide.none,
-            borderRadius: BorderRadius.all(
-              Radius.circular(40),
-            ),
+            borderRadius: BorderRadius.circular(40),
           ),
         ),
       ),
