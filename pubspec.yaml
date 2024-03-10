@@ -31,7 +31,6 @@ dependencies:
   flutter_screenutil: ^5.9.0
   gap: ^3.0.1
   keyboard_dismisser: ^3.0.0
-  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
