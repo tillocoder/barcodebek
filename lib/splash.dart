@@ -7,8 +7,13 @@ class SplashPages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   Scaffold(
-      body: Center(child: Text("salom",style: GoogleFonts.aBeeZee(fontSize:20.sp ),),),
+    return Scaffold(
+      body: Center(
+        child: Text(
+          "salom",
+          style: GoogleFonts.aBeeZee(fontSize: 20.sp),
+        ),
+      ),
     );
   }
 }
