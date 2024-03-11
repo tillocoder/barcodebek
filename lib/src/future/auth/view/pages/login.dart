@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: "+998 XX XXX XXXX",
                   iconPath: "assets/icons/auth/phone.svg"),
               Gap(25.w),
-              WTextFild(
+              const WTextFild(
                 hintText: "Password",
                 iconPath: "assets/icons/auth/phone.svg",
               ),
