@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: ListView.builder(
-        itemCount: 4,
+        itemCount: 10,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.only(top: 4, left: 10, right: 10),
           child: Card(
@@ -53,9 +53,7 @@ class _HomePageState extends State<HomePage> {
                             return CupertinoAlertDialog(
                               actions: [
                                 TextButton(
-                                  onPressed: () {
-
-                                  },
+                                  onPressed: () {},
                                   child: const Text("Yes"),
                                 ),
                                 TextButton(
