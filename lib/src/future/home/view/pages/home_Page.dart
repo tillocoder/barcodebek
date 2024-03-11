@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: 100,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.only(top: 4, left: 10, right: 10),
           child: Card(

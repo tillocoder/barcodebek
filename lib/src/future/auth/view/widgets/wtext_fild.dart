@@ -1,15 +1,18 @@
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WTextFild extends StatelessWidget {
   final String hintText;
-  final String iconPath;
+  final SvgPicture iconPath;
+  final bool isSvg;
 
   const WTextFild({
     super.key,
     required this.hintText,
     required this.iconPath,
+    required this.isSvg,
   });
 
   @override
@@ -27,24 +30,22 @@ class WTextFild extends StatelessWidget {
           )
         ],
       ),
-      child: TextField(
-        decoration: InputDecoration(
-          prefixIcon: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: SvgPicture.asset(
-                iconPath,
-                height: 12,
-                width: 14,
-              ),
+      child: SizedBox(
+        height: 52.h,
+        child: TextField(
+          decoration: InputDecoration(
+            prefixIcon: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: isSvg ? iconPath : const SizedBox.shrink()),
             ),
-          ),
-          hintText: hintText,
-          hintStyle: const TextStyle(color: Color.fromRGBO(200, 200, 200, 1)),
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(40),
+            hintText: hintText,
+            hintStyle: const TextStyle(color: Color.fromRGBO(200, 200, 200, 1)),
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(40),
+            ),
           ),
         ),
       ),
