@@ -1,6 +1,5 @@
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:barcodbek/src/future/auth/view/pages/register_page.dart';
 import 'package:barcodbek/src/future/auth/view/widgets/wtext_fild.dart';
 import 'package:barcodbek/src/future/home/view/pages/home_Page.dart';
 import 'package:flutter/cupertino.dart';
