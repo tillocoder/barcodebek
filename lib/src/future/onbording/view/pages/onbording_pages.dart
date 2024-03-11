@@ -18,7 +18,8 @@ class OnbordingPages extends StatelessWidget {
             children: [
               Text("KESKAL", style: AppTextStyle.textStyle1_),
               const Image(
-                image: AssetImage("assets/images/img_1.png"),
+                image:
+                    AssetImage("assets/images/splash_onbording/onboarding.png"),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

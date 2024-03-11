@@ -1,7 +1,11 @@
+import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:barcodbek/src/core/componets/w_padding.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:barcodbek/src/future/onbording/view/pages/onbording_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'src/future/onbording/view/pages/onbording_pages.dart';
 
 class SplashPages extends StatefulWidget {
   const SplashPages({super.key});
@@ -27,20 +31,20 @@ class _SplashPagesState extends State<SplashPages> {
     return Scaffold(
       backgroundColor: AppColorss.c_9745FF,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Spacer(
-            flex: 10,
+          WGap(
+            gap: 20.w,
           ),
-          Center(
-            child: Image.asset("assets/images/img.png"),
+          WPadding(
+            padding: REdgeInsets.all(10),
+            child: Center(
+              child: Image.asset("assets/images/splash_onbording/splash.png"),
+            ),
           ),
-          const Spacer(
-            flex: 7,
-          ),
-          Text("KESKAL", style: AppTextStyle.textStyle1),
-          const Spacer(
-            flex: 2,
+          WPadding(
+            padding: REdgeInsets.symmetric(vertical: 30),
+            child: Text("KESKAL", style: AppTextStyle.textStyle1),
           ),
         ],
       ),

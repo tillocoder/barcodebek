@@ -1,71 +1,127 @@
-import 'package:barcodbek/src/future/auth/view/pages/login.dart';
+import 'package:barcodbek/src/core/style/app_colors.dart';
+import 'package:barcodbek/src/core/style/app_icons.dart';
+import 'package:barcodbek/src/core/style/text_style.dart';
+import 'package:barcodbek/src/future/auth/controller/auth_conttroler.dart';
+import 'package:barcodbek/src/future/auth/view/widgets/skib_button.dart';
+import 'package:barcodbek/src/future/home/view/pages/home_Page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../core/constants/widgets/custom_scaffold.dart';
+import '../widgets/w_position.dart';
 import '../widgets/wtext_fild.dart';
 
-class RegistorPages extends StatelessWidget {
+class RegistorPages extends ConsumerWidget {
   const RegistorPages({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(authConttroler);
+    var con = ref.read(authConttroler);
     return CustomScaffold(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: REdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                "Akkount Yaratish",
+              const Spacer(
+                flex: 5,
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const WTextFild(
-                      hintText: "Ismingiz",
-                      iconPath: "assets/icons/auth/person.svg"),
-                  Gap(10.w),
-                  const WTextFild(
-                      hintText: "+998 XX XXX XXXX",
-                      iconPath: "assets/icons/auth/phone.svg"),
-                  Gap(10.w),
-                  const WTextFild(
-                    hintText: "Parol",
-                    iconPath: "assets/icons/auth/lock.svg",
-                  ),
-                  Gap(20.w),
-                  const WTextFild(
-                    hintText: "Parolingizni qayta kiriting",
-                    iconPath: "assets/icons/auth/lock.svg",
-                  ),
-                ],
+              Text(
+                "Akkount Yaratish",
+                style: AppTextStyle.textStyle2,
+              ),
+              const Spacer(
+                flex: 5,
+              ),
+              WTextFild(
+                hintText: "Ismingiz",
+                iconPath: AppIcons.person,
+                isSvg: true,
+              ),
+              Gap(16.w),
+              WTextFild(
+                hintText: "+998 XX XXX XXXX",
+                iconPath: AppIcons.phone,
+                isSvg: true,
+              ),
+              Gap(16.w),
+              WTextFild(
+                hintText: "Parol",
+                iconPath: AppIcons.lock,
+                isSvg: true,
+              ),
+              Gap(16.w),
+              WTextFild(
+                hintText: "Parolingizni qayta kiriting",
+                iconPath: AppIcons.lock,
+                isSvg: true,
+              ),
+              const Spacer(
+                flex: 6,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Text("Sotuvchi"),
+                  PositionButton(
+                    buttonText: 'Sotuvchi',
+                    onPressed: () {
+                      con.onTap(true);
+                    },
+                    color: (con.isChecked == null)
+                        ? AppColorss.c_000000
+                        : con.isChecked == true
+                            ? AppColorss.c_FFFFFF
+                            : AppColorss.c_000000,
+                    backgroundColor:
+                        (con.isChecked != null && con.isChecked == true)
+                            ? AppColorss.c_8F00FF
+                            : AppColorss.c_C8C8C8,
                   ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Text("Direktor"),
+                  Gap(20.w),
+                  PositionButton(
+                    buttonText: 'Direktor',
+                    onPressed: () {
+                      con.onTap(false);
+                    },
+                    backgroundColor:
+                        (con.isChecked != null && con.isChecked == false)
+                            ? AppColorss.c_8F00FF
+                            : AppColorss.c_C8C8C8,
+                    color: (con.isChecked == null)
+                        ? AppColorss.c_000000
+                        : con.isChecked == false
+                            ? AppColorss.c_FFFFFF
+                            : AppColorss.c_000000,
                   ),
                 ],
               ),
+              const Spacer(
+                flex: 4,
+              ),
               SkipButton(
                 text: "Yaratish",
-                onTap: () {},
+                onTap: () {
+                  if (con.isChecked != null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                    );
+                  }
+                },
                 isText: true,
                 child: const Icon(
                   Icons.arrow_forward_rounded,
                   color: Colors.white,
                 ),
-              )
+              ),
+              const Spacer(),
             ],
           ),
         ),
