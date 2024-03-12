@@ -5,7 +5,7 @@ import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'src/future/onbording/view/pages/onbording_pages.dart';
+import 'src/features/onbording/view/pages/onbording_pages.dart';
 
 class SplashPages extends StatefulWidget {
   const SplashPages({super.key});

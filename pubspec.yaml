@@ -32,6 +32,7 @@ dependencies:
   gap: ^3.0.1
   keyboard_dismisser: ^3.0.0
   flutter_riverpod: ^2.5.1
+  riverpod: ^2.5.1
 
 dev_dependencies:
   flutter_test:

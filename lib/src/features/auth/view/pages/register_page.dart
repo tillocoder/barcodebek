@@ -1,17 +1,16 @@
+import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:barcodbek/src/future/auth/controller/auth_conttroler.dart';
-import 'package:barcodbek/src/future/auth/view/widgets/skib_button.dart';
-import 'package:barcodbek/src/future/home/view/pages/home_Page.dart';
+import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
+import 'package:barcodbek/src/features/auth/view/widgets/skib_button.dart';
+import 'package:barcodbek/src/features/auth/view/widgets/w_position.dart';
+import 'package:barcodbek/src/features/auth/view/widgets/wtext_fild.dart';
+import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-
-import '../../../../core/constants/widgets/custom_scaffold.dart';
-import '../widgets/w_position.dart';
-import '../widgets/wtext_fild.dart';
 
 class RegistorPages extends ConsumerWidget {
   const RegistorPages({super.key});

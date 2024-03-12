@@ -1,5 +1,5 @@
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:barcodbek/src/future/auth/view/pages/login.dart';
+import 'package:barcodbek/src/features/auth/view/pages/login.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgers/w_elvated_button.dart';

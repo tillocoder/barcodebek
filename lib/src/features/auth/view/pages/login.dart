@@ -4,15 +4,15 @@ import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:barcodbek/src/future/auth/view/pages/register_page.dart';
-import 'package:barcodbek/src/future/auth/view/widgets/wtext_fild.dart';
-import 'package:barcodbek/src/future/home/view/pages/home_Page.dart';
+import 'package:barcodbek/src/features/auth/view/widgets/wtext_fild.dart';
+import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 import '../widgets/skib_button.dart';
+import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
