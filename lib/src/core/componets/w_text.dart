@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class WText extends StatelessWidget {
   final String? data;
   final TextStyle? style;
+  final TextAlign? align;
 
   const WText(
     this.data, {
     super.key,
     this.style,
+    this.align,
   });
 
   @override

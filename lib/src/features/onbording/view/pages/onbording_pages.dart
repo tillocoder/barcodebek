@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgers/w_elvated_button.dart';
 import 'package:barcodbek/src/features/auth/view/pages/login.dart';
@@ -15,7 +16,7 @@ class OnbordingPages extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("KESKAL", style: AppTextStyle.textStyle1_),
+              WText("KESKAL", style: AppTextStyle.textStyle1_),
               const Image(
                 image:
                     AssetImage("assets/images/splash_onbording/onboarding.png"),
@@ -23,11 +24,11 @@ class OnbordingPages extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Yordamchi", style: AppTextStyle.textStyle2),
-                  Text(
+                  WText("Yordamchi", style: AppTextStyle.textStyle2),
+                  WText(
                     "Mengga mahsulotlar narxini jonating va men uni saqlab olaman",
                     style: AppTextStyle.textStyle3,
-                    textAlign: TextAlign.center,
+                    align: TextAlign.center,
                   )
                 ],
               ),
