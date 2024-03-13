@@ -1,6 +1,5 @@
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WTextFild extends StatelessWidget {
@@ -31,15 +30,12 @@ class WTextFild extends StatelessWidget {
         ],
       ),
       child: SizedBox(
-        height: 52.h,
+        height: 52,
         child: TextField(
           decoration: InputDecoration(
             prefixIcon: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: isSvg ? iconPath : const SizedBox.shrink()),
-            ),
+                padding: const EdgeInsets.all(14),
+                child: isSvg ? iconPath : const SizedBox.shrink()),
             hintText: hintText,
             hintStyle: const TextStyle(color: Color.fromRGBO(200, 200, 200, 1)),
             border: OutlineInputBorder(

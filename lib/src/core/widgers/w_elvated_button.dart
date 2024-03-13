@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../style/app_colors.dart';
 import '../style/text_style.dart';
@@ -19,9 +18,9 @@ class WElevatedButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColorss.c_9745FF,
-        fixedSize: Size(double.maxFinite, 70.h),
+        fixedSize: const Size(double.maxFinite, 70),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusDirectional.circular(24.r),
+          borderRadius: BorderRadiusDirectional.circular(24),
         ),
       ),
       onPressed: onPressed,

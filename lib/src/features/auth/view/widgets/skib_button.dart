@@ -1,8 +1,7 @@
+import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../core/style/text_style.dart';
 
 class SkipButton extends StatelessWidget {
   final String text;
@@ -27,18 +26,18 @@ class SkipButton extends StatelessWidget {
           isText == true ? text : '',
           style: AppTextStyle.textStyle2,
         ),
-        Gap(20.sp),
+        const Gap(20),
         GestureDetector(
           onTap: onTap,
           child: SizedBox(
-            width: 72.w,
-            height: 42.h,
+            width: 72,
+            height: 42,
             child: DecoratedBox(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30.r),
-                gradient: LinearGradient(
-                  transform: GradientRotation(0.8.sp),
-                  colors: const [
+                borderRadius: BorderRadius.circular(30),
+                gradient: const LinearGradient(
+                  transform: GradientRotation(0.8),
+                  colors: [
                     Color(0xFFC3E6FF),
                     Color(0xFF9745FF),
                   ],
