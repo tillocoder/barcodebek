@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PositionButton extends StatelessWidget {
   final String buttonText;
@@ -20,9 +19,9 @@ class PositionButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor,
-        fixedSize: Size(126.w, 50.h),
+        fixedSize: const Size(126, 50),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.r),
+          borderRadius: BorderRadius.circular(16),
         ),
       ),
       onPressed: onPressed,

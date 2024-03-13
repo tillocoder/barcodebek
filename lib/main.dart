@@ -11,6 +11,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    const ProviderScope(child: App()),
+    const ProviderScope(
+      child: App(),
+    ),
   );
 }

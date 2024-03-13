@@ -1,11 +1,11 @@
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/componets/w_padding.dart';
+import 'package:barcodbek/src/core/config/router/name_routes.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
-import 'src/features/onbording/view/pages/onbording_pages.dart';
 
 class SplashPages extends StatefulWidget {
   const SplashPages({super.key});
@@ -17,11 +17,8 @@ class SplashPages extends StatefulWidget {
 class _SplashPagesState extends State<SplashPages> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 1), () {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const OnbordingPages()),
-          (route) => false);
+    Future.delayed(const Duration(seconds: 2), () {
+      context.go(Routes.onboarding);
     });
     super.initState();
   }
@@ -33,17 +30,17 @@ class _SplashPagesState extends State<SplashPages> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          WGap(
-            gap: 20.w,
+          const WGap(
+            gap: 20,
           ),
           WPadding(
-            padding: REdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Center(
               child: Image.asset("assets/images/splash_onbording/splash.png"),
             ),
           ),
           WPadding(
-            padding: REdgeInsets.symmetric(vertical: 30),
+            padding: const EdgeInsets.symmetric(vertical: 30),
             child: Text("KESKAL", style: AppTextStyle.textStyle1),
           ),
         ],
