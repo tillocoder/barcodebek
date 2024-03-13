@@ -1,15 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class WGap extends StatelessWidget {
-  final double gap;
-  const WGap({
-    super.key,
-    required this.gap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Gap(gap);
-  }
+sealed class WGap {
+  WGap._();
+  static const gap10 = Gap(10);
+  static const gap15 = Gap(15);
+  static const gap20 = Gap(20);
+  static const gap25 = Gap(25);
 }

@@ -30,9 +30,7 @@ class _SplashPagesState extends State<SplashPages> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const WGap(
-            gap: 20,
-          ),
+         WGap.gap20,
           WPadding(
             padding: const EdgeInsets.all(10),
             child: Center(
