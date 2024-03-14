@@ -4,9 +4,9 @@ import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/view/pages/password_reset.dart';
-import 'package:barcodbek/src/features/auth/view/pages/verification.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/skib_button.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/wtext_fild.dart';
+import 'package:barcodbek/src/features/sections/view/pages/sections_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const VerificationPages(),
+                  builder: (context) => const SectionsPages(),
                 ),
               );
             },
