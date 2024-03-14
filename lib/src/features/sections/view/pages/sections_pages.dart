@@ -17,7 +17,7 @@ class SectionsPages extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 22),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -27,8 +27,8 @@ class SectionsPages extends StatelessWidget {
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 30,
+                  crossAxisSpacing: 40,
                 ),
                 itemCount: 5,
                 physics: const NeverScrollableScrollPhysics(),
@@ -40,10 +40,10 @@ class SectionsPages extends StatelessWidget {
                         color: const Color.fromRGBO(194, 147, 255, 1),
                         boxShadow: const [
                           BoxShadow(
-                            offset: Offset(2, 3),
+                            offset: Offset(2, 2),
                             color: Color.fromRGBO(112, 0, 255, 0.22),
-                            spreadRadius: 3,
-                            blurRadius: 5,
+                            spreadRadius: 7,
+                            blurRadius: 6,
                           )
                         ],
                         borderRadius: BorderRadius.circular(16),
@@ -54,7 +54,7 @@ class SectionsPages extends StatelessWidget {
                           listIcons.elementAt(index),
                           Text(
                             listText[index],
-                            style: AppTextStyle.textStyle1, // Corrected usage
+                            style: AppTextStyle.textStyle9, // Corrected usage
                           )
                         ],
                       ),
