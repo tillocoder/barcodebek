@@ -1,5 +1,10 @@
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
+import 'package:barcodbek/src/features/sections/view/pages/calculating.dart';
+import 'package:barcodbek/src/features/sections/view/pages/deptors.dart';
+import 'package:barcodbek/src/features/sections/view/pages/lending.dart';
+import 'package:barcodbek/src/features/sections/view/pages/searching.dart';
+import 'package:barcodbek/src/features/sections/view/pages/sell.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -34,8 +39,51 @@ class SectionsPages extends StatelessWidget {
                 itemCount: 5,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return SizedBox(
-                    width: 130,
+                  return InkWell(
+                    onTap: () {
+                      switch (index) {
+                        case 0:
+                          index == 0;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SellPages(),
+                            ),
+                          );
+                        case 1:
+                          index == 1;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SearchingPages(),
+                            ),
+                          );
+                        case 2:
+                          index == 2;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CalculatingPages(),
+                            ),
+                          );
+                        case 3:
+                          index == 3;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const DeptorsPages(),
+                            ),
+                          );
+                        case 4:
+                          index == 4;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LendingPages(),
+                            ),
+                          );
+                      }
+                    },
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: const Color.fromRGBO(194, 147, 255, 1),
@@ -43,7 +91,7 @@ class SectionsPages extends StatelessWidget {
                           BoxShadow(
                             offset: Offset(2, 2),
                             color: Color.fromRGBO(112, 0, 255, 0.22),
-                            spreadRadius: 7,
+                            spreadRadius: 6,
                             blurRadius: 6,
                           )
                         ],
