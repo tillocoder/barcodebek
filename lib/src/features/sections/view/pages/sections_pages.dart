@@ -1,7 +1,6 @@
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:svg_flutter/svg.dart';
 
 class SectionsPages extends StatelessWidget {
   const SectionsPages({Key? key}) : super(key: key);
@@ -52,7 +51,7 @@ class SectionsPages extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          SvgPicture.asset('assets/icons/bolimlar/sell.svg'),
+                          listIcons.elementAt(index),
                           Text(
                             listText[index],
                             style: AppTextStyle.textStyle1, // Corrected usage
@@ -71,9 +70,9 @@ class SectionsPages extends StatelessWidget {
   }
 }
 
-List listIcons = [
+List<Widget> listIcons = [
   AppIcons.sell,
-  AppIcons.search_b,
+  AppIcons.bsearch,
   AppIcons.count,
   AppIcons.debtors,
   AppIcons.lending

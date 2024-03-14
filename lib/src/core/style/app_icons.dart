@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AppIcons {
@@ -30,9 +31,9 @@ class AppIcons {
   static final edit = SvgPicture.asset('assets/icons/profile/edit.svg');
 
   /// bo'lim
-  static final sell = SvgPicture.asset('assets/icons/bolimlar/sell.svg');
-  static final count = SvgPicture.asset('assets/icons/bolimlar/count.svg');
-  static final debtors = SvgPicture.asset('assets/icons/bolimlar/debtors.svg');
-  static final lending = SvgPicture.asset('assets/icons/bolimlar/lending.svg');
-  static final search_b = SvgPicture.asset('assets/icons/bolimlar/serch.svg');
+  static final sell = Image.asset('assets/icons/bolimlar/sell.png');
+  static final count = Image.asset('assets/icons/bolimlar/count.png');
+  static final debtors = Image.asset('assets/icons/bolimlar/debtors.png');
+  static final lending = Image.asset('assets/icons/bolimlar/lending.png');
+  static final bsearch = Image.asset('assets/icons/bolimlar/bsearch.png');
 }

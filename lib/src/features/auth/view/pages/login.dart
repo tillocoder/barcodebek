@@ -27,13 +27,11 @@ class _LoginPageState extends State<LoginPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const WGap(
-            gap: 10,
-          ),
+          WGap.gap10,
           Column(
             children: [
               WText("Assalomualaykum", style: AppTextStyle.textStyle2),
-              const WGap(gap: 10),
+              WGap.gap10,
               WText("Hisobga Kirish", style: AppTextStyle.textStyle5),
             ],
           ),
@@ -69,9 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                   )
                 ],
               ),
-              const WGap(
-                gap: 20,
-              ),
+              WGap.gap20
             ],
           ),
           SkipButton(
