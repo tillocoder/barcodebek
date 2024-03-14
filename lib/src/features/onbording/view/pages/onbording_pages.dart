@@ -24,11 +24,11 @@ class OnbordingPages extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  WText("Yordamchi", style: AppTextStyle.textStyle2),
-                  WText(
+                  Text("Yordamchi", style: AppTextStyle.textStyle2),
+                  Text(
                     "Mengga mahsulotlar narxini jonating va men uni saqlab olaman",
                     style: AppTextStyle.textStyle3,
-                    align: TextAlign.center,
+                    textAlign: TextAlign.center,
                   )
                 ],
               ),
