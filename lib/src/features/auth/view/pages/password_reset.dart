@@ -1,6 +1,6 @@
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:barcodbek/src/core/widgers/w_elvated_button.dart';
+import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
 import 'package:barcodbek/src/features/auth/view/pages/password_otp.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/wtext_fild.dart';
 import 'package:flutter/material.dart';

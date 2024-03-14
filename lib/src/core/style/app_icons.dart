@@ -34,4 +34,5 @@ class AppIcons {
   static final count = SvgPicture.asset('assets/icons/bolimlar/count.svg');
   static final debtors = SvgPicture.asset('assets/icons/bolimlar/debtors.svg');
   static final lending = SvgPicture.asset('assets/icons/bolimlar/lending.svg');
+  static final search_b = SvgPicture.asset('assets/icons/bolimlar/serch.svg');
 }

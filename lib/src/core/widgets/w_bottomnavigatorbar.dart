@@ -1,6 +1,7 @@
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/features/auth/view/pages/login.dart';
 import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
+import 'package:barcodbek/src/features/sections/view/pages/sections_pages.dart';
 import 'package:flutter/material.dart';
 
 class WBottomNav extends StatefulWidget {
@@ -14,7 +15,7 @@ class _WBottomNavState extends State<WBottomNav> {
   int _currentIndex = 0;
   final List<Widget> _pages = const [
     HomePage(),
-    HomePage(),
+    SectionsPages(),
     LoginPage(),
     LoginPage(),
     LoginPage(),
