@@ -42,16 +42,16 @@ class SectionsPages extends StatelessWidget {
                           BoxShadow(
                             offset: Offset(2, 2),
                             color: Color.fromRGBO(112, 0, 255, 0.22),
-                            spreadRadius: 7,
+                            spreadRadius: 6,
                             blurRadius: 6,
                           )
                         ],
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          listIcons.elementAt(index),
+                          listIcons[index],
                           Text(
                             listText[index],
                             style: AppTextStyle.textStyle9, // Corrected usage

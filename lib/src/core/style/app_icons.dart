@@ -31,9 +31,29 @@ class AppIcons {
   static final edit = SvgPicture.asset('assets/icons/profile/edit.svg');
 
   /// bo'lim
-  static final sell = Image.asset('assets/icons/bolimlar/sell.png');
-  static final count = Image.asset('assets/icons/bolimlar/count.png');
-  static final debtors = Image.asset('assets/icons/bolimlar/debtors.png');
-  static final lending = Image.asset('assets/icons/bolimlar/lending.png');
-  static final bsearch = Image.asset('assets/icons/bolimlar/bsearch.png');
+  static final sell = Image.asset(
+    'assets/icons/bolimlar/sell.png',
+    width: 76,
+    height: 76,
+  );
+  static final count = Image.asset(
+    'assets/icons/bolimlar/count.png',
+    width: 76,
+    height: 76,
+  );
+  static final debtors = Image.asset(
+    'assets/icons/bolimlar/debtors.png',
+    width: 76,
+    height: 76,
+  );
+  static final lending = Image.asset(
+    'assets/icons/bolimlar/lending.png',
+    width: 76,
+    height: 76,
+  );
+  static final bsearch = Image.asset(
+    'assets/icons/bolimlar/bsearch.png',
+    width: 76,
+    height: 76,
+  );
 }
