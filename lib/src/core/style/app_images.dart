@@ -40,4 +40,49 @@ class AppImages {
     width: 76,
     height: 76,
   );
+
+  // buttomnavigatorbar
+  static final home = Image.asset(
+    "assets/images/bottomnavigatorber/home.png",
+    width: 32,
+    height: 32,
+  );
+  static final activhome = Image.asset(
+    "assets/images/bottomnavigatorber/activhome.png",
+    width: 32,
+    height: 32,
+  );
+
+  static final menuimages = Image.asset(
+    "assets/images/bottomnavigatorber/catalog.png",
+    width: 32,
+    height: 32,
+  );
+  static final activmenu = Image.asset(
+    "assets/images/bottomnavigatorber/activmenu.png",
+    width: 32,
+    height: 32,
+  );
+
+  static final price = Image.asset(
+    "assets/images/bottomnavigatorber/activepraqis.png",
+    width: 32,
+    height: 32,
+  );
+  static final activeprice = Image.asset(
+    "assets/images/bottomnavigatorber/activprece.png",
+    width: 32,
+    height: 32,
+  );
+
+  static final person = Image.asset(
+    "assets/images/bottomnavigatorber/pesron.png",
+    width: 32,
+    height: 32,
+  );
+  static final activeperson = Image.asset(
+    "assets/images/bottomnavigatorber/activeperson.png",
+    width: 32,
+    height: 32,
+  );
 }
