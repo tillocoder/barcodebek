@@ -1,4 +1,4 @@
-import 'package:barcodbek/src/core/style/app_icons.dart';
+import 'package:barcodbek/src/core/style/images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/sections/view/pages/Calculating.dart';
 import 'package:barcodbek/src/features/sections/view/pages/Deptors.dart';
@@ -22,13 +22,13 @@ class SectionsPages extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 12),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
               width: double.maxFinite,
-              height: MediaQuery.of(context).size.height * 0.78,
+              height: MediaQuery.of(context).size.height * 0.70,
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -38,7 +38,8 @@ class SectionsPages extends StatelessWidget {
                 itemCount: 5,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 14, vertical: 18),
                     child: wSWButton(
                       index: index,
                       page: [
@@ -84,18 +85,41 @@ class SectionsPages extends StatelessWidget {
     );
   }
 }
-  InkWell wSWButton({required int index, required List<Widget> page, required BuildContext context, required Widget child}) {
-    return InkWell(
-        onTap: () {
-          for (var i = 0; i < page.length; i++) {
-            if (index == i) {
-              Navigator.push(context, MaterialPageRoute(builder: (contex) => page[i]));
-            }
-          }
-        },
-        child: child);
-  }
 
-List<Widget> listIcons = [AppIcons.sell, AppIcons.bsearch, AppIcons.count, AppIcons.debtors, AppIcons.lending];
+InkWell wSWButton(
+    {required int index,
+    required List<Widget> page,
+    required BuildContext context,
+    required Widget child}) {
+  return InkWell(
+    onTap: () {
+      for (var i = 0; i < page.length; i++) {
+        if (index == i) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (contex) => page[i],
+            ),
+          );
+        }
+      }
+    },
+    child: child,
+  );
+}
 
-List<String> listText = ["Sotish", "Qidirish", "Hisoblash", "Qarzdorlar", "Qarz Berish"];
+List<Widget> listIcons = [
+  AppImages.sell,
+  AppImages.bsearch,
+  AppImages.count,
+  AppImages.debtors,
+  AppImages.lending,
+];
+
+List<String> listText = [
+  "Sotish",
+  "Qidirish",
+  "Hisoblash",
+  "Qarzdorlar",
+  "Qarz Berish"
+];

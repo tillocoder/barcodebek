@@ -1,4 +1,5 @@
 import 'package:barcodbek/src/core/style/app_colors.dart';
+import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/features/auth/view/pages/login.dart';
 import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
 import 'package:barcodbek/src/features/profile/view/pages/prifile_page.dart';
@@ -36,38 +37,27 @@ class _WBottomNavState extends State<WBottomNav> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         elevation: 0,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
-            label: '',
-            activeIcon: Icon(
-              Icons.home_filled,
-              color: AppColorss.c_8F00FF,
-            ),
-          ),
+              icon: AppIcons.home, label: '', activeIcon: AppIcons.activhome),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: '',
-            activeIcon: Icon(
-              Icons.search,
-              color: AppColorss.c_8F00FF,
-            ),
-          ),
+              icon: AppIcons.menu, label: '', activeIcon: AppIcons.activmenu),
           BottomNavigationBarItem(
             icon: CircleAvatar(
               backgroundColor: AppColorss.c_8F00FF,
+              child: AppIcons.scan,
             ),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.headphones_rounded),
-            activeIcon: Icon(
+            icon: AppIcons.price,
+            activeIcon: const Icon(
               Icons.headphones_rounded,
               color: AppColorss.c_8F00FF,
             ),
             label: '',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person),
             activeIcon: Icon(
               Icons.person,

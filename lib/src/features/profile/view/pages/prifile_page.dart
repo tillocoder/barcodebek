@@ -1,5 +1,5 @@
 import 'package:barcodbek/src/core/style/app_colors.dart';
-import 'package:barcodbek/src/core/style/app_icons.dart';
+import 'package:barcodbek/src/core/style/images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sections_pages.dart';
@@ -39,10 +39,12 @@ class ProfilePage extends StatelessWidget {
                       height: 50,
                       width: 50,
                       child: DecoratedBox(
-                        decoration: BoxDecoration(color: AppColorss.c_D6BEFF, borderRadius: BorderRadius.circular(10)),
+                        decoration: BoxDecoration(
+                            color: AppColorss.c_D6BEFF,
+                            borderRadius: BorderRadius.circular(10)),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: AppIcons.profileIcons[index],
+                          child: AppImages.profileImages[index],
                         ),
                       ),
                     ),
