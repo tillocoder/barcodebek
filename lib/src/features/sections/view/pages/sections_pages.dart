@@ -28,83 +28,50 @@ class SectionsPages extends StatelessWidget {
           children: [
             SizedBox(
               width: double.maxFinite,
-              height: MediaQuery.of(context).size.height * 0.68,
+              height: MediaQuery.of(context).size.height * 0.78,
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisSpacing: 30,
-                  crossAxisSpacing: 40,
+                  // mainAxisSpacing: 30,
+                  // crossAxisSpacing: 40,
                 ),
                 itemCount: 5,
-                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      switch (index) {
-                        case 0:
-                          index == 0;
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SellPages(),
-                            ),
-                          );
-                        case 1:
-                          index == 1;
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SearchingPages(),
-                            ),
-                          );
-                        case 2:
-                          index == 2;
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const CalculatingPages(),
-                            ),
-                          );
-                        case 3:
-                          index == 3;
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const DeptorsPages(),
-                            ),
-                          );
-                        case 4:
-                          index == 4;
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LendingPages(),
-                            ),
-                          );
-                      }
-                    },
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: const Color.fromRGBO(194, 147, 255, 1),
-                        boxShadow: const [
-                          BoxShadow(
-                            offset: Offset(2, 2),
-                            color: Color.fromRGBO(112, 0, 255, 0.22),
-                            spreadRadius: 6,
-                            blurRadius: 6,
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          listIcons[index],
-                          Text(
-                            listText[index],
-                            style: AppTextStyle.textStyle9, // Corrected usage
-                          )
-                        ],
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
+                    child: wSWButton(
+                      index: index,
+                      page: [
+                        const SellPages(),
+                        const SearchingPages(),
+                        const CalculatingPages(),
+                        const DeptorsPages(),
+                        const LendingPages(),
+                      ],
+                      context: context,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(194, 147, 255, 1),
+                          boxShadow: const [
+                            BoxShadow(
+                              offset: Offset(2, 2),
+                              color: Color.fromRGBO(112, 0, 255, 0.22),
+                              spreadRadius: 6,
+                              blurRadius: 6,
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            listIcons[index],
+                            Text(
+                              listText[index],
+                              style: AppTextStyle.textStyle9, // Corrected usage
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -117,19 +84,18 @@ class SectionsPages extends StatelessWidget {
     );
   }
 }
+  InkWell wSWButton({required int index, required List<Widget> page, required BuildContext context, required Widget child}) {
+    return InkWell(
+        onTap: () {
+          for (var i = 0; i < page.length; i++) {
+            if (index == i) {
+              Navigator.push(context, MaterialPageRoute(builder: (contex) => page[i]));
+            }
+          }
+        },
+        child: child);
+  }
 
-List<Widget> listIcons = [
-  AppIcons.sell,
-  AppIcons.bsearch,
-  AppIcons.count,
-  AppIcons.debtors,
-  AppIcons.lending
-];
+List<Widget> listIcons = [AppIcons.sell, AppIcons.bsearch, AppIcons.count, AppIcons.debtors, AppIcons.lending];
 
-List<String> listText = [
-  "Sotish",
-  "Qidirish",
-  "Hisoblash",
-  "Qarzdorlar",
-  "Qarz Berish"
-];
+List<String> listText = ["Sotish", "Qidirish", "Hisoblash", "Qarzdorlar", "Qarz Berish"];

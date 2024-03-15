@@ -28,7 +28,7 @@ class AppTextStyle {
       textStyle: const TextStyle(
           color: AppColorss.c_C8C8C8,
           fontSize: 14,
-          fontWeight: FontWeight.w400));
+          fontWeight: FontWeight.w600));
   static final textStyle5 = GoogleFonts.lato(
       textStyle: const TextStyle(
     color: AppColorss.c_000000,

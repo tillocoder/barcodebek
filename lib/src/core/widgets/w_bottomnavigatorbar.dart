@@ -1,6 +1,7 @@
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/features/auth/view/pages/login.dart';
 import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
+import 'package:barcodbek/src/features/profile/view/pages/prifile_page.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sections_pages.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,7 @@ class WBottomNav extends StatefulWidget {
   const WBottomNav({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _WBottomNavState createState() => _WBottomNavState();
 }
 
@@ -18,7 +20,7 @@ class _WBottomNavState extends State<WBottomNav> {
     SectionsPages(),
     LoginPage(),
     LoginPage(),
-    LoginPage(),
+    ProfilePage(),
   ];
 
   void _onTab(int index) {

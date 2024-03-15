@@ -18,7 +18,7 @@ class CustomScaffold extends StatelessWidget {
         children: [
           Image.asset(
             "assets/images/background/background.jpeg",
-            fit: BoxFit.contain,
+            fit: BoxFit.fill,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 22),
