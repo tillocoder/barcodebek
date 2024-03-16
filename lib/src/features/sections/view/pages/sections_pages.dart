@@ -4,7 +4,7 @@ import 'package:barcodbek/src/features/sections/view/pages/Calculating.dart';
 import 'package:barcodbek/src/features/sections/view/pages/Deptors.dart';
 import 'package:barcodbek/src/features/sections/view/pages/Lending.dart';
 import 'package:barcodbek/src/features/sections/view/pages/searching.dart';
-import 'package:barcodbek/src/features/sections/view/pages/sell.dart';
+import 'package:barcodbek/src/features/sells/view/page/sell_page.dart';
 import 'package:flutter/material.dart';
 
 class SectionsPages extends StatelessWidget {

@@ -19,7 +19,6 @@ class _SellerPageState extends State<SellerPage> {
   @override
   void initState() {
     super.initState();
-    _loadImages();
   }
 
   Future<void> _loadImages() async {
@@ -32,14 +31,6 @@ class _SellerPageState extends State<SellerPage> {
         }).toList();
       });
     }
-  }
-
-  Future<void> _saveImages() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> base64Images = images.map((Uint8List image) {
-      return base64.encode(image);
-    }).toList();
-    prefs.setStringList('images', base64Images);
   }
 
   @override
@@ -64,7 +55,6 @@ class _SellerPageState extends State<SellerPage> {
                 }
                 setState(() {
                   images.add(capturedImage!);
-                  _saveImages();
                 });
               },
             ),
@@ -100,26 +90,12 @@ class _SellerPageState extends State<SellerPage> {
                   ),
                 ),
                 Positioned(
-                  top: 0,
-                  right: 0,
-                  child: IconButton(
-                    icon: Icon(Icons.remove),
-                    onPressed: () {
-                      setState(() {
-                        images.removeAt(index);
-                        _saveImages();
-                      });
-                    },
-                  ),
-                ),
-                Positioned(
                   bottom: 0,
                   left: 0,
                   child: IconButton(
-                    icon: Icon(Icons.add),
-                    onPressed: () {
-                      // Add your code to add images here
-                    },
+                    color: Colors.deepPurpleAccent,
+                    icon: const Icon(Icons.add),
+                    onPressed: () {},
                   ),
                 ),
                 Positioned(
