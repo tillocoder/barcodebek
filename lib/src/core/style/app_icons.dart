@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AppIcons {
-  static final lock = SvgPicture.asset('assets/icons/auth/lock.svg');
+  static final lock = SvgPicture.asset('assets/icons/auth/scan.svg');
   static final person = SvgPicture.asset('assets/icons/auth/person.svg');
   static final phone = SvgPicture.asset('assets/icons/auth/phone.svg');
   static final notification = SvgPicture.asset('assets/icons/auth/phone.svg');
@@ -21,6 +21,7 @@ class AppIcons {
       SvgPicture.asset('assets/icons/home/activ_profile.svg');
   static final historydate =
       SvgPicture.asset('assets/icons/home/history_date.svg');
+
   static final flash = SvgPicture.asset('assets/icons/home/flash.svg');
   static final check = SvgPicture.asset('assets/icons/home/check.svg');
   static final price = SvgPicture.asset('assets/icons/home/price.svg');

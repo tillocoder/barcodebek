@@ -2,7 +2,7 @@ import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/sections/view/pages/Calculating.dart';
 import 'package:barcodbek/src/features/sections/view/pages/Deptors.dart';
-import 'package:barcodbek/src/features/sections/view/pages/lending.dart';
+import 'package:barcodbek/src/features/sections/view/pages/Lending.dart';
 import 'package:barcodbek/src/features/sections/view/pages/searching.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sell.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +43,7 @@ class SectionsPages extends StatelessWidget {
                     child: wSWButton(
                       index: index,
                       page: [
-                        const SellPages(),
+                        const SellerPage(),
                         const SearchingPages(),
                         const CalculatingPages(),
                         const DeptorsPages(),
@@ -86,11 +86,12 @@ class SectionsPages extends StatelessWidget {
   }
 }
 
-InkWell wSWButton(
-    {required int index,
-    required List<Widget> page,
-    required BuildContext context,
-    required Widget child}) {
+InkWell wSWButton({
+  required int index,
+  required List<Widget> page,
+  required BuildContext context,
+  required Widget child,
+}) {
   return InkWell(
     onTap: () {
       for (var i = 0; i < page.length; i++) {
