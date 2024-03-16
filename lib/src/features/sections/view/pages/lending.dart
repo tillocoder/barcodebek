@@ -45,7 +45,7 @@ class LendingPages extends ConsumerWidget {
               WElevatedButton(
                 text: "Saqlash",
                 onPressed: () {
-                  con.isChecked.add(con.isChecked[index1]);
+                  con.isChecked.add(false);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
