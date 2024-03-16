@@ -4,7 +4,6 @@ import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
 import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
-import 'package:barcodbek/src/features/auth/view/widgets/wtext_fild.dart';
 import 'package:barcodbek/src/features/sections/controller/bosilganda.dart';
 import 'package:barcodbek/src/features/sections/view/pages/lending.dart';
 import 'package:flutter/material.dart';
@@ -63,8 +62,8 @@ class DeptorsPages extends ConsumerWidget {
                                     ),
                                     Card(
                                       shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
                                       color: AppColorss.c_FFFFFF,
                                       child: Padding(
                                         padding: const EdgeInsets.all(8),
@@ -78,15 +77,26 @@ class DeptorsPages extends ConsumerWidget {
                                 children: [
                                   Visibility(
                                     visible: con.isChecked[index],
-                                    child: const Expanded(
+                                    child: Expanded(
                                       flex: 2,
                                       child: SizedBox(
-                                        height: 50,
+                                        height: 60,
                                         child: Padding(
-                                          padding: EdgeInsets.all(6),
-                                          child: WTextFild(
-                                            hintText:
-                                                "Qarzini ertaga berib ket",
+                                          padding: const EdgeInsets.all(6),
+                                          child: TextField(
+                                            textAlignVertical:
+                                                TextAlignVertical.bottom,
+                                            decoration: InputDecoration(
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(14),
+                                                borderSide: BorderSide.none,
+                                              ),
+                                              filled: true,
+                                              fillColor: AppColorss.c_FFFFFF,
+                                              hintText:
+                                                  "Qarzini ertaga berib ket",
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -97,7 +107,7 @@ class DeptorsPages extends ConsumerWidget {
                                     visible: con.isChecked[index],
                                     child: Expanded(
                                       child: SizedBox(
-                                        height: 36,
+                                        height: 46,
                                         child: WElevatedButton(
                                           text: "Yuborish",
                                           onPressed: () {},
@@ -111,7 +121,7 @@ class DeptorsPages extends ConsumerWidget {
                           ),
                         ),
                         onTap: () {
-                          con.onChang();
+                          con.onChang(index);
                         },
                       );
                     },
