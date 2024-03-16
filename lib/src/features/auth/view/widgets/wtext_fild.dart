@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class WTextFild extends StatelessWidget {
   final String hintText;
   final Widget? iconPath;
-
   final Widget? suffixIcon;
 
   const WTextFild({
@@ -33,9 +32,12 @@ class WTextFild extends StatelessWidget {
         height: 52,
         child: TextField(
           decoration: InputDecoration(
-            prefixIcon: Padding(
-                padding: const EdgeInsets.all(14),
-                child: iconPath ?? const SizedBox.shrink()),
+            prefixIcon: iconPath != null
+                ? Padding(
+                    padding: const EdgeInsets.all(14),
+                    child: iconPath ?? const SizedBox.shrink(),
+                  )
+                : null,
             hintText: hintText,
             suffixIcon: Padding(
               padding: const EdgeInsets.all(14),

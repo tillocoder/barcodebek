@@ -6,7 +6,7 @@ class AppTextStyle {
   static final textStyle1 = GoogleFonts.signika(
       textStyle: const TextStyle(
           color: AppColorss.c_FFFFFF,
-          fontSize: 24,
+          fontSize: 18,
           fontWeight: FontWeight.w800));
   static final textStyle1_ = GoogleFonts.signika(
       textStyle: const TextStyle(

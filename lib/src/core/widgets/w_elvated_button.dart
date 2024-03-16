@@ -18,9 +18,9 @@ class WElevatedButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColorss.c_9745FF,
-        fixedSize: const Size(double.maxFinite, 70),
+        fixedSize: const Size(double.maxFinite, 60),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusDirectional.circular(24),
+          borderRadius: BorderRadiusDirectional.circular(14),
         ),
       ),
       onPressed: onPressed,
