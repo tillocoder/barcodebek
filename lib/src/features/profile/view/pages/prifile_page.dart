@@ -1,5 +1,5 @@
 import 'package:barcodbek/src/core/style/app_colors.dart';
-import 'package:barcodbek/src/core/style/images.dart';
+import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sections_pages.dart';
