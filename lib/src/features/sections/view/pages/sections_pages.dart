@@ -2,7 +2,7 @@ import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/sections/view/pages/Calculating.dart';
 import 'package:barcodbek/src/features/sections/view/pages/Deptors.dart';
-import 'package:barcodbek/src/features/sections/view/pages/Lending.dart';
+import 'package:barcodbek/src/features/sections/view/pages/lending.dart';
 import 'package:barcodbek/src/features/sections/view/pages/searching.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sell.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class SectionsPages extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

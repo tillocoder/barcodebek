@@ -1,3 +1,5 @@
+import 'package:barcodbek/src/core/style/app_colors.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AppIcons {
@@ -22,4 +24,10 @@ class AppIcons {
   static final flash = SvgPicture.asset('assets/icons/home/flash.svg');
   static final check = SvgPicture.asset('assets/icons/home/check.svg');
   static final price = SvgPicture.asset('assets/icons/home/price.svg');
+  static const arrow_left = Center(
+    child: Icon(
+      Icons.arrow_back_ios,
+      color: AppColorss.c_9745FF,
+    ),
+  );
 }

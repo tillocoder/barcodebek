@@ -40,7 +40,10 @@ class _WBottomNavState extends State<WBottomNav> {
         elevation: 0,
         items: [
           BottomNavigationBarItem(
-              icon: AppImages.home, label: '', activeIcon: AppImages.activhome),
+            icon: AppImages.home,
+            label: '',
+            activeIcon: AppImages.activhome,
+          ),
           BottomNavigationBarItem(
             icon: AppImages.menuimages,
             label: '',
