@@ -9,10 +9,16 @@ class AppTextStyle {
           fontSize: 18,
           fontWeight: FontWeight.w800));
   static final textStyle1_ = GoogleFonts.signika(
-      textStyle: const TextStyle(
-          color: AppColorss.c_9745FF,
-          fontSize: 24,
-          fontWeight: FontWeight.w800));
+    textStyle: const TextStyle(
+        color: AppColorss.c_9745FF, fontSize: 24, fontWeight: FontWeight.w800),
+  );
+  static final textStyle1__ = GoogleFonts.signika(
+    textStyle: const TextStyle(
+      color: AppColorss.c_9745FF,
+      fontSize: 18,
+      fontWeight: FontWeight.w800,
+    ),
+  );
 
   static final textStyle2 = GoogleFonts.signika(
       textStyle: const TextStyle(

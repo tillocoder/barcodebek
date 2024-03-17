@@ -72,7 +72,59 @@ class DeptorsPages extends ConsumerWidget {
                                           color: AppColorss.c_FFFFFF,
                                           child: Padding(
                                             padding: const EdgeInsets.all(8),
-                                            child: AppImages.chek,
+                                            child: InkWell(
+                                              onTap: () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return AlertDialog(
+                                                      content: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        children: [
+                                                          Text(
+                                                            "Davlat Salimov",
+                                                            style: AppTextStyle
+                                                                .textStyle1__,
+                                                          ),
+                                                          Text(
+                                                            "120.000.000 so’m",
+                                                            style: AppTextStyle
+                                                                .textStyle4,
+                                                          ),
+                                                          Text(
+                                                            "To’ladimi",
+                                                            style: AppTextStyle
+                                                                .textStyle1__,
+                                                          ),
+                                                          WGap.gap20,
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              const WShowElvationButton(
+                                                                  text: 'Ha'),
+                                                              WGap.gap10,
+                                                              WShowElvationButton(
+                                                                text: "Yo'q",
+                                                                onTap: () =>
+                                                                    Navigator.pop(
+                                                                        context),
+                                                              ),
+                                                            ],
+                                                          )
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                              child: AppImages.chek,
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -153,7 +205,7 @@ class DeptorsPages extends ConsumerWidget {
                   )
                 ],
               ),
-              con.bosliganda ? buildAlign() : const Text("salom")
+              con.bosliganda ? buildAlign() : const SizedBox.shrink()
             ],
           ),
         ),
@@ -165,6 +217,40 @@ class DeptorsPages extends ConsumerWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: AppImages.chek_,
+    );
+  }
+}
+
+class WShowElvationButton extends StatelessWidget {
+  final Function()? onTap;
+  final String text;
+
+  const WShowElvationButton({
+    super.key,
+    this.onTap,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: SizedBox(
+        width: 100,
+        height: 46,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+              color: AppColorss.c_FFFFFF,
+              border: Border.all(width: 1, color: AppColorss.c_00007),
+              borderRadius: BorderRadius.circular(12)),
+          child: Center(
+            child: Text(
+              text,
+              style: AppTextStyle.textStyle1_,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
