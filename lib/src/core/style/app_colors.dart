@@ -14,4 +14,6 @@ class AppColorss {
   static const c_00007 = Color.fromRGBO(0, 0, 0, 0.7);
   // ignore: constant_identifier_names
   static const c_D6BEFF = Color(0xFFD6BEFF);
+  // ignore: constant_identifier_names
+  static const c_F8F8FB = Color(0xFFF8F8FB);
 }
