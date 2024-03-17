@@ -67,4 +67,11 @@ class AppTextStyle {
       fontSize: 20,
     ),
   );
+  static final textStyle10 = GoogleFonts.lato(
+    textStyle: const TextStyle(
+      color: AppColorss.c_9745FF,
+      fontWeight: FontWeight.w700,
+      fontSize: 20,
+    ),
+  );
 }

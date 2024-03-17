@@ -7,6 +7,7 @@ import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
 import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
 import 'package:barcodbek/src/features/sections/controller/bosilganda.dart';
 import 'package:barcodbek/src/features/sections/view/pages/lending.dart';
+import 'package:barcodbek/src/features/sections/view/widgets/w_elwationbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -217,40 +218,6 @@ class DeptorsPages extends ConsumerWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: AppImages.chek_,
-    );
-  }
-}
-
-class WShowElvationButton extends StatelessWidget {
-  final Function()? onTap;
-  final String text;
-
-  const WShowElvationButton({
-    super.key,
-    this.onTap,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: SizedBox(
-        width: 100,
-        height: 46,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-              color: AppColorss.c_FFFFFF,
-              border: Border.all(width: 1, color: AppColorss.c_00007),
-              borderRadius: BorderRadius.circular(12)),
-          child: Center(
-            child: Text(
-              text,
-              style: AppTextStyle.textStyle1_,
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
