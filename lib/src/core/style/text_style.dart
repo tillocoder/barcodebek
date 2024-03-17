@@ -3,8 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTextStyle {
-  static final textStyle1 = GoogleFonts.signika(textStyle: const TextStyle(color: AppColorss.c_FFFFFF, fontSize: 24, fontWeight: FontWeight.w800));
-  static final textStyle1_ = GoogleFonts.signika(textStyle: const TextStyle(color: AppColorss.c_9745FF, fontSize: 24, fontWeight: FontWeight.w800));
+  static final textStyle1 = GoogleFonts.signika(
+      textStyle: const TextStyle(
+          color: AppColorss.c_FFFFFF,
+          fontSize: 18,
+          fontWeight: FontWeight.w800));
+  static final textStyle1_ = GoogleFonts.signika(
+    textStyle: const TextStyle(
+        color: AppColorss.c_9745FF, fontSize: 24, fontWeight: FontWeight.w800),
+  );
+  static final textStyle1__ = GoogleFonts.signika(
+    textStyle: const TextStyle(
+      color: AppColorss.c_9745FF,
+      fontSize: 18,
+      fontWeight: FontWeight.w800,
+    ),
+  );
 
   static final textStyle2 = GoogleFonts.signika(textStyle: const TextStyle(color: AppColorss.c_000000, fontSize: 26, fontWeight: FontWeight.w600));
   static final textStyle4 = GoogleFonts.signika(textStyle: const TextStyle(color: AppColorss.c_C8C8C8, fontSize: 16, fontWeight: FontWeight.w700));

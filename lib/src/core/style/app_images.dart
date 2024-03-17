@@ -91,4 +91,9 @@ class AppImages {
     width: 24,
     height: 24,
   );
+  static final chek_ = Image.asset(
+    "assets/images/bolimlar/chek_.png",
+    width: 80,
+    height: 80,
+  );
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AppIcons {
@@ -20,6 +19,13 @@ class AppIcons {
   static final historydate = SvgPicture.asset('assets/icons/home/history_date.svg');
   static final flash = SvgPicture.asset('assets/icons/home/flash.svg');
   static final check = SvgPicture.asset('assets/icons/home/check.svg');
+  static final price = SvgPicture.asset('assets/icons/home/price.svg');
+  static const arrow_left = Center(
+    child: Icon(
+      Icons.arrow_back_ios,
+      color: AppColorss.c_9745FF,
+    ),
+  );
 
   /// profile
   static final List<Widget> profileIcons = [
@@ -32,14 +38,26 @@ class AppIcons {
   static final sotuvchi = Image.asset('assets/icons/profile/sotuvchi.png');
 
   /// bo'lim
-  static final sell = Image.asset('assets/icons/bolimlar/sell.png', width: 76, height: 76);
-  static final count = Image.asset('assets/icons/bolimlar/count.png', width: 76, height: 76);
-  static final debtors = Image.asset('assets/icons/bolimlar/debtors.png', width: 76, height: 76);
-  static final lending = Image.asset('assets/icons/bolimlar/lending.png', width: 76, height: 76);
-  static final bsearch = Image.asset('assets/icons/bolimlar/bsearch.png', width: 76, height: 76);
+  static final sell =
+      Image.asset('assets/icons/bolimlar/sell.png', width: 76, height: 76);
+  static final count =
+      Image.asset('assets/icons/bolimlar/count.png', width: 76, height: 76);
+  static final debtors =
+      Image.asset('assets/icons/bolimlar/debtors.png', width: 76, height: 76);
+  static final lending =
+      Image.asset('assets/icons/bolimlar/lending.png', width: 76, height: 76);
+  static final bsearch =
+      Image.asset('assets/icons/bolimlar/bsearch.png', width: 76, height: 76);
 
   /// setting
   static final uz = Image.asset('assets/icons/flag/uz.png');
   static final ru = Image.asset('assets/icons/flag/ru.png');
   static final en = Image.asset('assets/icons/flag/en.png');
 }
+  // static final price = SvgPicture.asset('assets/icons/home/price.svg');
+  // static const arrow_left = Center(
+  //   child: Icon(
+  //     Icons.arrow_back_ios,
+  //     color: AppColorss.c_9745FF,
+  //   ),
+  // );

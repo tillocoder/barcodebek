@@ -11,12 +11,13 @@ class VerificationPages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      
       child: Column(
         children: [
           const Wotp(
             otpText: 'OTP',
             otpsubText:
-                'Ushbu raqamga tasdiqlash  kodini yubordik tekshiring va kiriting',
+                'Ushbu raqamga tasdiqlash kodini yubordik tekshiring va kiriting',
           ),
           Gap(MediaQuery.of(context).size.height * 0.06),
           SizedBox(

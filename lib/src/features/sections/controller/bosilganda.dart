@@ -10,4 +10,11 @@ class DeptorsController extends ChangeNotifier {
     isChecked[index] = !isChecked[index];
     notifyListeners();
   }
+
+  bool bosliganda = false;
+
+  void onTap(bool value) {
+    bosliganda = value;
+    notifyListeners();
+  }
 }
