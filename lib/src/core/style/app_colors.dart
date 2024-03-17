@@ -17,5 +17,6 @@ class AppColorss {
 
   // ignore: constant_identifier_names
   static const c_D6BEFF = Color(0xFFD6BEFF);
+  // ignore: constant_identifier_names
   static const c_F8F8FB = Color(0xFFF8F8FB);
 }
