@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -50,14 +51,21 @@ class AppIcons {
       Image.asset('assets/icons/bolimlar/bsearch.png', width: 76, height: 76);
 
   /// setting
+  static final uz =
+      Image.asset('assets/icons/flag/uz.png', width: 50, height: 50);
+  static final ru =
+      Image.asset('assets/icons/flag/ru.png', width: 50, height: 50);
+  static final en =
+      Image.asset('assets/icons/flag/en.png', width: 50, height: 50);
+  static final price =
+      SvgPicture.asset('assets/icons/home/price.svg', width: 50, height: 50);
+  static const arrow_left = Center(
+    child: Icon(
+      Icons.arrow_back_ios,
+      color: AppColorss.c_9745FF,
+    ),
+  );
   static final uz = Image.asset('assets/icons/flag/uz.png');
   static final ru = Image.asset('assets/icons/flag/ru.png');
   static final en = Image.asset('assets/icons/flag/en.png');
 }
-  // static final price = SvgPicture.asset('assets/icons/home/price.svg');
-  // static const arrow_left = Center(
-  //   child: Icon(
-  //     Icons.arrow_back_ios,
-  //     color: AppColorss.c_9745FF,
-  //   ),
-  // );

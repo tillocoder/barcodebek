@@ -22,4 +22,5 @@ class AppColorss {
   // ignore: constant_identifier_names
 >>>>>>>>> Temporary merge branch 2
   static const c_F8F8FB = Color(0xFFF8F8FB);
+  static const scaffoldColor = Color(0xFFEDEDED);
 }
