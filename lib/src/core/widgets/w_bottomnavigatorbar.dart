@@ -3,6 +3,7 @@ import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/features/auth/view/pages/login.dart';
 import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
+import 'package:barcodbek/src/features/prices/view/pages/prices.dart';
 import 'package:barcodbek/src/features/profile/view/pages/prifile_page.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sections_pages.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class _WBottomNavState extends State<WBottomNav> {
     HomePage(),
     SectionsPages(),
     LoginPage(),
-    LoginPage(),
+    PricesPages(),
     ProfilePage(),
   ];
 

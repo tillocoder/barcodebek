@@ -7,4 +7,5 @@ extension Mywords on Words {
 
 enum Words {
   setting,
+  stream,
 }
