@@ -9,16 +9,10 @@ class AppTextStyle {
           fontSize: 18,
           fontWeight: FontWeight.w800));
   static final textStyle1_ = GoogleFonts.signika(
-    textStyle: const TextStyle(
-        color: AppColorss.c_9745FF, fontSize: 24, fontWeight: FontWeight.w800),
-  );
-  static final textStyle1__ = GoogleFonts.signika(
-    textStyle: const TextStyle(
-      color: AppColorss.c_9745FF,
-      fontSize: 18,
-      fontWeight: FontWeight.w800,
-    ),
-  );
+      textStyle: const TextStyle(
+          color: AppColorss.c_9745FF,
+          fontSize: 24,
+          fontWeight: FontWeight.w800));
 
   static final textStyle2 = GoogleFonts.signika(
       textStyle: const TextStyle(
@@ -37,21 +31,40 @@ class AppTextStyle {
           fontWeight: FontWeight.w600));
   static final textStyle5 = GoogleFonts.lato(
       textStyle: const TextStyle(
-    color: AppColorss.c_000000,
-    fontSize: 14,
-    fontWeight: FontWeight.w600,
-  ));
+          color: AppColorss.c_000000,
+          fontSize: 14,
+          fontWeight: FontWeight.w600));
   static final textStyle6 = GoogleFonts.lato(
+      textStyle: const TextStyle(color: AppColorss.c_8F00FF, fontSize: 14));
+
+  static final textStyle7 = GoogleFonts.lato(
       textStyle: const TextStyle(
-    color: AppColorss.c_8F00FF,
-    fontWeight: FontWeight.w600,
-    fontSize: 14,
-  ));
+          color: AppColorss.c_000000,
+          fontWeight: FontWeight.w700,
+          fontSize: 34));
+  static final textStyle8 = GoogleFonts.lato(
+      textStyle: const TextStyle(color: AppColorss.c_00007, fontSize: 14));
 
-  static final textStyle7 = GoogleFonts.lato(textStyle: const TextStyle(color: AppColorss.c_000000, fontWeight: FontWeight.w700, fontSize: 34));
-  static final textStyle8 = GoogleFonts.lato(textStyle: const TextStyle(color: AppColorss.c_00007, fontSize: 14));
+  static final textStyle9 = GoogleFonts.lato(
+      textStyle: const TextStyle(
+          color: AppColorss.c_FFFFFF,
+          fontWeight: FontWeight.w700,
+          fontSize: 20));
 
-  static final textStyle9 = GoogleFonts.lato(textStyle: const TextStyle(color: AppColorss.c_FFFFFF, fontWeight: FontWeight.w700, fontSize: 20));
+  static final textStyle10 = GoogleFonts.lato(
+      textStyle: const TextStyle(
+          color: AppColorss.c_9745FF,
+          fontWeight: FontWeight.w700,
+          fontSize: 20));
 
-  static final textStyle10 = GoogleFonts.lato(textStyle: const TextStyle(color: AppColorss.c_9745FF, fontWeight: FontWeight.w700, fontSize:20));
+  static final textStyle1__ = GoogleFonts.signika(
+    textStyle: const TextStyle(
+      color: AppColorss.c_9745FF,
+      fontSize: 18,
+      fontWeight: FontWeight.w800,
+    ),
+  );
+
+
+ 
 }

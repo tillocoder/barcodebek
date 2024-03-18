@@ -2,14 +2,16 @@ import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
+import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/skib_button.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/w_position.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/wtext_fild.dart';
-import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+
+bool direkter = true;
 
 class RegistorPages extends ConsumerWidget {
   const RegistorPages({super.key});
@@ -67,15 +69,14 @@ class RegistorPages extends ConsumerWidget {
                 onPressed: () {
                   con.onTap(true);
                 },
-                color: (con.isChecked == null)
+                color: (con.egalik == null)
                     ? AppColorss.c_000000
-                    : con.isChecked == true
+                    : con.egalik == true
                         ? AppColorss.c_FFFFFF
                         : AppColorss.c_000000,
-                backgroundColor:
-                    (con.isChecked != null && con.isChecked == true)
-                        ? AppColorss.c_8F00FF
-                        : AppColorss.c_C8C8C8,
+                backgroundColor: (con.egalik != null && con.egalik == true)
+                    ? AppColorss.c_8F00FF
+                    : AppColorss.c_C8C8C8,
               ),
               const Gap(20),
               PositionButton(
@@ -83,13 +84,12 @@ class RegistorPages extends ConsumerWidget {
                 onPressed: () {
                   con.onTap(false);
                 },
-                backgroundColor:
-                    (con.isChecked != null && con.isChecked == false)
-                        ? AppColorss.c_8F00FF
-                        : AppColorss.c_C8C8C8,
-                color: (con.isChecked == null)
+                backgroundColor: (con.egalik != null && con.egalik == false)
+                    ? AppColorss.c_8F00FF
+                    : AppColorss.c_C8C8C8,
+                color: (con.egalik == null)
                     ? AppColorss.c_000000
-                    : con.isChecked == false
+                    : con.egalik == false
                         ? AppColorss.c_FFFFFF
                         : AppColorss.c_000000,
               ),
@@ -101,11 +101,11 @@ class RegistorPages extends ConsumerWidget {
           SkipButton(
             text: "Yaratish",
             onTap: () {
-              if (con.isChecked != null) {
+              if (con.egalik != null) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const HomePage(),
+                    builder: (context) => const WBottomNav(),
                   ),
                 );
               }

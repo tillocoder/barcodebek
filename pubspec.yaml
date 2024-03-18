@@ -37,7 +37,7 @@ dependencies:
   flutter_riverpod: ^2.5.1
   riverpod: ^2.5.1
   pin_code_fields: ^8.0.1
-
+  graphic: ^2.2.1
 
 dev_dependencies:
   flutter_test:
@@ -68,3 +68,4 @@ flutter:
     - assets/icons/bolimlar/
     - assets/icons/profile/
     - assets/icons/flag/
+    - assets/images/bottomnavigatorber/

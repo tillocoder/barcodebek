@@ -1,4 +1,4 @@
-import 'package:barcodbek/src/core/style/app_icons.dart';
+import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/sections/view/pages/calculating.dart';
 import 'package:barcodbek/src/features/sections/view/pages/deptors.dart';
@@ -6,7 +6,6 @@ import 'package:barcodbek/src/features/sections/view/pages/lending.dart';
 import 'package:barcodbek/src/features/sections/view/pages/searching.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sell.dart';
 import 'package:flutter/material.dart';
-import 'package:svg_flutter/svg.dart';
 
 class SectionsPages extends StatelessWidget {
   const SectionsPages({Key? key}) : super(key: key);

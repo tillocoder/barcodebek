@@ -1,3 +1,5 @@
+import 'package:barcodbek/src/core/style/app_icons.dart';
+import 'package:barcodbek/src/features/profile/view/pages/prifile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -5,9 +7,23 @@ final authConttroler =
     ChangeNotifierProvider.autoDispose((ref) => AuthConttroler());
 
 class AuthConttroler extends ChangeNotifier {
-  bool? isChecked;
+  bool? egalik;
+  int length = 5;
+
   void onTap(bool value) {
-    isChecked = value;
+    egalik = value;
+    if (egalik == true) {
+      length = 5;
+      profileTexts.remove('Sotuvchilarim');
+      AppIcons.profileIcons.remove(AppIcons.sotuvchi);
+    } else {
+      length = 6;
+      profileTexts.insert(1, 'Sotuvchilarim');
+      AppIcons.profileIcons.insert(
+        1,
+        AppIcons.sotuvchi,
+      );
+    }
     notifyListeners();
   }
 }

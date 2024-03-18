@@ -214,3 +214,10 @@ class DeptorsPages extends ConsumerWidget {
     );
   }
 }
+
+Align buildAlign() {
+  return Align(
+    alignment: Alignment.bottomCenter,
+    child: AppImages.chek_,
+  );
+}

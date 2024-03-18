@@ -41,14 +41,14 @@ class _WBottomNavState extends State<WBottomNav> {
         elevation: 0,
         items: [
           BottomNavigationBarItem(
-            icon: AppImages.home,
+            icon: AppIcons.home,
             label: '',
-            activeIcon: AppImages.activhome,
+            activeIcon: AppIcons.activhome,
           ),
           BottomNavigationBarItem(
-            icon: AppImages.menuimages,
+            icon: AppIcons.menu,
             label: '',
-            activeIcon: AppImages.activmenu,
+            activeIcon: AppIcons.activmenu,
           ),
           BottomNavigationBarItem(
             icon: CircleAvatar(
