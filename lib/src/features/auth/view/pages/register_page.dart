@@ -76,7 +76,7 @@ class RegistorPages extends ConsumerWidget {
                         : AppColorss.c_000000,
                 backgroundColor: (con.egalik != null && con.egalik == true)
                     ? AppColorss.c_8F00FF
-                    : AppColorss.c_C8C8C8,
+                    : AppColorss.c_707070,
               ),
               const Gap(20),
               PositionButton(
@@ -86,7 +86,7 @@ class RegistorPages extends ConsumerWidget {
                 },
                 backgroundColor: (con.egalik != null && con.egalik == false)
                     ? AppColorss.c_8F00FF
-                    : AppColorss.c_C8C8C8,
+                    : AppColorss.c_707070,
                 color: (con.egalik == null)
                     ? AppColorss.c_000000
                     : con.egalik == false

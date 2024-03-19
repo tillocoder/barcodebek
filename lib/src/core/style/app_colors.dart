@@ -8,7 +8,7 @@ class AppColorss {
   static const c_000000 = Color(0xFF000000);
 
   // ignore: constant_identifier_names
-  static const c_C8C8C8 = Color(0xFF707070);
+  static const c_707070 = Color(0xFF707070);
   static const c_8F00FF = Color(0xFF8F00FF);
 
   // ignore: constant_identifier_names, use_full_hex_values_for_flutter_colors
@@ -20,4 +20,5 @@ class AppColorss {
 
   static const c_F8F8FB = Color(0xFFF8F8FB);
   static const scaffoldColor = Color(0xFFEDEDED);
+  static const c_767676 = Color(0xFF767676);
 }

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:barcodbek/src/features/profile/view/pages/savdo_tarixi/view/pages/controller/data.dart';
+import 'package:barcodbek/src/features/profile/view/pages/savdo_tarixi/controller/data.dart';
 import 'package:flutter/material.dart';
 import 'package:graphic/graphic.dart';
 
@@ -91,14 +91,19 @@ class HomePageState extends State<HomePage> {
                   },
                   marks: [
                     IntervalMark(
-                      label: LabelEncode(encoder: (tuple) => Label(tuple['name'].toString())),
+                      label: LabelEncode(
+                          encoder: (tuple) => Label(tuple['name'].toString())),
                       shape: ShapeEncode(
                           value: RectShape(
-                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
                       )),
-                      color: ColorEncode(variable: 'name', values: Defaults.colors10),
+                      color: ColorEncode(
+                          variable: 'name', values: Defaults.colors10),
                       elevation: ElevationEncode(value: 5),
-                      transition: Transition(duration: Duration(seconds: 2), curve: Curves.elasticOut),
+                      transition: Transition(
+                          duration: Duration(seconds: 2),
+                          curve: Curves.elasticOut),
                       entrance: {MarkEntrance.y},
                     )
                   ],
