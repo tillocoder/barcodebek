@@ -26,7 +26,7 @@ class SettingPage extends ConsumerWidget {
             children: [
               WBeacButton(
                 isChec: true,
-                title: Words.setting.tr(context),
+                title: Words.settings.tr(context),
               ),
               WGap.gap20,
               DecoratedBox(

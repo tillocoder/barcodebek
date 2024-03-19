@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
@@ -21,7 +22,7 @@ class ProfilePage extends ConsumerWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          'Profile',
+          Words.profile.tr(context),
           style: AppTextStyle.textStyle2,
         ),
         centerTitle: true,
@@ -55,7 +56,7 @@ class ProfilePage extends ConsumerWidget {
                     ),
                   ),
                   title: Text(
-                    profileTexts[index],
+                    profileTexts[index].tr(context),
                     style: AppTextStyle.textStyle5,
                   ),
                   trailing: const Icon(
@@ -72,10 +73,10 @@ class ProfilePage extends ConsumerWidget {
   }
 }
 
-List<String> profileTexts = [
-  'Edit Profile',
-  'Sozlash',
-  'Savdo tarixi',
-  'Terms & Privacy Policy',
-  'Log Out',
+List<Words> profileTexts = [
+  Words.edit_profile,
+  Words.settings,
+  Words.trade_history,
+  Words.terms_privacy_policy,
+  Words.logout,
 ];

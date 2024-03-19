@@ -1,4 +1,5 @@
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
+import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
 import 'package:barcodbek/src/features/auth/view/pages/market_name.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/w_verification.dart';
@@ -11,19 +12,17 @@ class VerificationPages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      
       child: Column(
         children: [
-          const Wotp(
-            otpText: 'OTP',
-            otpsubText:
-                'Ushbu raqamga tasdiqlash kodini yubordik tekshiring va kiriting',
+          Wotp(
+            otpText: Words.verification.tr(context),
+            otpsubText: Words.verification_text.tr(context),
           ),
           Gap(MediaQuery.of(context).size.height * 0.06),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.070,
             child: WElevatedButton(
-              text: "Next",
+              text: Words.next.tr(context),
               onPressed: () {
                 Navigator.push(
                   context,

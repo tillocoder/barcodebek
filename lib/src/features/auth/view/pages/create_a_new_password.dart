@@ -1,4 +1,5 @@
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
+import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/skib_button.dart';
@@ -18,27 +19,27 @@ class CreateanewPassword extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            "Yangi Parol Yaratish",
+            Words.create_new_password.tr(context),
             style: AppTextStyle.textStyle7,
           ),
           Column(
             children: [
-              const WTextFild(
-                hintText: "Yanggi parol",
+              WTextFild(
+                hintText: Words.pew_password.tr(context),
                 iconPath: Icon(CupertinoIcons.eye_slash),
               ),
               Gap(
                 MediaQuery.of(context).size.height * 0.02,
               ),
               WTextFild(
-                hintText: "Yanggi parol",
+                hintText: Words.confirm_password.tr(context),
                 iconPath: const Icon(CupertinoIcons.eye_slash),
                 suffixIcon: SvgPicture.asset("assets/icons/auth/lock.svg"),
               ),
             ],
           ),
           SkipButton(
-            text: 'Yuborish',
+            text: Words.send.tr(context),
             onTap: () {},
             child: const Icon(
               Icons.arrow_forward_rounded,

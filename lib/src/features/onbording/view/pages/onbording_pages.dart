@@ -1,4 +1,5 @@
 import 'package:barcodbek/src/core/componets/w_text.dart';
+import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
 import 'package:barcodbek/src/features/auth/view/pages/login.dart';
@@ -24,16 +25,17 @@ class OnbordingPages extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Yordamchi", style: AppTextStyle.textStyle2),
+                  Text(Words.assistant.tr(context),
+                      style: AppTextStyle.textStyle2),
                   Text(
-                    "Mengga mahsulotlar narxini jonating va men uni saqlab olaman",
+                    Words.onboarding_text.tr(context),
                     style: AppTextStyle.textStyle3,
                     textAlign: TextAlign.center,
                   )
                 ],
               ),
               WElevatedButton(
-                text: "Get Started",
+                text: Words.getStarted.tr(context),
                 onPressed: () {
                   Navigator.push(
                     context,

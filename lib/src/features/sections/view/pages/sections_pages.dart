@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/sections/view/pages/calculating.dart';
@@ -16,7 +17,7 @@ class SectionsPages extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "Bo’limlar",
+          Words.categories.tr(context),
           style: AppTextStyle.textStyle2,
         ),
         automaticallyImplyLeading: false,
@@ -68,7 +69,7 @@ class SectionsPages extends StatelessWidget {
                           children: [
                             listIcons[index],
                             Text(
-                              listText[index],
+                              listText[index].tr(context),
                               style: AppTextStyle.textStyle9, // Corrected usage
                             )
                           ],
@@ -117,10 +118,10 @@ List<Widget> listIcons = [
   AppImages.lending,
 ];
 
-List<String> listText = [
-  "Sotish",
-  "Qidirish",
-  "Hisoblash",
-  "Qarzdorlar",
-  "Qarz Berish"
+List<Words> listText = [
+  Words.selling,
+  Words.search,
+  Words.calculation,
+  Words.debtors,
+  Words.lending,
 ];

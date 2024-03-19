@@ -1,4 +1,5 @@
 import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
@@ -15,11 +16,11 @@ class PricesPages extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: WBeacButton(
                 isChec: true,
-                title: 'Narxlar',
+                title: Words.prices.tr(context),
               ),
             ),
             WGap.gap20,

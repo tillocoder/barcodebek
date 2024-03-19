@@ -1,4 +1,5 @@
 import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
 import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/wtext_fild.dart';
@@ -21,29 +22,29 @@ class LendingPages extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
           child: Column(
             children: [
-              const WBeacButton(
+              WBeacButton(
                 isChec: true,
-                title: "Qarz Berish",
+                title: Words.lending.tr(context),
               ),
               const Spacer(),
-              const Column(
+              Column(
                 children: [
                   WTextFild(
-                    hintText: "Ismi / Familiyasi",
+                    hintText: Words.name_surname.tr(context),
                   ),
                   WGap.gap20,
-                  WTextFild(hintText: "Telefon raqami"),
+                  WTextFild(hintText: Words.phone_number.tr(context)),
                   WGap.gap20,
-                  WTextFild(hintText: "Olgan mahsulotlari"),
+                  WTextFild(hintText: Words.received_products.tr(context)),
                   WGap.gap20,
-                  WTextFild(hintText: "Olgan mahsulotlari"),
+                  WTextFild(hintText: Words.amount_of_debt.tr(context)),
                 ],
               ),
               const Spacer(
                 flex: 6,
               ),
               WElevatedButton(
-                text: "Saqlash",
+                text: Words.save.tr(context),
                 onPressed: () {
                   con.isChecked.add(false);
                   Navigator.push(

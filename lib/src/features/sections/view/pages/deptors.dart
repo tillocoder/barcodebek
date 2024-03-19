@@ -1,4 +1,5 @@
 import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
@@ -26,9 +27,9 @@ class DeptorsPages extends ConsumerWidget {
             children: [
               Column(
                 children: [
-                  const WBeacButton(
+                  WBeacButton(
                     isChec: true,
-                    title: 'Qarzdorlar',
+                    title: Words.debtors.tr(context),
                   ),
                   WGap.gap25,
                   Expanded(
@@ -94,7 +95,8 @@ class DeptorsPages extends ConsumerWidget {
                                                                 .textStyle4,
                                                           ),
                                                           Text(
-                                                            "To’ladimi",
+                                                            Words.is_it_paid
+                                                                .tr(context),
                                                             style: AppTextStyle
                                                                 .textStyle1__,
                                                           ),
@@ -107,11 +109,14 @@ class DeptorsPages extends ConsumerWidget {
                                                                 MainAxisAlignment
                                                                     .spaceBetween,
                                                             children: [
-                                                              const WShowElvationButton(
-                                                                  text: 'Ha'),
+                                                              WShowElvationButton(
+                                                                  text: Words
+                                                                      .yes
+                                                                      .tr(context)),
                                                               WGap.gap10,
                                                               WShowElvationButton(
-                                                                text: "Yo'q",
+                                                                text: Words.no
+                                                                    .tr(context),
                                                                 onTap: () =>
                                                                     Navigator.pop(
                                                                         context),
@@ -154,8 +159,8 @@ class DeptorsPages extends ConsumerWidget {
                                                   filled: true,
                                                   fillColor:
                                                       AppColorss.c_FFFFFF,
-                                                  hintText:
-                                                      "Qarzini ertaga berib ket",
+                                                  hintText: Words.send_a_message
+                                                      .tr(context),
                                                 ),
                                               ),
                                             ),
@@ -169,7 +174,7 @@ class DeptorsPages extends ConsumerWidget {
                                           child: SizedBox(
                                             height: 46,
                                             child: WElevatedButton(
-                                              text: "Yuborish",
+                                              text: Words.send.tr(context),
                                               onPressed: () {
                                                 con.onTap(true);
                                                 Future.delayed(

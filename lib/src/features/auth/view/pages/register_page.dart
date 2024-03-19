@@ -1,9 +1,10 @@
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
+import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
+import 'package:barcodbek/src/features/auth/view/pages/market_name.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/skib_button.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/w_position.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/wtext_fild.dart';
@@ -27,14 +28,14 @@ class RegistorPages extends ConsumerWidget {
             flex: 5,
           ),
           Text(
-            "Akkount Yaratish",
+            Words.create_an_account.tr(context),
             style: AppTextStyle.textStyle2,
           ),
           const Spacer(
             flex: 5,
           ),
           WTextFild(
-            hintText: "Ismingiz",
+            hintText: Words.your_name.tr(context),
             iconPath: AppIcons.person,
           ),
           Gap(
@@ -48,14 +49,14 @@ class RegistorPages extends ConsumerWidget {
             MediaQuery.of(context).size.height * 0.02,
           ),
           WTextFild(
-            hintText: "Parol",
+            hintText: Words.password.tr(context),
             iconPath: AppIcons.lock,
           ),
           Gap(
             MediaQuery.of(context).size.height * 0.02,
           ),
           WTextFild(
-            hintText: "Parolingizni qayta kiriting",
+            hintText: Words.confirm_password.tr(context),
             iconPath: AppIcons.lock,
           ),
           const Spacer(
@@ -65,7 +66,7 @@ class RegistorPages extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               PositionButton(
-                buttonText: 'Sotuvchi',
+                buttonText: Words.vendor.tr(context),
                 onPressed: () {
                   con.onTap(true);
                 },
@@ -80,7 +81,7 @@ class RegistorPages extends ConsumerWidget {
               ),
               const Gap(20),
               PositionButton(
-                buttonText: 'Direktor',
+                buttonText: Words.owner.tr(context),
                 onPressed: () {
                   con.onTap(false);
                 },
@@ -99,13 +100,13 @@ class RegistorPages extends ConsumerWidget {
             flex: 4,
           ),
           SkipButton(
-            text: "Yaratish",
+            text: Words.create.tr(context),
             onTap: () {
               if (con.egalik != null) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const WBottomNav(),
+                    builder: (context) => const MarketName(),
                   ),
                 );
               }

@@ -1,6 +1,7 @@
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
+import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
@@ -30,9 +31,10 @@ class _LoginPageState extends State<LoginPage> {
           WGap.gap10,
           Column(
             children: [
-              WText("Assalomualaykum", style: AppTextStyle.textStyle2),
+              WText(Words.greetings.tr(context),
+                  style: AppTextStyle.textStyle2),
               WGap.gap10,
-              WText("Hisobga Kirish", style: AppTextStyle.textStyle5),
+              WText(Words.login.tr(context), style: AppTextStyle.textStyle5),
             ],
           ),
           Column(
@@ -45,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                 MediaQuery.of(context).size.height * 0.02,
               ),
               WTextFild(
-                hintText: "Password",
+                hintText: Words.password.tr(context),
                 iconPath: AppIcons.lock,
               ),
               Row(
@@ -53,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   CupertinoButton(
                     child: WText(
-                      "parolni tiklash?",
+                      Words.forgetPassword.tr(context),
                       style: AppTextStyle.textStyle6,
                     ),
                     onPressed: () {
@@ -71,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
           SkipButton(
-            text: 'Kirish',
+            text: Words.next.tr(context),
             onTap: () {
               Navigator.push(
                 context,
@@ -87,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           CupertinoButton(
             child: Text(
-              "Ro’yhatdan O’tish",
+              Words.registration.tr(context),
               style: AppTextStyle.textStyle6,
             ),
             onPressed: () {

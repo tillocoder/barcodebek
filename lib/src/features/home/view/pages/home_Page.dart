@@ -70,8 +70,6 @@ class HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ///!
-
             Center(
               child: Container(
                 margin: const EdgeInsets.only(top: 10),
