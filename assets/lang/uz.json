@@ -48,5 +48,7 @@
   "terms_privacy_policy": "Shartlar va maxfiylik siyosati",
   "logout": "Chiqish",
   "seller": "Sotuvchi",
-  "profile": "Profil"
+  "profile": "Profil",
+  "change_language": "Tilni O’zgartirish",
+  "change_PIN_code": "PIN-kodni o’zgartirish"
 }

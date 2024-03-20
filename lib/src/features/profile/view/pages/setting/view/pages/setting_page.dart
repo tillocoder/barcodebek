@@ -41,7 +41,7 @@ class SettingPage extends ConsumerWidget {
                   child: Column(
                     children: [
                       Text(
-                        'Tilni O’zgartirish',
+                        Words.change_language.tr(context),
                         style: AppTextStyle.textStyle2,
                       ),
                       WGap.gap20,
@@ -98,7 +98,7 @@ class SettingPage extends ConsumerWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
                     title: Text(
-                      'PIN-kodni o’zgartirish',
+                      Words.change_PIN_code.tr(context),
                       style: AppTextStyle.textStyle5,
                     ),
                     trailing: const Icon(

@@ -48,5 +48,7 @@
   "terms_privacy_policy": "Terms & Privacy Policy",
   "logout": "Log Out",
   "seller": "Seller",
-  "profile": "Profile"
+  "profile": "Profile",
+  "change_language": "Change language",
+  "change_PIN_code": "Change PIN code"
 }

@@ -48,5 +48,7 @@
   "terms_privacy_policy": "Условия и политика конфиденциальности",
   "logout": "Выйти",
   "seller": "Продавец",
-  "profile": "Профиль"
+  "profile": "Профиль",
+  "change_language": "Изменить язык",
+  "change_PIN_code": "Изменить PIN-код"
 }

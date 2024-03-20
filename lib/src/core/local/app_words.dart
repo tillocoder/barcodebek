@@ -60,4 +60,6 @@ enum Words {
   logout,
   seller,
   profile,
+  change_language,
+  change_PIN_code,
 }
