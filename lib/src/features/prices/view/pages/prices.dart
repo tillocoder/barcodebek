@@ -2,19 +2,17 @@ import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
-import 'package:barcodbek/src/features/sections/view/pages/sell.dart';
+import 'package:barcodbek/src/features/scanner/controller/scan_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PricesPages extends StatefulWidget {
+class PricesPages extends ConsumerWidget {
   const PricesPages({super.key});
 
   @override
-  State<PricesPages> createState() => _PricesPagesState();
-}
-
-class _PricesPagesState extends State<PricesPages> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(scannController);
+    var con = ref.read(scannController);
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -30,7 +28,7 @@ class _PricesPagesState extends State<PricesPages> {
             Expanded(
               child: SizedBox(
                 child: ListView.builder(
-                  itemCount: scannModelPrice.length,
+                  itemCount: con.scannModelPrice.length,
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.only(
                       top: 4,
@@ -64,7 +62,7 @@ class _PricesPagesState extends State<PricesPages> {
                                 Row(
                                   children: [
                                     Text(
-                                      scannModelPrice[index].name,
+                                      con.scannModelPrice[index].name,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,
@@ -76,7 +74,7 @@ class _PricesPagesState extends State<PricesPages> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     Text(
-                                      scannModelPrice[index].price,
+                                      con.scannModelPrice[index].price,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,
@@ -85,9 +83,7 @@ class _PricesPagesState extends State<PricesPages> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        setState(() {
-                                          scannModelPrice.removeAt(index);
-                                        });
+                                        con.deleteProduct(index);
                                       },
                                       child: const Icon(
                                         Icons.delete,
@@ -99,7 +95,7 @@ class _PricesPagesState extends State<PricesPages> {
                                 Row(
                                   children: [
                                     Text(
-                                      scannModelPrice[index].barcode,
+                                      con.scannModelPrice[index].barcode,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black54,
@@ -107,7 +103,7 @@ class _PricesPagesState extends State<PricesPages> {
                                     ),
                                     const SizedBox(width: 20),
                                     Text(
-                                      scannModelPrice[index].dateTime,
+                                      con.scannModelPrice[index].dateTime,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black54,

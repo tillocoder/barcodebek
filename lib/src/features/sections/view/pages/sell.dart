@@ -1,38 +1,24 @@
+import 'package:barcodbek/src/features/scanner/controller/scan_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
-class TovarQoshish extends StatefulWidget {
-  const TovarQoshish({Key? key}) : super(key: key);
+// ignore: must_be_immutable
+class TovarQoshish extends ConsumerWidget {
+  const TovarQoshish({super.key});
 
   @override
-  State<TovarQoshish> createState() => _TovarQoshishState();
-}
-
-List<ScannModelPrice> scannModelPrice = [];
-
-class _TovarQoshishState extends State<TovarQoshish> {
-  TextEditingController controllerPrice = TextEditingController();
-  TextEditingController controllerName = TextEditingController();
-  TextEditingController controllerOther = TextEditingController();
-  MobileScannerController scannerControlerMobile = MobileScannerController();
-
-  int index = 0;
-  Set<String> scannedBarcodes = {};
-  bool torch = false;
-  bool disposeScanner = false;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(scannController);
+    var con = ref.read(scannController);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mahsulotni qo\'shish'),
         actions: [
           IconButton(
             onPressed: () {
-              setState(() {
-                disposeScanner = !disposeScanner;
-              });
+              con.cameradispone();
             },
             icon: const Icon(Icons.barcode_reader),
           ),
@@ -43,9 +29,7 @@ class _TovarQoshishState extends State<TovarQoshish> {
           children: [
             SizedBox(
               height: 500,
-              child: disposeScanner
-                  ? buildMobileScanner(context)
-                  : const SizedBox(),
+              child: con.disposeScanner ? buildMobileScanner(context, ref) : const SizedBox(),
             ),
           ],
         ),
@@ -53,7 +37,9 @@ class _TovarQoshishState extends State<TovarQoshish> {
     );
   }
 
-  Widget buildMobileScanner(BuildContext context) {
+  Widget buildMobileScanner(BuildContext context, WidgetRef ref) {
+    ref.watch(scannController);
+    var con = ref.read(scannController);
     return MobileScanner(
       overlay: Positioned(
         top: 100,
@@ -65,17 +51,19 @@ class _TovarQoshishState extends State<TovarQoshish> {
       ),
       controller: MobileScannerController(
         useNewCameraSelector: true,
+        torchEnabled: true,
         detectionSpeed: DetectionSpeed.values.first,
       ),
       onDetect: (capture) {
+        List<String> barcodlar = [];
+        for (var e in con.scannModelPrice) {
+          barcodlar.add(e.barcode);
+        }
         final List<Barcode> barcodes = capture.barcodes;
         for (final barcode in barcodes) {
           final barcodeValue = barcode.rawValue.toString();
-          if (!scannedBarcodes.contains(barcodeValue)) {
-            scannedBarcodes.add(barcodeValue);
-            setState(() {
-              disposeScanner = false;
-            });
+          if (!barcodlar.contains(barcodeValue)) {
+            con.cameradispone();
             showDialog(
               context: context,
               builder: (context) => Dialog(
@@ -92,7 +80,7 @@ class _TovarQoshishState extends State<TovarQoshish> {
                           ),
                           enabled: true,
                         ),
-                        controller: controllerName,
+                        controller: con.controllerName,
                       ),
                       const SizedBox(height: 10),
                       TextField(
@@ -103,7 +91,7 @@ class _TovarQoshishState extends State<TovarQoshish> {
                           ),
                           enabled: true,
                         ),
-                        controller: controllerPrice,
+                        controller: con.controllerPrice,
                       ),
                       const SizedBox(height: 10),
                       TextField(
@@ -114,7 +102,7 @@ class _TovarQoshishState extends State<TovarQoshish> {
                           ),
                           enabled: true,
                         ),
-                        controller: controllerOther,
+                        controller: con.controllerOther,
                       ),
                       const SizedBox(height: 10),
                       Row(
@@ -122,30 +110,26 @@ class _TovarQoshishState extends State<TovarQoshish> {
                         children: [
                           OutlinedButton(
                             onPressed: () {
-                              setState(() {
-                                disposeScanner = true;
-                                ScannModelPrice model = ScannModelPrice(
-                                  barcode: barcodeValue,
-                                  price: controllerPrice.text,
-                                  name: controllerName.text,
-                                  dateTime: DateTime.now()
-                                      .toIso8601String()
-                                      .substring(0, 10),
-                                );
-                                scannModelPrice.add(model);
-                                controllerName.clear();
-                                controllerPrice.clear();
-                                controllerOther.clear();
-                                Navigator.pop(context);
-                              });
+                              con.cameradispone();
+                              ScannModelPrice model = ScannModelPrice(
+                                barcode: barcodeValue,
+                                price: con.controllerPrice.text,
+                                name: con.controllerName.text,
+                                dateTime: DateTime.now().toIso8601String().substring(0, 10),
+                              );
+                              con.scannModelPrice.add(model);
+                              con.controllerName.clear();
+                              con.controllerPrice.clear();
+                              con.controllerOther.clear();
+                              Navigator.pop(context);
                             },
                             child: const Text('Qo\'shish'),
                           ),
                           OutlinedButton(
                             onPressed: () {
-                              controllerName.clear();
-                              controllerPrice.clear();
-                              controllerOther.clear();
+                              con.controllerName.clear();
+                              con.controllerPrice.clear();
+                              con.controllerOther.clear();
                               Navigator.pop(context);
                             },
                             child: const Text('Bekor qilish'),
@@ -177,9 +161,5 @@ class ScannModelPrice {
   final String name;
   final String dateTime;
 
-  ScannModelPrice(
-      {required this.barcode,
-      required this.price,
-      required this.name,
-      required this.dateTime});
+  ScannModelPrice({required this.barcode, required this.price, required this.name, required this.dateTime});
 }
