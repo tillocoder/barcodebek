@@ -1,11 +1,11 @@
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
-import 'package:barcodbek/src/features/auth/view/pages/login.dart';
 import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
 import 'package:barcodbek/src/features/prices/view/pages/prices.dart';
 import 'package:barcodbek/src/features/profile/view/pages/prifile_page.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sections_pages.dart';
+import 'package:barcodbek/src/features/sections/view/pages/sell.dart';
 import 'package:flutter/material.dart';
 
 class WBottomNav extends StatefulWidget {
@@ -21,7 +21,7 @@ class _WBottomNavState extends State<WBottomNav> {
   final List<Widget> _pages = const [
     HomePage(),
     SectionsPages(),
-    LoginPage(),
+    TovarQoshish(),
     PricesPages(),
     ProfilePage(),
   ];

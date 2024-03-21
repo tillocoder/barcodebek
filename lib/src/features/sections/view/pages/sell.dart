@@ -1,125 +1,165 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
+import 'package:barcodbek/src/features/scanner/controller/scan_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-class SellerPage extends StatefulWidget {
-  const SellerPage({Key? key}) : super(key: key);
-
-  @override
-  State<SellerPage> createState() => _SellerPageState();
-}
-
-class _SellerPageState extends State<SellerPage> {
-  List<Uint8List> images = [];
-  MobileScannerController cameraController = MobileScannerController();
+// ignore: must_be_immutable
+class TovarQoshish extends ConsumerWidget {
+  const TovarQoshish({super.key});
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  Future<void> _loadImages() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String>? savedImages = prefs.getStringList('images');
-    if (savedImages != null) {
-      setState(() {
-        images = savedImages.map((String base64String) {
-          return Uint8List.fromList(base64.decode(base64String));
-        }).toList();
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(scannController);
+    var con = ref.read(scannController);
     return Scaffold(
-      appBar: AppBar(title: const Text('Mobile Scanner')),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 150,
-            child: MobileScanner(
-              controller: MobileScannerController(
-                returnImage: true,
-              ),
-              onDetect: (capture) {
-                setState(() {});
-                cameraController.detectionSpeed;
-                final List<Barcode> barcodes = capture.barcodes;
-                final Uint8List? capturedImage = capture.image;
-                for (final barcode in barcodes) {
-                  debugPrint('Barcode found! ${barcode.rawValue}');
-                }
-                setState(() {
-                  images.add(capturedImage!);
-                });
-              },
-            ),
+      appBar: AppBar(
+        title: const Text('Mahsulotni qo\'shish'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              con.cameradispone();
+            },
+            icon: const Icon(Icons.barcode_reader),
           ),
-          const SizedBox(height: 29),
-          if (images.isNotEmpty) _buildImageGrid(),
         ],
       ),
-    );
-  }
-
-  Widget _buildImageGrid() {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-          itemCount: images.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
-          ),
-          itemBuilder: (BuildContext context, int index) {
-            return Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image.memory(
-                    images[index],
-                    width: 200,
-                    height: 200,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  child: IconButton(
-                    color: Colors.deepPurpleAccent,
-                    icon: const Icon(Icons.add),
-                    onPressed: () {},
-                  ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  right: 0,
-                  child: Text(
-                    "Barcode: ${_detectBarcode(images[index])}",
-                    style: TextStyle(
-                      color: Colors.white,
-                      backgroundColor: Colors.black.withOpacity(0.5),
-                    ),
-                  ),
-                ),
-              ],
-            );
-          },
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 500,
+              child: con.disposeScanner ? buildMobileScanner(context, ref) : const SizedBox(),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  String _detectBarcode(Uint8List image) {
-    // Add your barcode detection logic here
-    // For now, returning a placeholder value
-    return "Barcode Detected";
+  Widget buildMobileScanner(BuildContext context, WidgetRef ref) {
+    ref.watch(scannController);
+    var con = ref.read(scannController);
+    return MobileScanner(
+      overlay: Positioned(
+        top: 100,
+        child: SvgPicture.asset(
+          'assets/kere.svg',
+          height: 100,
+          width: 400,
+        ),
+      ),
+      controller: MobileScannerController(
+        useNewCameraSelector: true,
+        torchEnabled: true,
+        detectionSpeed: DetectionSpeed.values.first,
+      ),
+      onDetect: (capture) {
+        List<String> barcodlar = [];
+        for (var e in con.scannModelPrice) {
+          barcodlar.add(e.barcode);
+        }
+        final List<Barcode> barcodes = capture.barcodes;
+        for (final barcode in barcodes) {
+          final barcodeValue = barcode.rawValue.toString();
+          if (!barcodlar.contains(barcodeValue)) {
+            con.cameradispone();
+            showDialog(
+              context: context,
+              builder: (context) => Dialog(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Nomi',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          enabled: true,
+                        ),
+                        controller: con.controllerName,
+                      ),
+                      const SizedBox(height: 10),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Narxi',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          enabled: true,
+                        ),
+                        controller: con.controllerPrice,
+                      ),
+                      const SizedBox(height: 10),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Qo\'shimcha',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          enabled: true,
+                        ),
+                        controller: con.controllerOther,
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          OutlinedButton(
+                            onPressed: () {
+                              con.cameradispone();
+                              ScannModelPrice model = ScannModelPrice(
+                                barcode: barcodeValue,
+                                price: con.controllerPrice.text,
+                                name: con.controllerName.text,
+                                dateTime: DateTime.now().toIso8601String().substring(0, 10),
+                              );
+                              con.scannModelPrice.add(model);
+                              con.controllerName.clear();
+                              con.controllerPrice.clear();
+                              con.controllerOther.clear();
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Qo\'shish'),
+                          ),
+                          OutlinedButton(
+                            onPressed: () {
+                              con.controllerName.clear();
+                              con.controllerPrice.clear();
+                              con.controllerOther.clear();
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Bekor qilish'),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+            return;
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Barcode already scanned'),
+              ),
+            );
+          }
+        }
+      },
+    );
   }
+}
+
+class ScannModelPrice {
+  final String barcode;
+  final String price;
+  final String name;
+  final String dateTime;
+
+  ScannModelPrice({required this.barcode, required this.price, required this.name, required this.dateTime});
 }

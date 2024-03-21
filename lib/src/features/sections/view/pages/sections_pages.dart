@@ -40,12 +40,11 @@ class SectionsPages extends StatelessWidget {
                 itemCount: 5,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 14, vertical: 18),
+                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
                     child: wSWButton(
                       index: index,
                       page: [
-                        const SellerPage(),
+                        const TovarQoshish(),
                         const SearchingPages(),
                         const CalculatingPages(),
                         const DeptorsPages(),

@@ -24,7 +24,10 @@ class WElevatedButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: Text(text, style: AppTextStyle.textStyle1),
+      child: Text(
+        text,
+        style: AppTextStyle.textStyle1,
+      ),
     );
   }
 }
