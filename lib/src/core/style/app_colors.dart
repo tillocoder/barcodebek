@@ -7,6 +7,7 @@ class AppColorss {
   static const c_9745FF = Color(0xFF9745FF);
   static const shadow = Color(0xB2CFA8FF);
   static const c_000000 = Color(0xFF000000);
+  static const c_9E00FF = Color(0xFF9E00FF);
 
   // ignore: constant_identifier_names
   static const c_707070 = Color(0xFF707070);

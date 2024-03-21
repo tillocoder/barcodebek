@@ -69,6 +69,7 @@ class AppTextStyle {
       fontWeight: FontWeight.w800,
     ),
   );
+
   static final textStyle11 = GoogleFonts.signika(
     textStyle: const TextStyle(
       color: AppColorss.c_767676,
@@ -76,4 +77,24 @@ class AppTextStyle {
       fontWeight: FontWeight.w600,
     ),
   );
+  static final textStyle11a = GoogleFonts.signika(
+    textStyle: const TextStyle(
+      color: AppColorss.c_9E00FF,
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
+    ),
+  );
+  static final textStyle11n = GoogleFonts.inter(
+    textStyle: const TextStyle(
+      color: AppColorss.c_000000,
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
+    ),
+  );
+  static final textStyle5a = GoogleFonts.inter(
+      textStyle: const TextStyle(
+          color: AppColorss.c_000000,
+          fontSize: 12,
+          letterSpacing: -0.4,
+          fontWeight: FontWeight.bold));
 }
