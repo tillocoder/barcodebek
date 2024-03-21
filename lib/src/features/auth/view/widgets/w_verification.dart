@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class Wotp extends StatelessWidget {
       child: Column(
         children: [
           Gap(MediaQuery.of(context).size.height * 0.16),
-          Text(
+          WText(
             otpText ?? '',
             style: AppTextStyle.textStyle7,
           ),

@@ -1,4 +1,5 @@
 import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
@@ -48,7 +49,7 @@ class DeptorsPages extends ConsumerWidget {
                                   ListTile(
                                     contentPadding: const EdgeInsets.symmetric(
                                         horizontal: 10),
-                                    title: const Text("Mirzo Aliyev"),
+                                    title: const WText("Mirzo Aliyev"),
                                     trailing: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -60,7 +61,7 @@ class DeptorsPages extends ConsumerWidget {
                                           color: AppColorss.c_FFFFFF,
                                           child: Padding(
                                             padding: const EdgeInsets.all(8),
-                                            child: Text(
+                                            child: WText(
                                               "125.000 sum",
                                               style: AppTextStyle.textStyle6,
                                             ),
@@ -84,17 +85,17 @@ class DeptorsPages extends ConsumerWidget {
                                                         mainAxisSize:
                                                             MainAxisSize.min,
                                                         children: [
-                                                          Text(
+                                                          WText(
                                                             "Davlat Salimov",
                                                             style: AppTextStyle
                                                                 .textStyle1__,
                                                           ),
-                                                          Text(
+                                                          WText(
                                                             "120.000.000 so’m",
                                                             style: AppTextStyle
                                                                 .textStyle4,
                                                           ),
-                                                          Text(
+                                                          WText(
                                                             Words.is_it_paid
                                                                 .tr(context),
                                                             style: AppTextStyle
@@ -194,7 +195,7 @@ class DeptorsPages extends ConsumerWidget {
                                             ),
                                           ),
                                         ),
-                                      ),
+                                      )
                                     ],
                                   ),
                                 ],

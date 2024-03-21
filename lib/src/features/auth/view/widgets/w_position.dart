@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:flutter/material.dart';
 
 class PositionButton extends StatelessWidget {
@@ -25,7 +26,7 @@ class PositionButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: Text(
+      child: WText(
         buttonText,
         style: TextStyle(
           color: color,

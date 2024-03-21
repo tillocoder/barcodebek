@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
@@ -27,7 +28,7 @@ class RegistorPages extends ConsumerWidget {
           const Spacer(
             flex: 5,
           ),
-          Text(
+          WText(
             Words.create_an_account.tr(context),
             style: AppTextStyle.textStyle2,
           ),

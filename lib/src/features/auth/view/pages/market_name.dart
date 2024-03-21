@@ -1,4 +1,5 @@
 import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
@@ -17,7 +18,7 @@ class MarketName extends StatelessWidget {
       child: Column(
         children: [
           Gap(MediaQuery.of(context).size.height * 0.16),
-          Text(
+          WText(
             Words.market_name.tr(context),
             style: AppTextStyle.textStyle7,
           ),

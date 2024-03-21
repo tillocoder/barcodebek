@@ -1,4 +1,5 @@
 import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
@@ -44,7 +45,7 @@ class PricesPages extends StatelessWidget {
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Text(
+                              const WText(
                                 '90000',
                                 style: TextStyle(fontSize: 20),
                               ),
@@ -60,7 +61,7 @@ class PricesPages extends StatelessWidget {
                               ),
                             ],
                           ),
-                          title: const Text('Gurgut'),
+                          title: const WText('Gurgut'),
                           subtitle: const Row(
                             children: [
                               Text(
@@ -71,7 +72,7 @@ class PricesPages extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(width: 5),
-                              Text(
+                              WText(
                                 '10.20.2023',
                                 style: TextStyle(color: Colors.black54),
                               ),

@@ -25,7 +25,7 @@ class OnbordingPages extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(Words.assistant.tr(context),
+                  WText(Words.assistant.tr(context),
                       style: AppTextStyle.textStyle2),
                   Text(
                     Words.onboarding_text.tr(context),

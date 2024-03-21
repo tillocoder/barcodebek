@@ -1,6 +1,7 @@
+import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:gap/gap.dart';
 
 class SkipButton extends StatelessWidget {
   final String? text;
@@ -19,11 +20,11 @@ class SkipButton extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Text(
+        WText(
           text ?? "",
           style: AppTextStyle.textStyle2,
         ),
-        const Gap(20),
+        WGap.gap20,
         GestureDetector(
           onTap: onTap,
           child: SizedBox(

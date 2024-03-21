@@ -1,6 +1,7 @@
 import 'dart:core';
 
 import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
@@ -81,11 +82,11 @@ class SavdoItem extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        WText(
                           '${model.praduct[index].name}',
                           style: AppTextStyle.textStyle4,
                         ),
-                        Text(
+                        WText(
                           '${model.praduct[index].prices}',
                           style: AppTextStyle.textStyle4_,
                         ),
@@ -94,7 +95,7 @@ class SavdoItem extends StatelessWidget {
                   );
                 },
               ),
-              Text(
+              WText(
                 umumiSumma().toString(),
                 style: AppTextStyle.textStyle4_,
               )

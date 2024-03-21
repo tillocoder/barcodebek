@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
@@ -18,7 +19,7 @@ class CreateanewPassword extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
+          WText(
             Words.create_new_password.tr(context),
             style: AppTextStyle.textStyle7,
           ),

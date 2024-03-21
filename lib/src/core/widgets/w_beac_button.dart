@@ -1,9 +1,8 @@
-import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
-import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:barcodbek/src/core/style/textresponsive.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class WBeacButton extends StatelessWidget {
   final String? title;
@@ -15,7 +14,7 @@ class WBeacButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         GestureDetector(
             onTap: () {
@@ -46,9 +45,10 @@ class WBeacButton extends StatelessWidget {
                 : const SizedBox.shrink()),
         Text(
           title ?? '',
-          style: AppTextStyle.textStyle2,
+          style: Theme.of(context).textTheme.headlineMedium,
+          textScaler: TextScaler.linear(ScaleSize.textScaleFactor(context)),
         ),
-        WGap.gap10
+        const Gap(10),
       ],
     );
   }

@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           CupertinoButton(
-            child: Text(
+            child: WText(
               Words.registration.tr(context),
               style: AppTextStyle.textStyle6,
             ),

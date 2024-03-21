@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
@@ -21,7 +22,7 @@ class ProfilePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(
+        title: WText(
           Words.profile.tr(context),
           style: AppTextStyle.textStyle2,
         ),
@@ -55,7 +56,7 @@ class ProfilePage extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  title: Text(
+                  title: WText(
                     profileTexts[index].tr(context),
                     style: AppTextStyle.textStyle5,
                   ),

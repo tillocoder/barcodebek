@@ -5,12 +5,14 @@ class WTextFild extends StatelessWidget {
   final String hintText;
   final Widget? iconPath;
   final Widget? suffixIcon;
+  final TextEditingController? controller;
 
   const WTextFild({
     super.key,
     required this.hintText,
     this.iconPath,
     this.suffixIcon,
+    this.controller,
   });
 
   @override
@@ -29,8 +31,8 @@ class WTextFild extends StatelessWidget {
         ],
       ),
       child: SizedBox(
-        height: 52,
         child: TextField(
+          controller: controller,
           decoration: InputDecoration(
             prefixIcon: iconPath != null
                 ? Padding(

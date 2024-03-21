@@ -1,5 +1,6 @@
 import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/config/setting/locale_controller.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
@@ -40,7 +41,7 @@ class SettingPage extends ConsumerWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      Text(
+                      WText(
                         Words.change_language.tr(context),
                         style: AppTextStyle.textStyle2,
                       ),
@@ -97,7 +98,7 @@ class SettingPage extends ConsumerWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
-                    title: Text(
+                    title: WText(
                       Words.change_PIN_code.tr(context),
                       style: AppTextStyle.textStyle5,
                     ),

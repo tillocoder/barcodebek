@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
@@ -68,7 +69,7 @@ class SectionsPages extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             listIcons[index],
-                            Text(
+                            WText(
                               listText[index].tr(context),
                               style: AppTextStyle.textStyle9, // Corrected usage
                             )
