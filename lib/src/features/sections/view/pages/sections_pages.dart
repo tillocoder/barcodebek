@@ -44,7 +44,7 @@ class SectionsPages extends StatelessWidget {
                     child: wSWButton(
                       index: index,
                       page: [
-                        const SellerPage(),
+                        const TovarQoshish(),
                         const SearchingPages(),
                         const CalculatingPages(),
                         const DeptorsPages(),
