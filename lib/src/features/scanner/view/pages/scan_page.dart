@@ -1,0 +1,78 @@
+import 'package:barcodbek/src/features/scanner/controller/scan_controller.dart';
+import 'package:barcodbek/src/features/scanner/view/widgets/camera.dart';
+import 'package:barcodbek/src/features/scanner/view/widgets/dialog.dart';
+import 'package:barcodbek/src/features/scanner/view/widgets/flash.dart';
+import 'package:barcodbek/src/features/scanner/view/widgets/snakebar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+
+// ignore: must_be_immutable
+class ScannPage extends ConsumerWidget {
+  const ScannPage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(scannController);
+    var ctr = ref.read(scannController);
+    return Scaffold(
+      body: Stack(
+        children: [
+          Expanded(
+            child: ScannnBarcodeAddPage((capture) {
+              List<String> barcodlar = [];
+              for (var e in scannModelPrice) {
+                barcodlar.add(e.barcode);
+              }
+              final List<Barcode> barcodes = capture.barcodes;
+              // ctr.cameraCtr.dispose();
+
+              for (final barcode in barcodes) {
+                final barcodeValue = barcode.rawValue.toString();
+                if (!barcodlar.contains(barcodeValue)) {
+                  showDialog(
+                    context: context,
+                    builder: (context) => Dialog(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: WDialog(barcodeValue: barcodeValue),
+                      ),
+                    ),
+                  );
+                  return;
+                } else {
+                  debugPrint('chiqdikuuuuuuu');
+                  snakebar(context);
+                }
+              }
+            }),
+          ),
+          const Align(
+            alignment: Alignment.topRight,
+            child: SafeArea(
+              child: Positioned(
+                top: 20,
+                right: 20,
+                child: Flash(),
+              ),
+            ),
+          ),
+          Align(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 33),
+              child: Lottie.asset('assets/lottie/cursor.json'),
+            ),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/icons/home/burchak.svg',
+              height: 135,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}

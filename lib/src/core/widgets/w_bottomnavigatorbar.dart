@@ -2,40 +2,30 @@ import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
-import 'package:barcodbek/src/features/prices/view/pages/prices.dart';
+import 'package:barcodbek/src/features/prices/view/pages/prices_page.dart';
 import 'package:barcodbek/src/features/profile/view/pages/prifile_page.dart';
+import 'package:barcodbek/src/features/scanner/view/pages/scan_page.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sections_pages.dart';
-import 'package:barcodbek/src/features/sections/view/pages/sell.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class WBottomNav extends StatefulWidget {
+class WBottomNav extends ConsumerWidget {
   const WBottomNav({Key? key}) : super(key: key);
 
-  @override
-  // ignore: library_private_types_in_public_api
-  _WBottomNavState createState() => _WBottomNavState();
-}
-
-class _WBottomNavState extends State<WBottomNav> {
-  int _currentIndex = 0;
-  final List<Widget> _pages = const [
+  final List<Widget> pages = const [
     HomePage(),
     SectionsPages(),
-    TovarQoshish(),
+    ScannPage(),
     PricesPages(),
     ProfilePage(),
   ];
 
-  void _onTab(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(bottomnavctr);
+    var ctr= ref.read(bottomnavctr);
     return Scaffold(
-      body: _pages[_currentIndex],
+      body: pages[ctr.currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         elevation: 0,
@@ -69,9 +59,20 @@ class _WBottomNavState extends State<WBottomNav> {
             label: '',
           ),
         ],
-        currentIndex: _currentIndex,
-        onTap: _onTab,
+        currentIndex: ctr.currentIndex,
+        onTap: ctr.onTab,
       ),
     );
+  }
+}
+
+final bottomnavctr = ChangeNotifierProvider.autoDispose((ref) => BottomNavCtrl());
+
+class BottomNavCtrl extends ChangeNotifier {
+  int currentIndex = 0;
+
+  void onTab(int index) {
+    currentIndex = index;
+    notifyListeners();
   }
 }
