@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/features/profile/view/pages/edit_profile/controller/edit_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -40,7 +41,7 @@ class WEdit extends StatelessWidget {
                 borderSide: BorderSide.none,
               ),
               filled: true,
-              // fillColor: AppColorss.c_FFFFFF,
+              fillColor: AppColorss.c_FFFFFF,
               hintText: text,
               isDense: true,
               contentPadding:

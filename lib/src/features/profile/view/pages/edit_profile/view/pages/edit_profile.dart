@@ -1,5 +1,6 @@
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
+import 'package:barcodbek/src/core/database/edit_profile.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
@@ -17,7 +18,9 @@ class EditeProfile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(editController);
+    ref.watch(db);
     var con = ref.read(editController);
+    var con1 = ref.read(db);
 
     return Scaffold(
       body: SafeArea(
@@ -35,7 +38,7 @@ class EditeProfile extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   WText(
-                    con.name ?? "Edit",
+                    con1.loat(),
                     style: AppTextStyle.textStyle2,
                   ),
                   InkWell(
@@ -65,7 +68,7 @@ class EditeProfile extends ConsumerWidget {
                           text: Words.send.tr(context),
                           onPressed: () {
                             if (con.editingController.text.isNotEmpty) {
-                              con.nameOnTap(con.editingController.text);
+                              con1.save(con.editingController.text);
                               con.editingController.clear();
                               con.isOnTap = !con.isOnTap;
                             } else {

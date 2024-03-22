@@ -12,11 +12,4 @@ class EditControler extends ChangeNotifier {
     isOnTap = !isOnTap;
     notifyListeners();
   }
-
-  String? name;
-
-  void nameOnTap(String name1) {
-    name = name1;
-    notifyListeners();
-  }
 }
