@@ -6,7 +6,7 @@ import 'package:barcodbek/src/features/sections/view/pages/calculating.dart';
 import 'package:barcodbek/src/features/sections/view/pages/deptors.dart';
 import 'package:barcodbek/src/features/sections/view/pages/lending.dart';
 import 'package:barcodbek/src/features/sections/view/pages/searching.dart';
-import 'package:barcodbek/src/features/sections/view/pages/sell.dart';
+import 'package:barcodbek/src/features/scanner/view/pages/scan_page.dart';
 import 'package:flutter/material.dart';
 
 class SectionsPages extends StatelessWidget {
@@ -44,7 +44,7 @@ class SectionsPages extends StatelessWidget {
                     child: wSWButton(
                       index: index,
                       page: [
-                        const TovarQoshish(),
+                        const ScannPage(),
                         const SearchingPages(),
                         const CalculatingPages(),
                         const DeptorsPages(),

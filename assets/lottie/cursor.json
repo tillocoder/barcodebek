@@ -1,0 +1,183 @@
+{
+  "nm": "scannanime",
+  "ddd": 0,
+  "h": 200,
+  "w": 540,
+  "meta": { "g": "LottieFiles AE 3.5.2" },
+  "layers": [
+    {
+      "ty": 4,
+      "nm": "Shape Layer 1",
+      "sr": 1,
+      "st": 0,
+      "op": 125,
+      "ip": 0,
+      "hd": false,
+      "ddd": 0,
+      "bm": 0,
+      "hasMask": false,
+      "ao": 0,
+      "ks": {
+        "a": { "a": 0, "k": [0, 0, 0], "ix": 1 },
+        "s": { "a": 0, "k": [106.847, 100, 100], "ix": 6 },
+        "sk": { "a": 0, "k": 0 },
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "o": { "x": 0.333, "y": 0 },
+              "i": { "x": 0.667, "y": 1 },
+              "s": [287, 100, 0],
+              "t": 0
+            },
+            {
+              "o": { "x": 0.333, "y": 0 },
+              "i": { "x": 0.667, "y": 1 },
+              "s": [297, 100, 0],
+              "t": 4
+            },
+            {
+              "o": { "x": 0.333, "y": 0 },
+              "i": { "x": 0.667, "y": 1 },
+              "s": [747, 100, 0],
+              "t": 22
+            },
+            {
+              "o": { "x": 0.333, "y": 0 },
+              "i": { "x": 0.667, "y": 1 },
+              "s": [787, 100, 0],
+              "t": 28
+            },
+            {
+              "o": { "x": 0.333, "y": 0 },
+              "i": { "x": 0.667, "y": 1 },
+              "s": [314, 100, 0],
+              "t": 47
+            },
+            { "s": [285, 100, 0], "t": 50 }
+          ],
+          "ix": 2
+        },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "sa": { "a": 0, "k": 0 },
+        "o": {
+          "a": 1,
+          "k": [
+            {
+              "o": { "x": 0.333, "y": 0 },
+              "i": { "x": 0.667, "y": 1 },
+              "s": [0],
+              "t": 0
+            },
+            {
+              "o": { "x": 0.333, "y": 0 },
+              "i": { "x": 0.667, "y": 1 },
+              "s": [100],
+              "t": 4
+            },
+            {
+              "o": { "x": 0.333, "y": 0 },
+              "i": { "x": 0.667, "y": 1 },
+              "s": [100],
+              "t": 22
+            },
+            {
+              "o": { "x": 0.333, "y": 0 },
+              "i": { "x": 0.667, "y": 1 },
+              "s": [0],
+              "t": 25
+            },
+            {
+              "o": { "x": 0.333, "y": 0 },
+              "i": { "x": 0.667, "y": 1 },
+              "s": [100],
+              "t": 28
+            },
+            {
+              "o": { "x": 0.333, "y": 0 },
+              "i": { "x": 0.667, "y": 1 },
+              "s": [100],
+              "t": 47
+            },
+            { "s": [0], "t": 50 }
+          ],
+          "ix": 11
+        }
+      },
+      "ef": [],
+      "shapes": [
+        {
+          "ty": "gr",
+          "bm": 0,
+          "hd": false,
+          "mn": "ADBE Vector Group",
+          "nm": "Rectangle 1",
+          "ix": 1,
+          "cix": 2,
+          "np": 3,
+          "it": [
+            {
+              "ty": "rc",
+              "bm": 0,
+              "hd": false,
+              "mn": "ADBE Vector Shape - Rect",
+              "nm": "Rectangle Path 1",
+              "d": 1,
+              "p": { "a": 0, "k": [0, 0], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 4 },
+              "s": { "a": 0, "k": [10, 159], "ix": 2 }
+            },
+            {
+              "ty": "st",
+              "bm": 0,
+              "hd": false,
+              "mn": "ADBE Vector Graphic - Stroke",
+              "nm": "Stroke 1",
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "o": { "a": 0, "k": 100, "ix": 4 },
+              "w": { "a": 0, "k": 0, "ix": 5 },
+              "c": { "a": 0, "k": [0.6196, 0, 1], "ix": 3 }
+            },
+            {
+              "ty": "fl",
+              "bm": 0,
+              "hd": false,
+              "mn": "ADBE Vector Graphic - Fill",
+              "nm": "Fill 1",
+              "c": { "a": 0, "k": [0.6157, 0, 1], "ix": 4 },
+              "r": 1,
+              "o": { "a": 0, "k": 100, "ix": 5 }
+            },
+            {
+              "ty": "tr",
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [53.712, 100], "ix": 3 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "p": { "a": 0, "k": [-249, -1.5], "ix": 2 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "o": { "a": 0, "k": 100, "ix": 7 }
+            }
+          ]
+        }
+      ],
+      "ind": 1
+    }
+  ],
+  "v": "4.8.0",
+  "fr": 25,
+  "op": 50,
+  "ip": 0,
+  "assets": [
+    {
+      "id": "image_0",
+      "u": "",
+      "e": 1,
+      "w": 544,
+      "h": 205,
+      "p": "data:image/png;base64,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"
+    }
+  ]
+}

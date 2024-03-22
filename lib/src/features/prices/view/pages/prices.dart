@@ -1,10 +1,8 @@
 import 'package:barcodbek/src/core/componets/w_gap.dart';
-import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
 import 'package:barcodbek/src/features/scanner/controller/scan_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -52,43 +50,69 @@ class PricesPages extends ConsumerWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const WText(
-                                '90000',
-                                style: TextStyle(fontSize: 20),
-                              ),
-                              const SizedBox(
-                                width: 2,
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  CupertinoIcons.delete,
-                                  color: Colors.red,
+                        child: SizedBox(
+                          height: 80,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      con.scannModelPrice[index].name,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
-                          ),
-                          title: const WText('Gurgut'),
-                          subtitle: const Row(
-                            children: [
-                              Text(
-                                '7324897293',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w800,
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      con.scannModelPrice[index].price,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                        color: AppColorss.c_9745FF,
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        con.deleteProduct(index);
+                                      },
+                                      child: const Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              SizedBox(width: 5),
-                              WText(
-                                '10.20.2023',
-                                style: TextStyle(color: Colors.black54),
-                              ),
-                            ],
+                                Row(
+                                  children: [
+                                    Text(
+                                      con.scannModelPrice[index].barcode,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 20),
+                                    Text(
+                                      con.scannModelPrice[index].dateTime,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
