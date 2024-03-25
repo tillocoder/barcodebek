@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class AppColorss {
   // ignore: constant_identifier_names
@@ -18,9 +17,11 @@ class AppColorss {
   static const c_00007 = Color.fromRGBO(0, 0, 0, 0.7);
 
   // ignore: constant_identifier_names
-  static const c_D6BEFF = Color(0xFFD6BEFF);
+  static const c_D6BEFF = Color(0xC2D9C7FC);
 
   static const c_F8F8FB = Color(0xFFF8F8FB);
   static const scaffoldColor = Color(0xFFEDEDED);
   static const c_767676 = Color(0xFF767676);
+  static const red = Colors.red;
+  static const c_0047FF = Color(0xFF0047FF);
 }

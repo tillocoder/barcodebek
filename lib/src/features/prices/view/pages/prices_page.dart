@@ -1,22 +1,160 @@
-import 'package:barcodbek/src/features/scanner/controller/scan_controller.dart';
+import 'package:barcodbek/main.dart';
+import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:barcodbek/src/core/local/app_words.dart';
+import 'package:barcodbek/src/core/style/app_colors.dart';
+import 'package:barcodbek/src/core/style/app_icons.dart';
+import 'package:barcodbek/src/core/style/text_style.dart';
+import 'package:barcodbek/src/features/prices/controller/prices_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PricesPages extends ConsumerWidget {
-  const PricesPages({super.key});
+  const PricesPages({Key? key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(pricesController);
+
+    var ctr = ref.read(pricesController);
+
     return Scaffold(
-      body: ListView.builder(
-        itemCount: scannModelPrice.length,
-        itemBuilder: (context, index) {
-          var item = scannModelPrice[index];
-          return ListTile(
-            title: Text(item.barcode),
+      backgroundColor: AppColorss.scaffoldColor,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: SafeArea(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  WGap.gap15,
+                  Text(
+                    Words.prices.tr(context),
+                    style: AppTextStyle.textStyle2,
+                  ),
+                  AppIcons.search,
+                ],
+              ),
+              WGap.gap25,
+              Expanded(
+                child: SizedBox(
+                  child: ListView.builder(
+                    itemCount: box.values.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: SizedBox(
+                          width: double.maxFinite,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: AppColorss.c_FFFFFF,
+                              borderRadius: BorderRadius.circular(16),
+                              boxShadow: const [
+                                BoxShadow(
+                                  blurRadius: 4,
+                                  offset: Offset(0, 2),
+                                  spreadRadius: 1,
+                                  color: AppColorss.c_D6BEFF,
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 2,
+                              ),
+                              child: ListTile(
+                                contentPadding: EdgeInsets.zero,
+                                title: Text(
+                                  box.values.toList()[index].name,
+                                  style: AppTextStyle.textPrces,
+                                ),
+                                subtitle: Text(
+                                  box.values.toList()[index].barcode,
+                                  style: AppTextStyle.textBarcode,
+                                ),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          pricesCalculating(
+                                              box.values.toList()[index].price),
+                                          style: AppTextStyle.textNarxi,
+                                        ),
+                                        Text(
+                                          box.values.toList()[index].dateTime,
+                                          style: AppTextStyle.textDateTime,
+                                        ),
+                                      ],
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        ctr.removIndex(index);
+                                      },
+                                      icon: const Icon(
+                                        CupertinoIcons.delete,
+                                        color: AppColorss.red,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text("Umumiy Mahsulotlarning Narxi"),
+                    Text(umumiSumma()),
+                  ],
+                ),
+              );
+            },
           );
         },
+        child: const Icon(Icons.add),
       ),
     );
   }
+
+  String umumiSumma() {
+    int total = 0;
+    for (var i = 0; i < box.values.length; ++i) {
+      total += int.parse(box.values.toList()[i].price);
+    }
+    return pricesCalculating(total.toString());
+  }
+}
+
+String pricesCalculating(String number) {
+  String strNumber = number;
+  String formattedNumber = '';
+  int length = strNumber.length;
+  for (int i = 0; i < length; i++) {
+    if ((length - i) % 3 == 0 && i != 0) {
+      formattedNumber += '.';
+    }
+    formattedNumber += strNumber[i];
+  }
+  return formattedNumber;
 }

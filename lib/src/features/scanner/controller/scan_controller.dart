@@ -1,30 +1,26 @@
-import 'package:barcodbek/src/features/scanner/view/widgets/dialog.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
-final scannController = ChangeNotifierProvider.autoDispose((ref) => ScanController());
-  List<ScannModelPrice> scannModelPrice = [];
+final scannController = ChangeNotifierProvider.autoDispose(
+  (ref) => ScanController(),
+);
 
 class ScanController extends ChangeNotifier {
-  bool disposeScanner = true;
-  bool torch = false;
-
+  bool disposeScanner1 = true;
   TextEditingController controllerPrice = TextEditingController();
   TextEditingController controllerName = TextEditingController();
   TextEditingController controllerOther = TextEditingController();
+
   MobileScannerController cameraCtr = MobileScannerController(
-      useNewCameraSelector: true,
-      detectionSpeed: DetectionSpeed.values.first,
-    );
+    detectionTimeoutMs: 1000,
+    useNewCameraSelector: false,
+    detectionSpeed: DetectionSpeed.noDuplicates,
+  );
 
+  void isCheck() {
+    disposeScanner1 = !disposeScanner1;
 
-  void deleteProduct(index) {
-    scannModelPrice.removeAt(index);
-    notifyListeners();
-  }
-  void addProduct(ScannModelPrice model) {
-    scannModelPrice.add(model);
     notifyListeners();
   }
 }
