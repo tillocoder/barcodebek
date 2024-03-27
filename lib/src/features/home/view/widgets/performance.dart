@@ -58,3 +58,29 @@ SizedBox hehe(Map map) {
     ),
   );
 }
+
+SizedBox haha(Map map) {
+  return  SizedBox(
+    child: Column(
+      children: [
+        WGap.gap10,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(map['name'] ,style: AppTextStyle.textStyle4,),
+            Row(mainAxisSize:MainAxisSize.min,
+              children: [
+                Text(map['degree']??'',style: AppTextStyle.textStyle11a,),
+                WGap.gap10,
+                map['degree']==null?const SizedBox.shrink():const Icon(Icons.error,color: Colors.red,)
+              ],
+            ),
+          ],
+        ),
+        const  Divider(
+          color: Color(0xFFAF72FE),
+        )
+      ],
+    ),
+  );
+}

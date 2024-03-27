@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
@@ -8,9 +7,8 @@ import 'package:barcodbek/src/features/home/view/widgets/best_vendor.dart';
 import 'package:barcodbek/src/features/home/view/widgets/performance.dart';
 import 'package:barcodbek/src/features/home/view/widgets/w_card.dart';
 import 'package:barcodbek/src/features/home/view/widgets/data.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:barcodbek/src/features/home/view/widgets/w_card_2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:graphic/graphic.dart';
 
@@ -19,39 +17,22 @@ import '../widgets/w_card_1.dart';
 ///Important Informations
 String marketName = 'Rizq Market';
 bool userT = true;
+List<Map> hList = [
+  {'name': 'Davlat', 'degree': null},
+  {'name': 'Alpomish', 'degree': null},
+  {'name': 'Asliddin', 'degree': 'Eng yaxshi sotuvchi'},
+  {'name': 'Hikmatilla', 'degree': 'Eng yaxshi sotuvchi'},
+];
+
 List<Map> list = [
-  {
-    'name': 'Davlat',
-    'amount': '15000000',
-  },
-  {
-    'name': 'Alpomish',
-    'amount': '210000000',
-  },
-  {
-    'name': 'Hikmatilla',
-    'amount': '2000000',
-  },
-  {
-    'name': 'Asliddin',
-    'amount': '1000000',
-  },
-  {
-    'name': 'Davlat',
-    'amount': '15000000',
-  },
-  {
-    'name': 'Alpomish',
-    'amount': '210000000',
-  },
-  {
-    'name': 'Hikmatilla',
-    'amount': '2000000',
-  },
-  {
-    'name': 'Asliddin',
-    'amount': '1000000',
-  }
+  {'name': 'Davlat', 'amount': '15000000'},
+  {'name': 'Alpomish', 'amount': '210000000'},
+  {'name': 'Hikmatilla', 'amount': '2000000'},
+  {'name': 'Asliddin', 'amount': '1000000'},
+  {'name': 'Davlat', 'amount': '15000000'},
+  {'name': 'Alpomish', 'amount': '210000000'},
+  {'name': 'Hikmatilla', 'amount': '2000000'},
+  {'name': 'Asliddin', 'amount': '1000000'}
 ];
 
 class HomePage extends StatefulWidget {
@@ -89,11 +70,11 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     return !userT
         ? Scaffold(
             appBar: AppBar(
               elevation: 0,
-              toolbarHeight: 40,
               scrolledUnderElevation: 0,
               leading: IconButton(
                 onPressed: () {},
@@ -153,8 +134,8 @@ class HomePageState extends State<HomePage> {
                         height: 300,
                         child: Chart(
                           rebuild: rebuild,
-                          data: tradeWeekData,
-                          variables: {
+
+4                          variables: {
                             'name': Variable(
                               accessor: (Map map) => map['name'] as String,
                             ),
@@ -171,7 +152,9 @@ class HomePageState extends State<HomePage> {
                               shape: ShapeEncode(
                                   value: RectShape(
                                 borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
+                                    const BorderRadius.all(Radius.circular(
+                                        // MediaQuery.of(context).size.
+                                        12)),
                               )),
                               color: ColorEncode(
                                   variable: 'name', values: Defaults.colors10),
@@ -315,12 +298,15 @@ class HomePageState extends State<HomePage> {
                     WGap.gap20,
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: WCard(text1: 'text1', text2: 'text2'),
+                      child: WCard2(
+                          text1: 'Bugungi savdoyingiz', text2: '8000000'),
                     ),
                     WGap.gap20,
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: WCard(text1: 'text1', text2: 'text2'),
+                      child: WCard2(
+                          text1: 'Bugungi bergan qarzlaringiz',
+                          text2: '213000'),
                     ),
                     WGap.gap20,
                     Padding(
@@ -340,8 +326,13 @@ class HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.all(12),
                             child: Column(
                               children: [
-                                Text('Qarzdorlar ro\'yhati',style: AppTextStyle.textStyle4,),
-                                ListView.builder(physics:const NeverScrollableScrollPhysics(),
+                                Text(
+                                  'Qarzdorlar ro\'yhati',
+                                  style: AppTextStyle.textStyle4,
+                                ),
+                                ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     itemCount: list.length,
                                     shrinkWrap: true,
                                     itemBuilder: (context, index) =>
@@ -351,7 +342,8 @@ class HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                    ),WGap.gap20,
+                    ),
+                    WGap.gap20,
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: SizedBox(
@@ -369,18 +361,24 @@ class HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.all(12),
                             child: Column(
                               children: [
-                                Text('Hamkasblar',style: AppTextStyle.textStyle4_,),
-                                ListView.builder(physics:const NeverScrollableScrollPhysics(),
-                                    itemCount: list.length,
+                                Text(
+                                  'Hamkasblar',
+                                  style: AppTextStyle.textStyle4_,
+                                ),
+                                ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemCount: hList.length,
                                     shrinkWrap: true,
                                     itemBuilder: (context, index) =>
-                                        hehe(list[index])),
+                                        haha(hList[index])),
                               ],
                             ),
                           ),
                         ),
                       ),
-                    ),WGap.gap10,
+                    ),
+                    WGap.gap10,
                   ],
                 ),
               ),
