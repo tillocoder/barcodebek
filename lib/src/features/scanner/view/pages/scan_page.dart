@@ -1,4 +1,3 @@
-import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/features/scanner/controller/scan_controller.dart';
 import 'package:barcodbek/src/features/scanner/view/widgets/camera.dart';
 import 'package:barcodbek/src/features/scanner/view/widgets/dialog.dart';
@@ -25,14 +24,10 @@ class ScannPage extends ConsumerWidget {
                 Expanded(
                   child: ScannnBarcodeAddPage(
                     (capture) {
-                      List<String> barcodlar = [];
-                      for (var e in box.values) {
-                        barcodlar.add(e.barcode);
-                      }
                       final List<Barcode> barcodes = capture.barcodes;
                       for (final barcode in barcodes) {
                         final barcodeValue = barcode.rawValue.toString();
-                        if (!barcodlar.contains(barcodeValue)) {
+                        if (!ctr.barcodlar.contains(barcodeValue)) {
                           ctr.isCheck();
                           showDialog(
                             context: context,
@@ -45,8 +40,10 @@ class ScannPage extends ConsumerWidget {
                           );
                           return;
                         } else {
-                          debugPrint('chiqdikuuuuuuu');
-                          snakebar(context);
+                          snakebar(
+                            context,
+                            'Bu Tavar Mavjud',
+                          );
                         }
                       }
                     },
