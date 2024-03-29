@@ -1,5 +1,6 @@
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Performance extends StatelessWidget {
@@ -29,11 +30,7 @@ class Performance extends StatelessWidget {
                 ],
               ),
 
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.16,
-                child: ListView.builder(
-                    itemCount: list.length, itemBuilder: (context, index) => hehe(list[index])),
-              ),
+
             ],
           ),
         ),
