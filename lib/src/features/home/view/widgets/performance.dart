@@ -1,8 +1,8 @@
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Performance extends StatelessWidget {
   List<Map> list;
   Performance({super.key,required this.list});

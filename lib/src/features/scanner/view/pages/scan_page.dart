@@ -9,6 +9,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
+// ignore: must_be_immutable
 class ScannPage extends ConsumerWidget {
   const ScannPage({Key? key}) : super(key: key);
 
