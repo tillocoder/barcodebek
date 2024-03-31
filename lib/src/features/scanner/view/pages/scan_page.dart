@@ -11,70 +11,72 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 
 // ignore: must_be_immutable
 class ScannPage extends ConsumerWidget {
-  const ScannPage({Key? key}) : super(key: key);
+  const ScannPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(scannController);
-    var ctr = ref.read(scannController);
-
+    ref.read(scannController);
     return Scaffold(
-      body: ctr.disposeScanner1
-          ? Stack(
-              children: [
-                Expanded(
-                  child: ScannnBarcodeAddPage(
-                    (capture) {
-                      final List<Barcode> barcodes = capture.barcodes;
-                      for (final barcode in barcodes) {
-                        final barcodeValue = barcode.rawValue.toString();
-                        if (!ctr.barcodlar.contains(barcodeValue)) {
-                          ctr.isCheck();
-                          showDialog(
-                            context: context,
-                            builder: (context) => Dialog(
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: WDialog(barcodeValue: barcodeValue),
-                              ),
-                            ),
-                          );
-                          return;
-                        } else {
-                          snakebar(
-                            context,
-                            'Bu Tavar Mavjud',
-                          );
-                        }
-                      }
-                    },
-                  ),
-                ),
-                const Align(
-                  alignment: Alignment.topRight,
-                  child: SafeArea(
-                    child: Positioned(
-                      top: 20,
-                      right: 20,
-                      child: Flash(),
+      body: Stack(
+        children: [
+          Expanded(
+            child: ScannnBarcodeAddPage((capture) {
+              List<String> barcodlar = [];
+
+              for (var e in scannModelPrice) {
+                barcodlar.add(e.barcode);
+              }
+
+              final List<Barcode> barcodes = capture.barcodes;
+              // ctr.cameraCtr.dispose();
+
+              for (final barcode in barcodes) {
+                final barcodeValue = barcode.rawValue.toString();
+
+                if (!barcodlar.contains(barcodeValue)) {
+
+                  showDialog(
+                    context: context,
+                    builder: (context) => Dialog(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: WDialog(barcodeValue: barcodeValue),
+                      ),
                     ),
-                  ),
-                ),
-                Align(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 33),
-                    child: Lottie.asset('assets/lottie/cursor.json'),
-                  ),
-                ),
-                Align(
-                  child: SvgPicture.asset(
-                    'assets/icons/home/burchak.svg',
-                    height: 135,
-                  ),
-                ),
-              ],
-            )
-          : const SizedBox(),
+                  );
+                  return;
+                } else {
+                  debugPrint('chiqdikuuuuuuu');
+                  snakebar(context);
+                }
+              }
+            }),
+          ),
+          const Align(
+            alignment: Alignment.topRight,
+            child: SafeArea(
+              child: Positioned(
+                top: 20,
+                right: 20,
+                child: Flash(),
+              ),
+            ),
+          ),
+          Align(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 33),
+              child: Lottie.asset('assets/lottie/cursor.json'),
+            ),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/icons/home/burchak.svg',
+              height: 135,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
