@@ -1,17 +1,19 @@
 import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
+import 'package:barcodbek/src/core/style/text_style.dart';
+import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
+import 'package:barcodbek/src/features/scanner/controller/scan_controller.dart';
 import 'package:barcodbek/src/features/scanner/view/widgets/camera.dart';
 import 'package:barcodbek/src/features/scanner/view/widgets/flash.dart';
-import 'package:barcodbek/src/features/scanner/view/widgets/snakebar.dart';
-import 'package:barcodbek/src/features/sections/controller/sell_controller.dart';
+import 'package:barcodbek/src/features/sections/view/pages/sell/controller/sell_controller.dart';
+import 'package:barcodbek/src/features/sections/view/pages/sell/view/widgets/w_bottomnav.dart';
+import 'package:barcodbek/src/features/sections/view/pages/sell/view/widgets/widget_product_count.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:svg_flutter/svg.dart';
-
-import '../../../scanner/controller/scan_controller.dart';
 
 class SellPages extends ConsumerWidget {
   const SellPages({Key? key}) : super(key: key);
@@ -21,6 +23,7 @@ class SellPages extends ConsumerWidget {
     ref.watch(sellController);
     var ctr = ref.read(sellController);
     var scanCtr = ref.read(scannController);
+    ref.watch(authConttroler);
 
     return Scaffold(
       body: Stack(
@@ -31,20 +34,23 @@ class SellPages extends ConsumerWidget {
               child: ScannnBarcodeAddPage(
                 (capture) {
                   final List<Barcode> barcodes = capture.barcodes;
-                  var barcodeValue;
+
                   for (final barcode in barcodes) {
-                    barcodeValue = barcode.rawValue.toString();
-                  }
-                  for (var i = 0; i < box.values.toList().length; ++i) {
+                    var barcodeValue = barcode.rawValue.toString();
                     if (scanCtr.barcodlar.contains(barcodeValue)) {
-                      ctr.savatAdd(box.values.toList()[i]);
-                      ctr.count.add(1);
-                    }
-                    if (!(scanCtr.barcodlar.contains(barcodeValue))) {
-                      snakebar(context, "Bu tovar xoyirqdq yoq");
-                    }
-                    if (scanCtr.barcodlar.contains(barcodeValue)) {
-                      snakebar(context, "Bu Tavar bor");
+                      if (!ctr.savatBarcode.contains(barcodeValue)) {
+                        for (var i = 0; i < scanCtr.barcodlar.length; ++i) {
+                          if (scanCtr.barcodlar[i] == barcodeValue) {
+                            ctr.savatAdd(box.values.toList()[i]);
+                            ctr.count.add(1);
+                            break;
+                          }
+                        }
+                      } else {
+                        // snakebar(context, "Bu Praduct Mavjud");
+                      }
+                    } else {
+                      // snakebar(context, "Bunaqa Praduct Bazada Yo'q");
                     }
                   }
                 },
@@ -94,7 +100,7 @@ class SellPages extends ConsumerWidget {
             alignment: Alignment.bottomCenter,
             child: Expanded(
               child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.58,
+                height: MediaQuery.of(context).size.height * 0.50,
                 child: DecoratedBox(
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -110,40 +116,28 @@ class SellPages extends ConsumerWidget {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Card(
+                          elevation: 2,
+                          shadowColor: AppColorss.c_9745FF,
                           child: ListTile(
-                            title: Text(ctr.savat.toList()[index].barcode),
+                            title: Text(
+                              ctr.savat[index].barcode,
+                              style: AppTextStyle.textStyle3,
+                            ),
                             subtitle: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(ctr.savat.toList()[index].name),
-                                Text(ctr.savat.toList()[index].price),
+                                Text(
+                                  ctr.savat[index].name,
+                                  style: AppTextStyle.textPrces,
+                                ),
+                                Text(
+                                  ctr.xotradagiSumma(ctr.savat[index].price),
+                                  style: AppTextStyle.textStyle1_,
+                                ),
                               ],
                             ),
-                            trailing: Card(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      ctr.oshuvchi(index);
-                                    },
-                                    icon: const Icon(
-                                      Icons.add,
-                                      color: AppColorss.c_9745FF,
-                                    ),
-                                  ),
-                                  Text(ctr.count.elementAt(index).toString()),
-                                  IconButton(
-                                    onPressed: () {
-                                      ctr.kamayuvchi(index);
-                                    },
-                                    icon: const Icon(
-                                      Icons.remove,
-                                      color: AppColorss.c_9745FF,
-                                    ),
-                                  )
-                                ],
-                              ),
+                            trailing: WProductCount(
+                              index: index,
                             ),
                           ),
                         ),
@@ -153,9 +147,10 @@ class SellPages extends ConsumerWidget {
                 ),
               ),
             ),
-          ),
+          )
         ],
       ),
+      bottomNavigationBar: WCustomBottomNav(),
     );
   }
 }

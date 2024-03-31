@@ -15,7 +15,7 @@ class ScanController extends ChangeNotifier {
   }
 
   void boxAddFor() {
-    for (var e in box.values) {
+    for (var e in box.values.toList()) {
       barcodlar.add(e.barcode);
     }
     notifyListeners();
