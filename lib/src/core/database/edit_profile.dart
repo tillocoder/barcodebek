@@ -6,8 +6,8 @@ final db = ChangeNotifierProvider.autoDispose((ref) => DBEditProfil());
 
 class DBEditProfil extends ChangeNotifier {
   String loat() {
-    return prefs.getString("Edit") ?? '0';
     notifyListeners();
+    return prefs.getString("Edit") ?? '0';
   }
 
   Future<void> save(String edit) async {

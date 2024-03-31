@@ -16,22 +16,26 @@ class ScannPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(scannController);
-    var ctr = ref.read(scannController);
+    ref.read(scannController);
     return Scaffold(
       body: Stack(
         children: [
           Expanded(
             child: ScannnBarcodeAddPage((capture) {
               List<String> barcodlar = [];
+
               for (var e in scannModelPrice) {
                 barcodlar.add(e.barcode);
               }
+
               final List<Barcode> barcodes = capture.barcodes;
               // ctr.cameraCtr.dispose();
 
               for (final barcode in barcodes) {
                 final barcodeValue = barcode.rawValue.toString();
+
                 if (!barcodlar.contains(barcodeValue)) {
+                  
                   showDialog(
                     context: context,
                     builder: (context) => Dialog(

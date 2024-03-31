@@ -1,6 +1,7 @@
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class WCard1 extends StatelessWidget {
   String text1;
   String text2;
