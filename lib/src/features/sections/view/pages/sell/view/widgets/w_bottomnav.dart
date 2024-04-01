@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
+import 'package:barcodbek/src/features/sections/view/pages/lending/view/pages/lending.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sell/controller/sell_controller.dart';
 import 'package:barcodbek/src/features/sections/view/widgets/weleavtedbutton.dart';
 import 'package:flutter/material.dart';
@@ -39,23 +42,18 @@ class WCustomBottomNav extends ConsumerWidget {
             children: [
               Expanded(
                 child: WElevatedButton1(
-                  backgroundColor:
-                      (authctr.egalik != null && authctr.egalik == true)
-                          ? AppColorss.c_8F00FF
-                          : AppColorss.c_707070,
+                  backgroundColor: (authctr.egalik != null && authctr.egalik == true) ? AppColorss.c_8F00FF : AppColorss.c_707070,
                   text: "Qarzga",
                   onPressed: () {
                     authctr.onTap(true);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const LendingPages()));
                   },
                 ),
               ),
               WGap.gap10,
               Expanded(
                 child: WElevatedButton1(
-                  backgroundColor:
-                      (authctr.egalik != null && authctr.egalik == false)
-                          ? AppColorss.c_8F00FF
-                          : AppColorss.c_707070,
+                  backgroundColor: (authctr.egalik != null && authctr.egalik == false) ? AppColorss.c_8F00FF : AppColorss.c_707070,
                   text: "Sotish",
                   onPressed: () {
                     authctr.onTap(false);

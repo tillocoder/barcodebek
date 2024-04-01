@@ -1,10 +1,10 @@
+import 'package:barcodbek/keraksiz.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/sections/view/pages/calculating.dart';
 import 'package:barcodbek/src/features/sections/view/pages/deptors.dart';
-import 'package:barcodbek/src/features/sections/view/pages/lending.dart';
 import 'package:barcodbek/src/features/sections/view/pages/searching.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sell/view/pages/sell.dart';
 import 'package:flutter/material.dart';
@@ -37,20 +37,13 @@ class SectionsPages extends StatelessWidget {
                   // mainAxisSpacing: 30,
                   // crossAxisSpacing: 40,
                 ),
-                itemCount: 5,
+                itemCount: 4,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 14, vertical: 18),
+                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
                     child: wSWButton(
                       index: index,
-                      page: [
-                        const SellPages(),
-                        const SearchingPages(),
-                        const CalculatingPages(),
-                        const DeptorsPages(),
-                        const LendingPages(),
-                      ],
+                      page: [const SellPages(), const SearchingPages(), const CalculatingPages(), const DeptorsPages()],
                       context: context,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
@@ -116,7 +109,6 @@ List<Widget> listIcons = [
   AppImages.bsearch,
   AppImages.count,
   AppImages.debtors,
-  AppImages.lending,
 ];
 
 List<Words> listText = [
@@ -124,5 +116,4 @@ List<Words> listText = [
   Words.search,
   Words.calculation,
   Words.debtors,
-  Words.lending,
 ];

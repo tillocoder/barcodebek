@@ -31,7 +31,7 @@ class SearchingPages extends ConsumerWidget {
                   child: ScannnBarcodeAddPage(
                     (capture) {
                       final List<Barcode> barcodes = capture.barcodes;
-                      var barcodeValue;
+                      String barcodeValue;
                       for (var barcode in barcodes) {
                         barcodeValue = barcode.rawValue.toString();
                         for (var i = 0; i < ctr.barcodlar.length; ++i) {

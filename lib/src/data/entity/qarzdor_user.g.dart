@@ -1,41 +1,41 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sacanner.dart';
+part of 'qarzdor_user.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ScannModelPriceAdapter extends TypeAdapter<ScannModelPrice> {
+class UserDeptorsAdapter extends TypeAdapter<UserDeptors> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
-  ScannModelPrice read(BinaryReader reader) {
+  UserDeptors read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return ScannModelPrice(
-      barcode: fields[0] as String,
-      price: fields[1] as String,
-      name: fields[2] as String,
-      dateTime: fields[3] as String,
+    return UserDeptors(
+      ismFamilya: fields[0] as String,
+      phoneNumber: fields[1] as String,
+      qoshimcha: fields[2] as String,
+      berishmuddati: fields[3] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, ScannModelPrice obj) {
+  void write(BinaryWriter writer, UserDeptors obj) {
     writer
       ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.barcode)
+      ..write(obj.ismFamilya)
       ..writeByte(1)
-      ..write(obj.price)
+      ..write(obj.phoneNumber)
       ..writeByte(2)
-      ..write(obj.name)
+      ..write(obj.qoshimcha)
       ..writeByte(3)
-      ..write(obj.dateTime);
+      ..write(obj.berishmuddati);
   }
 
   @override
@@ -44,7 +44,7 @@ class ScannModelPriceAdapter extends TypeAdapter<ScannModelPrice> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ScannModelPriceAdapter &&
+      other is UserDeptorsAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

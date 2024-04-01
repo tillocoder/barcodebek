@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'dart:core';
 
 import 'package:barcodbek/src/core/componets/w_gap.dart';

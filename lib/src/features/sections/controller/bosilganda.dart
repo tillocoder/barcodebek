@@ -1,3 +1,4 @@
+import 'package:barcodbek/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,6 +16,11 @@ class DeptorsController extends ChangeNotifier {
 
   void onTap(bool value) {
     bosliganda = value;
+    notifyListeners();
+  }
+
+  void delete(int index) {
+    boxdeptors.delete(index);
     notifyListeners();
   }
 }

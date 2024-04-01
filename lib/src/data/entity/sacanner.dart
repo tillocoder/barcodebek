@@ -13,7 +13,6 @@ class ScannModelPrice {
   @HiveField(3)
   final String dateTime;
 
-  @HiveField(4)
   ScannModelPrice({
     required this.barcode,
     required this.price,

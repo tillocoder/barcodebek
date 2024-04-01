@@ -104,10 +104,7 @@ void pinCode(BuildContext context) async {
     } else {
       await AppPassword.save(AppPassword.textPin.text);
       if (AppPassword.textPin.text == pwrd) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const WBottomNav(),
+        Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const WBottomNav(),
           ),
         );
       } else {

@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/features/prices/controller/prices_controller.dart';
 import 'package:barcodbek/src/features/scanner/controller/scan_controller.dart';
 import 'package:barcodbek/src/features/scanner/view/widgets/camera.dart';
 import 'package:barcodbek/src/features/scanner/view/widgets/dialog.dart';
@@ -35,7 +36,6 @@ class ScannPage extends ConsumerWidget {
                 final barcodeValue = barcode.rawValue.toString();
 
                 if (!barcodlar.contains(barcodeValue)) {
-
                   showDialog(
                     context: context,
                     builder: (context) => Dialog(
@@ -48,7 +48,7 @@ class ScannPage extends ConsumerWidget {
                   return;
                 } else {
                   debugPrint('chiqdikuuuuuuu');
-                  snakebar(context);
+                  snakebar(context,'borku');
                 }
               }
             }),
