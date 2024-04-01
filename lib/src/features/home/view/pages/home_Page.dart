@@ -5,13 +5,10 @@ import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/home/view/widgets/best_vendor.dart';
+import 'package:barcodbek/src/features/home/view/widgets/data.dart';
 import 'package:barcodbek/src/features/home/view/widgets/performance.dart';
 import 'package:barcodbek/src/features/home/view/widgets/w_card.dart';
-import 'package:barcodbek/src/features/home/view/widgets/data.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:gap/gap.dart';
 import 'package:graphic/graphic.dart';
 
 import '../widgets/w_card_1.dart';
@@ -68,24 +65,11 @@ class HomePageState extends State<HomePage> {
 
   List<Map> barAnimData = [];
 
-  late Timer timer;
-
   final priceVolumeStream = StreamController<GestureEvent>.broadcast();
 
   final heatmapStream = StreamController<Selected?>.broadcast();
 
   bool rebuild = false;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    timer.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,29 +99,6 @@ class HomePageState extends State<HomePage> {
             ),
             key: _scaffoldKey,
             backgroundColor: Colors.white,
-            // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-            // floatingActionButton: Column(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     FloatingActionButton(
-            //       onPressed: () => setState(() {
-            //         rebuild = true;
-            //       }),
-            //       child: const Icon(Icons.refresh),
-            //     ),
-            //     FloatingActionButton(
-            //       onPressed: () {
-            //         Navigator.push(
-            //           context,
-            //           MaterialPageRoute(
-            //             builder: (contex) => const HomePage(),
-            //           ),
-            //         );
-            //       },
-            //       child: const Icon(Icons.next_plan_outlined),
-            //     ),
-            //   ],
-            // ),
             body: SafeArea(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
@@ -340,8 +301,13 @@ class HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.all(12),
                             child: Column(
                               children: [
-                                Text('Qarzdorlar ro\'yhati',style: AppTextStyle.textStyle4,),
-                                ListView.builder(physics:const NeverScrollableScrollPhysics(),
+                                Text(
+                                  'Qarzdorlar ro\'yhati',
+                                  style: AppTextStyle.textStyle4,
+                                ),
+                                ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     itemCount: list.length,
                                     shrinkWrap: true,
                                     itemBuilder: (context, index) =>
@@ -351,7 +317,8 @@ class HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                    ),WGap.gap20,
+                    ),
+                    WGap.gap20,
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: SizedBox(
@@ -369,8 +336,13 @@ class HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.all(12),
                             child: Column(
                               children: [
-                                Text('Hamkasblar',style: AppTextStyle.textStyle4_,),
-                                ListView.builder(physics:const NeverScrollableScrollPhysics(),
+                                Text(
+                                  'Hamkasblar',
+                                  style: AppTextStyle.textStyle4_,
+                                ),
+                                ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     itemCount: list.length,
                                     shrinkWrap: true,
                                     itemBuilder: (context, index) =>
@@ -380,7 +352,8 @@ class HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                    ),WGap.gap10,
+                    ),
+                    WGap.gap10,
                   ],
                 ),
               ),

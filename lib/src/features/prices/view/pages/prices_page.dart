@@ -28,7 +28,31 @@ class PricesPages extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  WGap.gap15,
+                  IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "Umumiy Mahsulotlarning Narxi",
+                                  style: AppTextStyle.textStyle4,
+                                ),
+                                Text(
+                                  umumiSumma(),
+                                  style: AppTextStyle.textStyle1_,
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    icon: const Icon(CupertinoIcons.chart_bar_alt_fill),
+                  ),
                   Text(
                     Words.prices.tr(context),
                     style: AppTextStyle.textStyle2,
@@ -114,25 +138,6 @@ class PricesPages extends ConsumerWidget {
             ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text("Umumiy Mahsulotlarning Narxi"),
-                    Text(umumiSumma()),
-                  ],
-                ),
-              );
-            },
-          );
-        },
-        child: const Icon(Icons.add),
       ),
     );
   }

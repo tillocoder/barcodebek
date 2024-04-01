@@ -137,66 +137,9 @@ class DeptorsPages extends ConsumerWidget {
                                       ],
                                     ),
                                   ),
-                                  Row(
-                                    children: [
-                                      Visibility(
-                                        visible: con.isChecked[index],
-                                        child: Expanded(
-                                          flex: 2,
-                                          child: SizedBox(
-                                            height: 60,
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(6),
-                                              child: TextField(
-                                                textAlignVertical:
-                                                    TextAlignVertical.bottom,
-                                                decoration: InputDecoration(
-                                                  border: OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            14),
-                                                    borderSide: BorderSide.none,
-                                                  ),
-                                                  filled: true,
-                                                  fillColor:
-                                                      AppColorss.c_FFFFFF,
-                                                  hintText: Words.send_a_message
-                                                      .tr(context),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      WGap.gap15,
-                                      Visibility(
-                                        visible: con.isChecked[index],
-                                        child: Expanded(
-                                          child: SizedBox(
-                                            height: 46,
-                                            child: WElevatedButton(
-                                              text: Words.send.tr(context),
-                                              onPressed: () {
-                                                con.onTap(true);
-                                                Future.delayed(
-                                                  const Duration(seconds: 1),
-                                                  () {
-                                                    con.onTap(false);
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const HomePage(),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                      )
-                                    ],
+                                  WVisibility(
+                                    con: con,
+                                    index: index,
                                   ),
                                 ],
                               ),
@@ -217,6 +160,77 @@ class DeptorsPages extends ConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class WVisibility extends StatelessWidget {
+  const WVisibility({
+    super.key,
+    required this.con,
+    required this.index,
+  });
+
+  final int index;
+
+  final DeptorsController con;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Visibility(
+          visible: con.isChecked[index],
+          child: Expanded(
+            flex: 2,
+            child: SizedBox(
+              height: 60,
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: TextField(
+                  textAlignVertical: TextAlignVertical.bottom,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: AppColorss.c_FFFFFF,
+                    hintText: Words.send_a_message.tr(context),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        WGap.gap15,
+        Visibility(
+          visible: con.isChecked[index],
+          child: Expanded(
+            child: SizedBox(
+              height: 46,
+              child: WElevatedButton(
+                text: Words.send.tr(context),
+                onPressed: () {
+                  con.onTap(true);
+                  Future.delayed(
+                    const Duration(seconds: 1),
+                    () {
+                      con.onTap(false);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+          ),
+        )
+      ],
     );
   }
 }
