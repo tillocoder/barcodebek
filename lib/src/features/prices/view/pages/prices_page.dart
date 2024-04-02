@@ -1,5 +1,3 @@
-// ignore_for_file: use_key_in_widget_constructors
-
 import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
@@ -30,7 +28,25 @@ class PricesPages extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  WGap.gap15,
+                  IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                 Text("Umumiy Mahsulotlarning Narxi",style: AppTextStyle.textStyle4,),
+                                Text(umumiSumma(),style: AppTextStyle.textStyle1_,),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    icon: const Icon(Icons.monetization_on_rounded,color: AppColorss.c_9745FF,),
+                  ),
                   Text(
                     Words.prices.tr(context),
                     style: AppTextStyle.textStyle2,
@@ -116,25 +132,6 @@ class PricesPages extends ConsumerWidget {
             ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text("Umumiy Mahsulotlarning Narxi"),
-                    Text(umumiSumma()),
-                  ],
-                ),
-              );
-            },
-          );
-        },
-        child: const Icon(Icons.add),
       ),
     );
   }

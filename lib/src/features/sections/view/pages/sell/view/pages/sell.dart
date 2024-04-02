@@ -32,7 +32,7 @@ class SellPages extends ConsumerWidget {
             child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.5,
               child: ScannnBarcodeAddPage(
-                (capture) {
+                    (capture) {
                   final List<Barcode> barcodes = capture.barcodes;
 
                   for (final barcode in barcodes) {

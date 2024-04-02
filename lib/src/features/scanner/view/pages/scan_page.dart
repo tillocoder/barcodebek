@@ -1,4 +1,3 @@
-import 'package:barcodbek/src/features/prices/controller/prices_controller.dart';
 import 'package:barcodbek/src/features/scanner/controller/scan_controller.dart';
 import 'package:barcodbek/src/features/scanner/view/widgets/camera.dart';
 import 'package:barcodbek/src/features/scanner/view/widgets/dialog.dart';
@@ -10,48 +9,45 @@ import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
-// ignore: must_be_immutable
 class ScannPage extends ConsumerWidget {
-  const ScannPage({super.key});
+  const ScannPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(scannController);
-    ref.read(scannController);
+    var ctr = ref.read(scannController);
+
     return Scaffold(
-      body: Stack(
+      body: ctr.disposeScanner1
+          ? Stack(
         children: [
           Expanded(
-            child: ScannnBarcodeAddPage((capture) {
-              List<String> barcodlar = [];
-
-              for (var e in scannModelPrice) {
-                barcodlar.add(e.barcode);
-              }
-
-              final List<Barcode> barcodes = capture.barcodes;
-              // ctr.cameraCtr.dispose();
-
-              for (final barcode in barcodes) {
-                final barcodeValue = barcode.rawValue.toString();
-
-                if (!barcodlar.contains(barcodeValue)) {
-                  showDialog(
-                    context: context,
-                    builder: (context) => Dialog(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: WDialog(barcodeValue: barcodeValue),
+            child: ScannnBarcodeAddPage(
+                  (capture) {
+                final List<Barcode> barcodes = capture.barcodes;
+                for (final barcode in barcodes) {
+                  final barcodeValue = barcode.rawValue.toString();
+                  if (!ctr.barcodlar.contains(barcodeValue)) {
+                    ctr.isCheck();
+                    showDialog(
+                      context: context,
+                      builder: (context) => Dialog(
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: WDialog(barcodeValue: barcodeValue),
+                        ),
                       ),
-                    ),
-                  );
-                  return;
-                } else {
-                  debugPrint('chiqdikuuuuuuu');
-                  snakebar(context,'borku');
+                    );
+                    return;
+                  } else {
+                    snakebar(
+                      context,
+                      'Bu Tavar Mavjud',
+                    );
+                  }
                 }
-              }
-            }),
+              },
+            ),
           ),
           const Align(
             alignment: Alignment.topRight,
@@ -74,9 +70,10 @@ class ScannPage extends ConsumerWidget {
               'assets/icons/home/burchak.svg',
               height: 135,
             ),
-          )
+          ),
         ],
-      ),
+      )
+          : const SizedBox(),
     );
   }
 }

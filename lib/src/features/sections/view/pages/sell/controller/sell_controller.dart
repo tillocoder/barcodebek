@@ -73,4 +73,11 @@ class SellController extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  bool? egalik;
+
+  void onTap(bool value) {
+    egalik = value;
+    notifyListeners();
+  }
 }

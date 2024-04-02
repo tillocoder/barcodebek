@@ -42,10 +42,10 @@ class WCustomBottomNav extends ConsumerWidget {
             children: [
               Expanded(
                 child: WElevatedButton1(
-                  backgroundColor: (authctr.egalik != null && authctr.egalik == true) ? AppColorss.c_8F00FF : AppColorss.c_707070,
+                  backgroundColor: (sellctr.egalik != null && sellctr.egalik == true) ? AppColorss.c_8F00FF : AppColorss.c_707070,
                   text: "Qarzga",
                   onPressed: () {
-                    authctr.onTap(true);
+                    sellctr.onTap(true);
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const LendingPages()));
                   },
                 ),
@@ -53,10 +53,10 @@ class WCustomBottomNav extends ConsumerWidget {
               WGap.gap10,
               Expanded(
                 child: WElevatedButton1(
-                  backgroundColor: (authctr.egalik != null && authctr.egalik == false) ? AppColorss.c_8F00FF : AppColorss.c_707070,
+                  backgroundColor: (sellctr.egalik != null && sellctr.egalik == false) ? AppColorss.c_8F00FF : AppColorss.c_707070,
                   text: "Sotish",
                   onPressed: () {
-                    authctr.onTap(false);
+                    sellctr.onTap(false);
                   },
                 ),
               ),
