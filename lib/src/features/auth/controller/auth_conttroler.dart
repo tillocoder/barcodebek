@@ -10,7 +10,6 @@ final authConttroler =
 class AuthConttroler extends ChangeNotifier {
   bool? egalik;
   int length = 5;
-
   void onTap(bool value) {
     egalik = value;
     if (egalik == true) {

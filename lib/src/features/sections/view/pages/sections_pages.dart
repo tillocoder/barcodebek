@@ -1,4 +1,3 @@
-import 'package:barcodbek/keraksiz.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
@@ -43,7 +42,12 @@ class SectionsPages extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
                     child: wSWButton(
                       index: index,
-                      page: [const SellPages(), const SearchingPages(), const CalculatingPages(), const DeptorsPages()],
+                      page: [
+                        const SellPages(),
+                        const SearchingPages(),
+                        const CalculatingPages(),
+                        const DeptorsPages(),
+                      ],
                       context: context,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
@@ -83,20 +87,22 @@ class SectionsPages extends StatelessWidget {
 
 InkWell wSWButton({
   required int index,
-  required List<Widget> page,
+  required List<Widget?> page,
   required BuildContext context,
   required Widget child,
 }) {
   return InkWell(
     onTap: () {
       for (var i = 0; i < page.length; i++) {
-        if (index == i) {
+        if (index == i && page[i] != null) {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (contex) => page[i],
+              builder: (contex) => page[i]!,
             ),
           );
+        } else if (page[i] == null) {
+          continue;
         }
       }
     },

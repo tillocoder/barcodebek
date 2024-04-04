@@ -1,7 +1,7 @@
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
-import 'package:barcodbek/src/features/home/view/pages/home_Page.dart';
+import 'package:barcodbek/src/features/home/view/pages/owner_home_page.dart';
 import 'package:barcodbek/src/features/prices/view/pages/prices_page.dart';
 import 'package:barcodbek/src/features/profile/view/pages/prifile_page.dart';
 import 'package:barcodbek/src/features/scanner/view/pages/scan_page.dart';

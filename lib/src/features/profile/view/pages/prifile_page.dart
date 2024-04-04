@@ -1,3 +1,5 @@
+// ignore_for_file: empty_statements
+
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
@@ -6,7 +8,9 @@ import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
 import 'package:barcodbek/src/features/profile/view/pages/edit_profile/view/pages/edit_profile.dart';
 import 'package:barcodbek/src/features/profile/view/pages/savdo_tarixi/view/pages/statistic_page.dart';
+import 'package:barcodbek/src/features/profile/view/pages/seller/view/pages/seller_page.dart';
 import 'package:barcodbek/src/features/profile/view/pages/setting/view/pages/setting_page.dart';
+import 'package:barcodbek/src/features/sections/view/pages/privacy_policy.dart/privacy_policy_page.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sections_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -38,8 +42,17 @@ class ProfilePage extends ConsumerWidget {
                 index: index,
                 page: [
                   const EditeProfile(),
-                  const SavdoTarixPage(),
-                  const SettingPage(),
+                  con.length == 6 ? const SellerPage() : const SettingPage(),
+                  con.length == 6
+                      ? const SettingPage()
+                      : const SavdoTarixPage(),
+                  con.length == 6
+                      ? const SavdoTarixPage()
+                      : const PrivacyPolicyPage(),
+                  con.length == 6
+                      ? const PrivacyPolicyPage()
+                      : const EditeProfile(),
+                  con.length == 6 ? const EditeProfile() : const SettingPage(),
                 ],
                 context: context,
                 child: ListTile(

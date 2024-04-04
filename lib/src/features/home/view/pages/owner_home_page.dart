@@ -4,45 +4,28 @@ import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
-import 'package:barcodbek/src/features/home/controller/w.dart';
+import 'package:barcodbek/src/features/home/controller/homeController.dart';
+import 'package:barcodbek/src/features/home/view/pages/vendor_home_page.dart';
 import 'package:barcodbek/src/features/home/view/widgets/best_vendor.dart';
 import 'package:barcodbek/src/features/home/view/widgets/data.dart';
 import 'package:barcodbek/src/features/home/view/widgets/performance.dart';
 import 'package:barcodbek/src/features/home/view/widgets/w_card.dart';
-import 'package:barcodbek/src/features/home/view/widgets/w_card_2.dart';
+import 'package:barcodbek/src/features/home/view/widgets/w_card_1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphic/graphic.dart';
 
-import '../widgets/w_card_1.dart';
-
 ///Important Informations
 String marketName = 'Rizq Market';
 bool userT = true;
-List<Map> hList = [
-  {'name': 'Davlat', 'degree': null},
-  {'name': 'Alpomish', 'degree': null},
-  {'name': 'Asliddin', 'degree': 'Eng yaxshi sotuvchi'},
-  {'name': 'Hikmatilla', 'degree': 'Eng yaxshi sotuvchi'},
-];
-
-List<Map> list = [
-  {'name': 'Davlat', 'amount': '15000000'},
-  {'name': 'Alpomish', 'amount': '210000000'},
-  {'name': 'Hikmatilla', 'amount': '2000000'},
-  {'name': 'Asliddin', 'amount': '1000000'},
-  {'name': 'Davlat', 'amount': '15000000'},
-  {'name': 'Alpomish', 'amount': '210000000'},
-  {'name': 'Hikmatilla', 'amount': '2000000'},
-  {'name': 'Asliddin', 'amount': '1000000'}
-];
-
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(homeController);
+    var ctrhome = ref.watch(homeController);
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     bool rebuild = false;
     ref.watch(homeController);
@@ -73,29 +56,6 @@ class HomePage extends ConsumerWidget {
             ),
             key: _scaffoldKey,
             backgroundColor: Colors.white,
-            // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-            // floatingActionButton: Column(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     FloatingActionButton(
-            //       onPressed: () => setState(() {
-            //         rebuild = true;
-            //       }),
-            //       child: const Icon(Icons.refresh),
-            //     ),
-            //     FloatingActionButton(
-            //       onPressed: () {
-            //         Navigator.push(
-            //           context,
-            //           MaterialPageRoute(
-            //             builder: (contex) => const HomePage(),
-            //           ),
-            //         );
-            //       },
-            //       child: const Icon(Icons.next_plan_outlined),
-            //     ),
-            //   ],
-            // ),
             body: SafeArea(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
@@ -132,7 +92,7 @@ class HomePage extends ConsumerWidget {
                               )),
                               color: ColorEncode(variable: 'name', values: Defaults.colors10),
                               elevation: ElevationEncode(value: 5),
-                              transition: Transition(duration: Duration(seconds: 2), curve: Curves.elasticOut),
+                              transition: Transition(duration: const Duration(seconds: 2), curve: Curves.elasticOut),
                               entrance: {MarkEntrance.y},
                             )
                           ],
@@ -202,8 +162,8 @@ class HomePage extends ConsumerWidget {
                                     scrollDirection: Axis.vertical,
                                     physics: const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
-                                    itemCount: list.length,
-                                    itemBuilder: (context, index) => hehe(list[index])),
+                                    itemCount: ctrhome.list.length,
+                                    itemBuilder: (context, index) => hehe(ctrhome.list[index])),
                               ],
                             ),
                           ),
@@ -226,110 +186,6 @@ class HomePage extends ConsumerWidget {
               ),
             ),
           )
-        : Scaffold(
-            appBar: AppBar(
-              elevation: 0,
-              // toolbarHeight: 40,
-              scrolledUnderElevation: 0,
-              // automaticallyImplyLeading: userT,
-              leading: userT
-                  ? IconButton(
-                      onPressed: () {},
-                      icon: AppIcons.notification,
-                    )
-                  : SizedBox.shrink(),
-              centerTitle: true,
-              title: Text(
-                marketName,
-                style: AppTextStyle.textStyle1_,
-              ),
-              actions: [
-                IconButton(
-                    onPressed: () {
-                      userT = !userT;
-                      //!
-                      // setState(() {});
-                    },
-                    icon: AppIcons.search)
-              ],
-            ),
-            body: SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    WGap.gap20,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: WCard2(text1: 'Bugungi savdoyingiz', text2: '8000000'),
-                    ),
-                    WGap.gap20,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: WCard2(text1: 'Bugungi bergan qarzlaringiz', text2: '213000'),
-                    ),
-                    WGap.gap20,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: SizedBox(
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Colors.white,
-                              boxShadow: const [BoxShadow(color: Colors.grey, blurRadius: 4, spreadRadius: 1)]),
-                          child: Padding(
-                            padding: const EdgeInsets.all(12),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Qarzdorlar ro\'yhati',
-                                  style: AppTextStyle.textStyle4,
-                                ),
-                                ListView.builder(
-                                    physics: const NeverScrollableScrollPhysics(),
-                                    itemCount: list.length,
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) => hehe(list[index])),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    WGap.gap20,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: SizedBox(
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Colors.white,
-                              boxShadow: const [BoxShadow(color: Colors.grey, blurRadius: 4, spreadRadius: 1)]),
-                          child: Padding(
-                            padding: const EdgeInsets.all(12),
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Hamkasblar',
-                                  style: AppTextStyle.textStyle4_,
-                                ),
-                                ListView.builder(
-                                    physics: const NeverScrollableScrollPhysics(),
-                                    itemCount: hList.length,
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) => haha(hList[index])),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    WGap.gap10,
-                  ],
-                ),
-              ),
-            ),
-          );
+        : const VendorPage();
   }
 }
