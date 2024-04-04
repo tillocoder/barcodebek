@@ -1,15 +1,18 @@
-// ignore_for_file: unnecessary_string_interpolations
-
 import 'dart:core';
-
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
+import 'package:barcodbek/src/data/entity/sacanner.dart';
+import 'package:barcodbek/src/features/profile/view/pages/edit_profile/controller/edit_controller.dart';
+import 'package:barcodbek/src/features/sections/view/pages/sell/controller/sell_controller.dart';
+import 'package:barcodbek/src/features/sections/view/pages/sell/view/widgets/w_bottomnav.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SavdoTarixPage extends StatelessWidget {
+
   const SavdoTarixPage({Key? key}) : super(key: key);
 
   @override
@@ -29,9 +32,9 @@ class SavdoTarixPage extends StatelessWidget {
               Expanded(
                 child: SizedBox(
                   child: ListView.builder(
-                    itemCount: model.length,
+                    itemCount: savdoList.length,
                     itemBuilder: (context, index) {
-                      return SavdoItem(model: model[index]);
+                      return SavdoItem(model: savdoList[index]);
                     },
                   ),
                 ),
@@ -44,13 +47,13 @@ class SavdoTarixPage extends StatelessWidget {
   }
 }
 
-class SavdoItem extends StatelessWidget {
+class SavdoItem extends ConsumerWidget {
   final TaxrixMadel model;
 
   const SavdoItem({Key? key, required this.model}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -85,11 +88,11 @@ class SavdoItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         WText(
-                          '${model.praduct[index].name}',
+                          model.praduct[index].name,
                           style: AppTextStyle.textStyle4,
                         ),
                         WText(
-                          '${model.praduct[index].prices}',
+                          model.praduct[index].price,
                           style: AppTextStyle.textStyle4_,
                         ),
                       ],
@@ -98,7 +101,7 @@ class SavdoItem extends StatelessWidget {
                 },
               ),
               WText(
-                umumiSumma().toString(),
+                umumiSumma(),
                 style: AppTextStyle.textStyle4_,
               )
             ],
@@ -111,7 +114,7 @@ class SavdoItem extends StatelessWidget {
   String umumiSumma() {
     int total = 0;
     for (var i = 0; i < model.praduct.length; ++i) {
-      total += int.parse(model.praduct[i].prices.replaceAll(" ", ""));
+      total += int.parse(model.praduct[i].price.replaceAll(" ", ""));
     }
     return formatNumber(total);
   }
@@ -130,68 +133,6 @@ class SavdoItem extends StatelessWidget {
   }
 }
 
-List<TaxrixMadel> model = [
-  TaxrixMadel(
-    data: DateTime.now().toIso8601String().substring(0, 10),
-    praduct: [
-      const Praduct(name: "Olma", prices: '10 000'),
-      const Praduct(name: "anor", prices: '9 000'),
-      const Praduct(name: "nok", prices: '10 000'),
-      const Praduct(name: "Olma", prices: '10 000'),
-      const Praduct(name: "Olma", prices: '10 000'),
-      const Praduct(name: "Olma", prices: '10 000'),
-      const Praduct(name: "Olma", prices: '10 000'),
-      const Praduct(name: "Olma", prices: '10 000'),
-      const Praduct(name: "Olma", prices: '10 000'),
-      const Praduct(name: "Olma", prices: '10 000'),
-      const Praduct(name: "Olma", prices: '1 000'),
-      const Praduct(name: "Olma", prices: '88 000'),
-    ],
-  ),
-  const TaxrixMadel(
-    data: '2024-03-18',
-    praduct: [
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "anor", prices: '9 000'),
-      Praduct(name: "nok", prices: '10 000'),
-      Praduct(name: "Olma", prices: '845 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '999000'),
-    ],
-  ),
-  const TaxrixMadel(
-    data: '2024-03-17',
-    praduct: [
-      Praduct(name: "Olma", prices: '1 000'),
-      Praduct(name: "anor", prices: '10 000'),
-      Praduct(name: "nok", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-    ],
-  ),
-  const TaxrixMadel(
-    data: '2024-03-17',
-    praduct: [
-      Praduct(name: "Olma", prices: '1 000'),
-      Praduct(name: "anor", prices: '10 000'),
-      Praduct(name: "nok", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-      Praduct(name: "Olma", prices: '10 000'),
-    ],
-  ),
-];
-
 String dateFormat(String date) {
   String day = DateTime.now().toIso8601String().substring(8, 10);
   if (date.substring(8, 10) == day) {
@@ -205,14 +146,7 @@ String dateFormat(String date) {
 
 class TaxrixMadel {
   final String data;
-  final List<Praduct> praduct;
+  final List<ScannModelPrice> praduct;
 
   const TaxrixMadel({required this.data, required this.praduct});
-}
-
-class Praduct {
-  final String name;
-  final String prices;
-
-  const Praduct({required this.name, required this.prices});
 }

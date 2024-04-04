@@ -1,25 +1,23 @@
-// ignore_for_file: prefer_const_constructors_in_immutables
-
-import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
+import 'package:barcodbek/src/features/profile/view/pages/edit_profile/controller/edit_controller.dart';
+import 'package:barcodbek/src/features/profile/view/pages/savdo_tarixi/view/pages/statistic_page.dart';
 import 'package:barcodbek/src/features/sections/view/pages/lending/view/pages/lending.dart';
 import 'package:barcodbek/src/features/sections/view/pages/sell/controller/sell_controller.dart';
 import 'package:barcodbek/src/features/sections/view/widgets/weleavtedbutton.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class WCustomBottomNav extends ConsumerWidget {
-  WCustomBottomNav({
-    super.key,
+  final Key? key;
+
+  const WCustomBottomNav({
+    this.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(authConttroler);
-    var authctr = ref.read(authConttroler);
-    var sellctr = ref.read(sellController);
+    final sellctr = ref.read(sellController);
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Column(
@@ -29,7 +27,7 @@ class WCustomBottomNav extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "ToTol",
+                "Total",
                 style: AppTextStyle.textStyle4,
               ),
               Text(
@@ -42,26 +40,52 @@ class WCustomBottomNav extends ConsumerWidget {
             children: [
               Expanded(
                 child: WElevatedButton1(
-                  backgroundColor: (sellctr.egalik != null && sellctr.egalik == true) ? AppColorss.c_8F00FF : AppColorss.c_707070,
-                  text: "Qarzga",
+                  backgroundColor:
+                      sellctr.egalik != null && sellctr.egalik == true
+                          ? AppColorss.c_8F00FF
+                          : AppColorss.c_707070,
+                  text: "Lending",
                   onPressed: () {
                     sellctr.onTap(true);
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const LendingPages()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LendingPages(),
+                      ),
+                    );
                   },
                 ),
               ),
-              WGap.gap10,
+              const SizedBox(width: 10),
               Expanded(
                 child: WElevatedButton1(
-                  backgroundColor: (sellctr.egalik != null && sellctr.egalik == false) ? AppColorss.c_8F00FF : AppColorss.c_707070,
-                  text: "Sotish",
+                  backgroundColor:
+                      sellctr.egalik != null && sellctr.egalik == false
+                          ? AppColorss.c_8F00FF
+                          : AppColorss.c_707070,
+                  text: "Selling",
                   onPressed: () {
                     sellctr.onTap(false);
+                    String data =
+                        DateTime.now().toIso8601String().substring(0, 10);
+                    final taxrixModel = TaxrixMadel(
+                      data: data,
+                      praduct: sellctr.savat,
+                    );
+                    sellctr.umumisuma();
+                    debugPrint(taxrixModel.praduct.toString());
+                    savdoList.add(taxrixModel);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SavdoTarixPage(),
+                      ),
+                    );
                   },
                 ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );
