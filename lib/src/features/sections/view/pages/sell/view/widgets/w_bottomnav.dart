@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/data/entity/sacanner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
@@ -74,6 +75,7 @@ class WCustomBottomNav extends ConsumerWidget {
                     );
                     sellctr.umumisuma();
                     debugPrint(taxrixModel.praduct.toString());
+                    a.addAll(taxrixModel.praduct);
                     savdoList.add(taxrixModel);
                     Navigator.push(
                       context,
@@ -91,3 +93,5 @@ class WCustomBottomNav extends ConsumerWidget {
     );
   }
 }
+
+List<ScannModelPrice> a = [];

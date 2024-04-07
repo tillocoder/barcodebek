@@ -1,14 +1,18 @@
+import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
+import 'package:barcodbek/src/core/services/auth/authcread_services.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
+import 'package:barcodbek/src/features/auth/controller/register_controller.dart';
 import 'package:barcodbek/src/features/auth/view/pages/market_name.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/skib_button.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/w_position.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/wtext_fild.dart';
+import 'package:barcodbek/src/features/scanner/view/widgets/snakebar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -21,7 +25,9 @@ class RegistorPages extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(authConttroler);
+    ref.watch(registerController);
     var con = ref.read(authConttroler);
+    var regsterCtr = ref.read(registerController);
     return CustomScaffold(
       child: Column(
         children: [
@@ -36,6 +42,7 @@ class RegistorPages extends ConsumerWidget {
             flex: 5,
           ),
           WTextFild(
+            controller: regsterCtr.name,
             hintText: Words.your_name.tr(context),
             iconPath: AppIcons.person,
           ),
@@ -43,6 +50,7 @@ class RegistorPages extends ConsumerWidget {
             MediaQuery.of(context).size.height * 0.02,
           ),
           WTextFild(
+            controller: regsterCtr.phoneNumber,
             hintText: "+998 XX XXX XXXX",
             iconPath: AppIcons.phone,
           ),
@@ -50,6 +58,7 @@ class RegistorPages extends ConsumerWidget {
             MediaQuery.of(context).size.height * 0.02,
           ),
           WTextFild(
+            controller: regsterCtr.password,
             hintText: Words.password.tr(context),
             iconPath: AppIcons.lock,
           ),
@@ -57,6 +66,7 @@ class RegistorPages extends ConsumerWidget {
             MediaQuery.of(context).size.height * 0.02,
           ),
           WTextFild(
+            controller: regsterCtr.confirmPassword,
             hintText: Words.confirm_password.tr(context),
             iconPath: AppIcons.lock,
           ),
@@ -102,14 +112,22 @@ class RegistorPages extends ConsumerWidget {
           ),
           SkipButton(
             text: Words.create.tr(context),
-            onTap: () {
-              if (con.egalik != null) {
+            onTap: () async {
+              await boxToken.clear();
+              await boxUser.clear();
+              if (regsterCtr.name.text.isNotEmpty &&
+                  regsterCtr.phoneNumber.text.isNotEmpty &&
+                  regsterCtr.password.text.isNotEmpty &&
+                  regsterCtr.confirmPassword.text.isNotEmpty) {
+                await boxToken.put('number', regsterCtr.phoneNumber.text);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const MarketName(),
                   ),
                 );
+              } else {
+                snakebar(context, "Malumodlarni To'ldring");
               }
             },
             child: const Icon(

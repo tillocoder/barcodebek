@@ -1,6 +1,7 @@
 import 'package:hive_flutter/adapters.dart';
 part 'qarzdor_user.g.dart';
 
+
 @HiveType(typeId: 1)
 class UserDeptors {
   @HiveField(0)

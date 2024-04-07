@@ -45,7 +45,8 @@ dependencies:
   build_runner: ^2.4.8
   table_calendar: ^3.0.9
   url_launcher: ^6.2.5
-  
+  dio: ^5.4.2+1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

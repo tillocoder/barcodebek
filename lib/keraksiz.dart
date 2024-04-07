@@ -1,4 +1,5 @@
-import 'package:barcodbek/main.dart';
+import 'package:barcodbek/src/core/style/text_style.dart';
+import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
 import 'package:flutter/material.dart';
 
 class Keraksiz extends StatelessWidget {
@@ -7,14 +8,18 @@ class Keraksiz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: boxdeptors.values.toList().length,
-        itemBuilder: (contex, index) {
-        return ListTile(
-          title: Text(boxdeptors.values.toList()[index].ismFamilya),
-          subtitle: Text(boxdeptors.values.toList()[index].berishmuddati),
-        );
-      }),
+      body: SafeArea(
+        child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (contex, index) {
+              return ListTile(
+                title: Text(
+                  "saloskds",
+                  style: AppTextStyle.textStyle1_,
+                ),
+              );
+            }),
+      ),
     );
   }
 }

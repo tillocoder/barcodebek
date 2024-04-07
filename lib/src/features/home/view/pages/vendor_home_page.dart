@@ -1,6 +1,8 @@
+import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
+import 'package:barcodbek/src/features/auth/controller/register_controller.dart';
 import 'package:barcodbek/src/features/home/controller/homeController.dart';
 import 'package:barcodbek/src/features/home/view/pages/owner_home_page.dart';
 import 'package:barcodbek/src/features/home/view/widgets/performance.dart';
@@ -17,6 +19,7 @@ class VendorPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(homeController);
     var ctrhome = ref.read(homeController);
+    var regsterCtr = ref.read(registerController);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -29,7 +32,7 @@ class VendorPage extends ConsumerWidget {
             : const SizedBox.shrink(),
         centerTitle: true,
         title: Text(
-          marketName,
+          boxUser.values.toList()[0].firstName,
           style: AppTextStyle.textStyle1_,
         ),
         actions: [IconButton(onPressed: () {}, icon: AppIcons.search)],

@@ -6,13 +6,10 @@ import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
 import 'package:barcodbek/src/data/entity/sacanner.dart';
 import 'package:barcodbek/src/features/profile/view/pages/edit_profile/controller/edit_controller.dart';
-import 'package:barcodbek/src/features/sections/view/pages/sell/controller/sell_controller.dart';
-import 'package:barcodbek/src/features/sections/view/pages/sell/view/widgets/w_bottomnav.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SavdoTarixPage extends StatelessWidget {
-
   const SavdoTarixPage({Key? key}) : super(key: key);
 
   @override

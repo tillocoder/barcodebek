@@ -1,2 +1,1 @@
-
-abstract class AppRepository{}
+abstract class AppRepository {}

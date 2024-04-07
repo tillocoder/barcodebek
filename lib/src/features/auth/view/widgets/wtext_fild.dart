@@ -1,19 +1,23 @@
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class WTextFild extends StatelessWidget {
   final String hintText;
+  final List<TextInputFormatter>? formatter;
+  final int? maxLength;
   final Widget? iconPath;
   final Widget? suffixIcon;
   final TextEditingController? controller;
-
-  const WTextFild({
+  const WTextFild(
+  {
     super.key,
     required this.hintText,
     this.iconPath,
     this.suffixIcon,
-    this.controller,
-  });
+    this.controller, this.maxLength, this.formatter,
+  }
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +35,16 @@ class WTextFild extends StatelessWidget {
         ],
       ),
       child: SizedBox(
-        child: TextField(
+        child: TextFormField(
+          maxLength: maxLength,
           controller: controller,
+          inputFormatters: formatter,
           decoration: InputDecoration(
             prefixIcon: iconPath != null
                 ? Padding(
-                    padding: const EdgeInsets.all(14),
-                    child: iconPath ?? const SizedBox.shrink(),
-                  )
+              padding: const EdgeInsets.all(14),
+              child: iconPath ?? const SizedBox.shrink(),
+            )
                 : null,
             hintText: hintText,
             suffixIcon: Padding(
@@ -50,8 +56,10 @@ class WTextFild extends StatelessWidget {
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(40),
             ),
+            counterText: "", // Bu qatorni qo'shing
           ),
         ),
+
       ),
     );
   }

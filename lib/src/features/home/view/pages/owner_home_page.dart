@@ -1,9 +1,11 @@
 // ignore_for_file: file_names, no_leading_underscores_for_local_identifiers
 
+import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
+import 'package:barcodbek/src/features/auth/controller/register_controller.dart';
 import 'package:barcodbek/src/features/home/controller/homeController.dart';
 import 'package:barcodbek/src/features/home/view/pages/vendor_home_page.dart';
 import 'package:barcodbek/src/features/home/view/widgets/best_vendor.dart';
@@ -16,7 +18,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphic/graphic.dart';
 
 ///Important Informations
-String marketName = 'Rizq Market';
 bool userT = true;
 
 class HomePage extends ConsumerWidget {
@@ -30,7 +31,9 @@ class HomePage extends ConsumerWidget {
     bool rebuild = false;
     ref.watch(homeController);
     var authCtr = ref.read(authConttroler);
-
+    var regsterCtr = ref.read(registerController);
+    String? ega = boxUser.get('user')?.type ?? '';
+    ega== 'Director' ? authCtr.egalik=false: authCtr.egalik=true;
     return !(authCtr.egalik!)
         ? Scaffold(
             appBar: AppBar(
@@ -42,7 +45,7 @@ class HomePage extends ConsumerWidget {
               ),
               centerTitle: true,
               title: Text(
-                marketName,
+                boxUser.values.toList()[0].market,
                 style: AppTextStyle.textStyle1_,
               ),
               actions: [
@@ -112,7 +115,15 @@ class HomePage extends ConsumerWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: WCard(
-                        text1: 'Bugunggi qarzlar',
+                        text1: 'Undurilgan umumiy qarzlar',
+                        text2: '188000',
+                      ),
+                    ),
+                    WGap.gap20,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: WCard(
+                        text1: 'Umumiy  qarzlar',
                         text2: '18800000',
                       ),
                     ),
@@ -121,7 +132,7 @@ class HomePage extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         WCard1(
-                          text1: 'Savdoning umumiy hajmi',
+                          text1: 'Savdoning umumiy hajmi ',
                           text2: '324000000',
                         ),
                         WGap.gap15,

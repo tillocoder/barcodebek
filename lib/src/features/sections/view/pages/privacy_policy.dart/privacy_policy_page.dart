@@ -18,13 +18,13 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
   }
 
   Future<void> _launchPrivacyPolicy() async {
-    const String url = 'https://www.termsfeed.com/live/714e418d-bc89-435c-b82e-52befece1887';
+    const String url =
+        'https://www.termsfeed.com/live/714e418d-bc89-435c-b82e-52befece1887';
     // ignore: deprecated_member_use
     if (await canLaunch(url)) {
       // ignore: deprecated_member_use
       await launch(url);
-      // ignore: use_build_context_synchronously
-      Navigator.of(context).pop(); // Navigate back after launch
+      Navigator.of(context).pop();
     } else {
       throw 'Could not launch $url';
     }
@@ -34,7 +34,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: CircularProgressIndicator(), // Show CircularProgressIndicator while launching URL
+        child: CircularProgressIndicator(),
       ),
     );
   }
