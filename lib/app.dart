@@ -1,9 +1,7 @@
 import 'package:barcodbek/splash.dart';
-import 'package:barcodbek/src/core/config/router/app_routes.dart';
 import 'package:barcodbek/src/core/config/setting/inherted_locale.dart';
 import 'package:barcodbek/src/core/config/setting/locale_controller.dart';
 import 'package:barcodbek/src/core/local/app_local.dart';
-import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 

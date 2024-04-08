@@ -13,7 +13,6 @@ late Box<ProductsModel> box;
 late Box<UserDeptors> boxdeptors;
 late Box<String> boxToken;
 late Box<UserGetData> boxUser;
-
 late SharedPreferences prefs;
 
 void main() async {

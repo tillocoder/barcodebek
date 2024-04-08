@@ -1,6 +1,4 @@
-import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/services/AppUrls/app_url.dart';
-import 'package:barcodbek/src/data/entity/auth_login_model.dart';
 import 'package:barcodbek/src/data/entity/auth_register_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';

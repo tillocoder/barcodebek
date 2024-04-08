@@ -150,7 +150,7 @@ class SellPages extends ConsumerWidget {
           )
         ],
       ),
-      bottomNavigationBar: WCustomBottomNav(),
+      bottomNavigationBar: const WCustomBottomNav(),
     );
   }
 }
