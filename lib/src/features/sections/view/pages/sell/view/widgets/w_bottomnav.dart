@@ -1,4 +1,4 @@
-import 'package:barcodbek/src/data/entity/sacanner.dart';
+import 'package:barcodbek/src/data/entity/products_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
@@ -67,8 +67,7 @@ class WCustomBottomNav extends ConsumerWidget {
                   text: "Selling",
                   onPressed: () {
                     sellctr.onTap(false);
-                    String data =
-                        DateTime.now().toIso8601String().substring(0, 10);
+                    String data = DateTime.now().toIso8601String().substring(0, 10);
                     final taxrixModel = TaxrixMadel(
                       data: data,
                       praduct: sellctr.savat,
@@ -94,4 +93,4 @@ class WCustomBottomNav extends ConsumerWidget {
   }
 }
 
-List<ScannModelPrice> a = [];
+List<ProductsModel> a = [];

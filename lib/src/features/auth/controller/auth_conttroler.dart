@@ -18,15 +18,27 @@ class AuthConttroler extends ChangeNotifier {
     egalik = value;
     if (egalik == true) {
       length = 5;
-      profileTexts.remove('Sotuvchilarim');
-      AppIcons.profileIcons.remove(AppIcons.sotuvchi);
     } else {
       length = 6;
+    }
+    notifyListeners();
+  }
+
+  void logintap(String type) {
+    if (type == 'Vendor') {
+      length = 5;
+      profileTexts.remove('Sotuvchilarim');
+      debugPrint(profileTexts.length.toString());
+      debugPrint(AppIcons.profileIcons.length.toString());
+      notifyListeners();
+    } else if (type == 'Director') {
+      length = 6;
       profileTexts.insert(1, Words.seller);
-      AppIcons.profileIcons.insert(
-        1,
-        AppIcons.sotuvchi,
-      );
+
+      notifyListeners();
+
+      debugPrint(profileTexts.length.toString());
+      debugPrint(AppIcons.profileIcons.length.toString());
     }
     notifyListeners();
   }

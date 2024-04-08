@@ -4,7 +4,7 @@ import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
-import 'package:barcodbek/src/data/entity/sacanner.dart';
+import 'package:barcodbek/src/data/entity/products_model.dart';
 import 'package:barcodbek/src/features/profile/view/pages/edit_profile/controller/edit_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -143,7 +143,7 @@ String dateFormat(String date) {
 
 class TaxrixMadel {
   final String data;
-  final List<ScannModelPrice> praduct;
+  final List<ProductsModel> praduct;
 
   const TaxrixMadel({required this.data, required this.praduct});
 }

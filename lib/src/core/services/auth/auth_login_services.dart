@@ -1,7 +1,9 @@
 import 'package:barcodbek/main.dart';
-import 'package:barcodbek/src/core/services/app_url.dart';
+import 'package:barcodbek/src/core/services/AppUrls/app_url.dart';
+import 'package:barcodbek/src/core/services/sellerget/seller_get.dart';
 import 'package:barcodbek/src/data/entity/auth_login_model.dart';
 import 'package:barcodbek/src/data/entity/user_get_model.dart';
+import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +41,14 @@ class AuthLoginServices {
       if (responseData is List) {
         commentslist =
             responseData.map((e) => UserGetData.fromJson(e)).toList();
-        boxUser.put('user', commentslist[0]);
+        await boxUser.put('user', commentslist[0]);
+        SellerGetServices.sellerGetData();
+
+        AuthConttroler actr = AuthConttroler();
+
+        String? ega = boxUser.get('user')?.type ?? '';
+        // actr.logintap(ega);
+        debugPrint('LENGTH : ${actr.length.toString()}');
         debugPrint('Model: ${boxUser.get('user') ?? ''}');
         debugPrint('LIST: ${commentslist.toString()}');
       }
@@ -61,6 +70,8 @@ class AuthLoginServices {
         if (accessToken != null) {
           debugPrint("Access Token: $accessToken");
           await boxToken.put('tokenn', accessToken);
+          await AuthLoginServices.getData();
+
         } else {
           return;
         }

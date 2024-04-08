@@ -33,7 +33,7 @@ class HomePage extends ConsumerWidget {
     var authCtr = ref.read(authConttroler);
     var regsterCtr = ref.read(registerController);
     String? ega = boxUser.get('user')?.type ?? '';
-    ega== 'Director' ? authCtr.egalik=false: authCtr.egalik=true;
+    ega == 'Director' ? authCtr.egalik = false : authCtr.egalik = true;
     return !(authCtr.egalik!)
         ? Scaffold(
             appBar: AppBar(
@@ -50,11 +50,12 @@ class HomePage extends ConsumerWidget {
               ),
               actions: [
                 IconButton(
-                    onPressed: () {
-                      userT = !userT;
-                      // setState(() {});
-                    },
-                    icon: AppIcons.search)
+                  onPressed: () {
+                    debugPrint(DateTime.now().toString());
+                    userT = !userT;
+                  },
+                  icon: AppIcons.search,
+                )
               ],
             ),
             key: _scaffoldKey,
@@ -65,8 +66,6 @@ class HomePage extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ///!
-
                     Center(
                       child: Container(
                         margin: const EdgeInsets.only(top: 10),
@@ -86,16 +85,22 @@ class HomePage extends ConsumerWidget {
                           },
                           marks: [
                             IntervalMark(
-                              label: LabelEncode(encoder: (tuple) => Label(tuple['name'].toString())),
+                              label: LabelEncode(
+                                  encoder: (tuple) =>
+                                      Label(tuple['name'].toString())),
                               shape: ShapeEncode(
                                   value: RectShape(
-                                borderRadius: const BorderRadius.all(Radius.circular(
-                                    // MediaQuery.of(context).size.
-                                    12)),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(
+                                        // MediaQuery.of(context).size.
+                                        12)),
                               )),
-                              color: ColorEncode(variable: 'name', values: Defaults.colors10),
+                              color: ColorEncode(
+                                  variable: 'name', values: Defaults.colors10),
                               elevation: ElevationEncode(value: 5),
-                              transition: Transition(duration: const Duration(seconds: 2), curve: Curves.elasticOut),
+                              transition: Transition(
+                                  duration: const Duration(seconds: 2),
+                                  curve: Curves.elasticOut),
                               entrance: {MarkEntrance.y},
                             )
                           ],
@@ -103,7 +108,6 @@ class HomePage extends ConsumerWidget {
                         ),
                       ),
                     ),
-
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: WCard(
@@ -143,7 +147,6 @@ class HomePage extends ConsumerWidget {
                       ],
                     ),
                     WGap.gap20,
-
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: SizedBox(
@@ -151,13 +154,19 @@ class HomePage extends ConsumerWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
                               color: Colors.white,
-                              boxShadow: const [BoxShadow(spreadRadius: 6, blurRadius: 2, color: Color(0x50C293FF))]),
+                              boxShadow: const [
+                                BoxShadow(
+                                    spreadRadius: 6,
+                                    blurRadius: 2,
+                                    color: Color(0x50C293FF))
+                              ]),
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
                             child: Column(
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       'Sotuvchilar',
@@ -171,19 +180,19 @@ class HomePage extends ConsumerWidget {
                                 ),
                                 ListView.builder(
                                     scrollDirection: Axis.vertical,
-                                    physics: const NeverScrollableScrollPhysics(),
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
                                     itemCount: ctrhome.list.length,
-                                    itemBuilder: (context, index) => hehe(ctrhome.list[index])),
+                                    itemBuilder: (context, index) =>
+                                        hehe(ctrhome.list[index])),
                               ],
                             ),
                           ),
                         ),
                       ),
                     ),
-
                     WGap.gap20,
-
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: BVendor(

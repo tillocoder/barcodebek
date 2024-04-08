@@ -1,9 +1,11 @@
+import 'package:barcodbek/keraksiz.dart';
 import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/services/auth/auth_login_services.dart';
+import 'package:barcodbek/src/core/services/products/get_products.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
@@ -94,7 +96,7 @@ class LoginPage extends ConsumerWidget {
               debugPrint(authModel.password);
               await boxToken.put('number', regsterCtr.loginNumber.text);
               await AuthLoginServices.getToken(authModel);
-              await AuthLoginServices.getData();
+              await GetProductServices.GET();
 
               Navigator.push(
                 context,

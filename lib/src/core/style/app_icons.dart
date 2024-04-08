@@ -34,12 +34,12 @@ class AppIcons {
   /// profile
   static final List<Widget> profileIcons = [
     SvgPicture.asset('assets/icons/home/activ_profile.svg'),
+    Image.asset('assets/icons/profile/sotuvchi.png'),
     Image.asset('assets/icons/profile/setting.png'),
     Image.asset('assets/icons/profile/statistic.png'),
     Image.asset('assets/icons/profile/terms.png'),
     Image.asset('assets/icons/profile/logout.png'),
   ];
-  static final sotuvchi = Image.asset('assets/icons/profile/sotuvchi.png');
 
   /// bo'lim
   static final sell =

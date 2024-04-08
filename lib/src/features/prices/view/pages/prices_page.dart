@@ -89,7 +89,7 @@ class PricesPages extends ConsumerWidget {
                                   style: AppTextStyle.textPrces,
                                 ),
                                 subtitle: Text(
-                                  box.values.toList()[index].barcode,
+                                  box.values.toList()[index].barCode.toString(),
                                   style: AppTextStyle.textBarcode,
                                 ),
                                 trailing: Row(
@@ -104,7 +104,7 @@ class PricesPages extends ConsumerWidget {
                                           style: AppTextStyle.textNarxi,
                                         ),
                                         Text(
-                                          box.values.toList()[index].dateTime,
+                                          box.values.toList()[index].createdAt.toString(),
                                           style: AppTextStyle.textDateTime,
                                         ),
                                       ],

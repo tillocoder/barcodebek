@@ -1,6 +1,6 @@
 import 'dart:core';
 
-import 'package:barcodbek/src/data/entity/sacanner.dart';
+import 'package:barcodbek/src/data/entity/products_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,10 +11,10 @@ class SellController extends ChangeNotifier {
     savatGetBarcode();
   }
 
-  List<ScannModelPrice> savat = [];
+  List<ProductsModel> savat = [];
   List<String> savatBarcode = [];
 
-  void savatAdd(ScannModelPrice data) {
+  void savatAdd(ProductsModel data) {
     savat.add(data);
     savatGetBarcode();
     notifyListeners();
@@ -22,7 +22,7 @@ class SellController extends ChangeNotifier {
 
   void savatGetBarcode() {
     for (var i = 0; i < savat.length; ++i) {
-      savatBarcode.add(savat[i].barcode);
+      savatBarcode.add(savat[i].barCode.toString());
     }
     notifyListeners();
   }

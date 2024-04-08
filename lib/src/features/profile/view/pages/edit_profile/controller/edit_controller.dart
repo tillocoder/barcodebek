@@ -1,4 +1,3 @@
-import 'package:barcodbek/src/data/entity/sacanner.dart';
 import 'package:barcodbek/src/features/profile/view/pages/savdo_tarixi/view/pages/statistic_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

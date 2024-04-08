@@ -21,7 +21,7 @@ class ProfilePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(authConttroler);
-    var con = ref.watch(authConttroler);
+    var con = ref.read(authConttroler);
 
     return Scaffold(
       appBar: AppBar(
@@ -35,24 +35,18 @@ class ProfilePage extends ConsumerWidget {
       body: Column(
         children: [
           ...List.generate(
-            con.length,
+            6,
             (index) => Padding(
               padding: const EdgeInsets.all(5),
               child: wSWButton(
                 index: index,
                 page: [
                   const EditeProfile(),
-                  con.length == 6 ? const SellerPage() : const SettingPage(),
-                  con.length == 6
-                      ? const SettingPage()
-                      : const SavdoTarixPage(),
-                  con.length == 6
-                      ? const SavdoTarixPage()
-                      : const PrivacyPolicyPage(),
-                  con.length == 6
-                      ? const PrivacyPolicyPage()
-                      : const EditeProfile(),
-                  con.length == 6 ? const EditeProfile() : const SettingPage(),
+                  const SellerPage(),
+                  const SettingPage(),
+                  const SavdoTarixPage(),
+                  const PrivacyPolicyPage(),
+                  const EditeProfile(),
                 ],
                 context: context,
                 child: ListTile(
@@ -89,6 +83,7 @@ class ProfilePage extends ConsumerWidget {
 
 List<Words> profileTexts = [
   Words.edit_profile,
+  Words.seller,
   Words.settings,
   Words.trade_history,
   Words.terms_privacy_policy,

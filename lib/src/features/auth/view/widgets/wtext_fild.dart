@@ -59,7 +59,6 @@ class WTextFild extends StatelessWidget {
             counterText: "", // Bu qatorni qo'shing
           ),
         ),
-
       ),
     );
   }

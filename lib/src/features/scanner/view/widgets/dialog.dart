@@ -1,7 +1,7 @@
 import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:barcodbek/src/data/entity/sacanner.dart';
+import 'package:barcodbek/src/data/entity/products_model.dart';
 import 'package:barcodbek/src/features/prices/controller/prices_controller.dart';
 import 'package:barcodbek/src/features/scanner/controller/scan_controller.dart';
 import 'package:flutter/material.dart';
@@ -69,11 +69,12 @@ class WDialog extends ConsumerWidget {
                 barcodeValue: barcodeValue,
                 onPressed: () {
                   debugPrint(context.toString());
-                  ScannModelPrice model = ScannModelPrice(
-                    barcode: barcodeValue,
+                  ProductsModel model = ProductsModel(
+                    barCode: int.parse(barcodeValue),
                     price: ctr.controllerPrice.text,
                     name: ctr.controllerName.text,
-                    dateTime: DateTime.now().toIso8601String().substring(0, 10),
+                    comment: 'salom',
+                    createdAt: DateTime.now(),
                   );
                   ctr1.addProduct(model);
                   ctr.isCheck();

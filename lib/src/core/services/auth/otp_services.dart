@@ -1,6 +1,6 @@
 
 
-import 'package:barcodbek/src/core/services/app_url.dart';
+import 'package:barcodbek/src/core/services/AppUrls/app_url.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 

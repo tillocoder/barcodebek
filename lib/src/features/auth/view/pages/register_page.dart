@@ -2,7 +2,6 @@ import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
-import 'package:barcodbek/src/core/services/auth/authcread_services.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
@@ -17,7 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-bool direkter = true;
 
 class RegistorPages extends ConsumerWidget {
   const RegistorPages({super.key});

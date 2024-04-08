@@ -77,7 +77,7 @@ class SearchingPages extends ConsumerWidget {
                                             style: AppTextStyle.textStyle4,
                                           ),
                                           Text(
-                                            " ${box.values.toList()[i].barcode}",
+                                            " ${box.values.toList()[i].barCode}",
                                             style: AppTextStyle.textStyle1__,
                                           ),
                                         ],

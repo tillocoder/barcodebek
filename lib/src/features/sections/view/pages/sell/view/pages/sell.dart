@@ -120,7 +120,7 @@ class SellPages extends ConsumerWidget {
                           shadowColor: AppColorss.c_9745FF,
                           child: ListTile(
                             title: Text(
-                              ctr.savat[index].barcode,
+                              ctr.savat[index].barCode.toString(),
                               style: AppTextStyle.textStyle3,
                             ),
                             subtitle: Column(
