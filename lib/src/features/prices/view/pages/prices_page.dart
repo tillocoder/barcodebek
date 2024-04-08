@@ -37,15 +37,24 @@ class PricesPages extends ConsumerWidget {
                             content: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                 Text("Umumiy Mahsulotlarning Narxi",style: AppTextStyle.textStyle4,),
-                                Text(umumiSumma(),style: AppTextStyle.textStyle1_,),
+                                Text(
+                                  "Umumiy Mahsulotlarning Narxi",
+                                  style: AppTextStyle.textStyle4,
+                                ),
+                                Text(
+                                  umumiSumma(),
+                                  style: AppTextStyle.textStyle1_,
+                                ),
                               ],
                             ),
                           );
                         },
                       );
                     },
-                    icon: const Icon(Icons.monetization_on_rounded,color: AppColorss.c_9745FF,),
+                    icon: const Icon(
+                      Icons.monetization_on_rounded,
+                      color: AppColorss.c_9745FF,
+                    ),
                   ),
                   Text(
                     Words.prices.tr(context),
@@ -99,8 +108,7 @@ class PricesPages extends ConsumerWidget {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Text(
-                                          pricesCalculating(
-                                              box.values.toList()[index].price),
+                                          pricesCalculating(box.values.toList()[index].price.substring(0,box.values.toList()[index].price.length-3)),
                                           style: AppTextStyle.textNarxi,
                                         ),
                                         Text(
@@ -139,9 +147,13 @@ class PricesPages extends ConsumerWidget {
   String umumiSumma() {
     int total = 0;
     for (var i = 0; i < box.values.length; ++i) {
-      total += int.parse(box.values.toList()[i].price);
+      total += int.parse(box.values.toList()[i].price.substring(
+            0,
+            box.values.toList()[i].price.length - 3,
+          ));
     }
-    return pricesCalculating(total.toString());
+    return total.toString();
+    
   }
 }
 

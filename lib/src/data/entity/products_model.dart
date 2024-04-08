@@ -21,7 +21,7 @@ class ProductsModel {
   @HiveField(3)
   final int barCode;
   @HiveField(4)
-  final DateTime createdAt;
+  final String createdAt;
 
   ProductsModel({
     required this.name,
@@ -36,7 +36,7 @@ class ProductsModel {
         price: json["price"],
         comment: json["comment"],
         barCode: json["bar_code"],
-        createdAt: DateTime.parse(json["created_at"]),
+        createdAt: json['created_at'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -44,6 +44,6 @@ class ProductsModel {
         "price": price,
         "comment": comment,
         "bar_code": barCode,
-        "created_at": createdAt.toIso8601String(),
+        "created_at": barCode,
       };
 }

@@ -74,7 +74,7 @@ class WDialog extends ConsumerWidget {
                     price: ctr.controllerPrice.text,
                     name: ctr.controllerName.text,
                     comment: 'salom',
-                    createdAt: DateTime.now(),
+                    createdAt: '2024 01 2023',
                   );
                   ctr1.addProduct(model);
                   ctr.isCheck();

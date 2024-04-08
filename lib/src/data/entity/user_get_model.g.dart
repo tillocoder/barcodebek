@@ -1,6 +1,10 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 part of 'user_get_model.dart';
 
-
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
 
 class UserGetDataAdapter extends TypeAdapter<UserGetData> {
   @override

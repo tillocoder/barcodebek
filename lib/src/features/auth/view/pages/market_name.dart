@@ -1,4 +1,3 @@
-import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';

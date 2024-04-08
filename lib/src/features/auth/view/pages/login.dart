@@ -1,11 +1,9 @@
-import 'package:barcodbek/keraksiz.dart';
 import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/services/auth/auth_login_services.dart';
-import 'package:barcodbek/src/core/services/products/get_products.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
@@ -15,8 +13,6 @@ import 'package:barcodbek/src/features/auth/controller/register_controller.dart'
 import 'package:barcodbek/src/features/auth/view/pages/password_reset.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/skib_button.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/wtext_fild.dart';
-import 'package:barcodbek/src/features/home/view/pages/owner_home_page.dart';
-import 'package:barcodbek/src/features/scanner/view/widgets/snakebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -96,7 +92,6 @@ class LoginPage extends ConsumerWidget {
               debugPrint(authModel.password);
               await boxToken.put('number', regsterCtr.loginNumber.text);
               await AuthLoginServices.getToken(authModel);
-              await GetProductServices.GET();
 
               Navigator.push(
                 context,

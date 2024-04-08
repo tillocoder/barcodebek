@@ -21,7 +21,7 @@ class ProductsModelAdapter extends TypeAdapter<ProductsModel> {
       price: fields[1] as String,
       comment: fields[2] as String,
       barCode: fields[3] as int,
-      createdAt: fields[4] as DateTime,
+      createdAt: fields[4] as String,
     );
   }
 
