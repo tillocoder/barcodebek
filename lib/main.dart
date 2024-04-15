@@ -9,7 +9,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase_options.dart';
 import 'src/data/entity/products_model.dart';
 
-late Box<ProductsModel> box;
+late Box<ProductsModel> boxProduct;
+late Box<ProductsModel> boxProductCache;
 late Box<UserDeptors> boxdeptors;
 late Box<String> boxToken;
 late Box<UserGetData> boxUser;
@@ -21,7 +22,8 @@ void main() async {
   Hive.registerAdapter(ProductsModelAdapter());
   Hive.registerAdapter(UserDeptorsAdapter());
   Hive.registerAdapter(UserGetDataAdapter());
-  box = await Hive.openBox<ProductsModel>("Scanner");
+  boxProduct = await Hive.openBox<ProductsModel>("Scanner");
+  boxProductCache = await Hive.openBox<ProductsModel>("product");
   boxUser = await Hive.openBox<UserGetData>("user");
   boxToken = await Hive.openBox('Token');
   boxdeptors = await Hive.openBox<UserDeptors>("deptors");

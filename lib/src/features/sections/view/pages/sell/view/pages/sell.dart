@@ -32,7 +32,7 @@ class SellPages extends ConsumerWidget {
             child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.5,
               child: ScannnBarcodeAddPage(
-                    (capture) {
+                (capture) {
                   final List<Barcode> barcodes = capture.barcodes;
 
                   for (final barcode in barcodes) {
@@ -41,7 +41,7 @@ class SellPages extends ConsumerWidget {
                       if (!ctr.savatBarcode.contains(barcodeValue)) {
                         for (var i = 0; i < scanCtr.barcodlar.length; ++i) {
                           if (scanCtr.barcodlar[i] == barcodeValue) {
-                            ctr.savatAdd(box.values.toList()[i]);
+                            ctr.savatAdd(boxProduct.values.toList()[i]);
                             ctr.count.add(1);
                             break;
                           }

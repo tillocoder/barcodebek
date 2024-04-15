@@ -6,4 +6,6 @@ class Urls {
   static const otp = '/users/user-confirmation/';
   static const apiSeller = '/users/users-get/';
   static const getProducts = '/products/products/';
+  static const postProducts = '/products/products/';
+  static const deleteProducts = '/products/products/';
 }

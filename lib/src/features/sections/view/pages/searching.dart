@@ -43,8 +43,7 @@ class SearchingPages extends ConsumerWidget {
                                 return AlertDialog(
                                   content: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         children: [
@@ -53,7 +52,7 @@ class SearchingPages extends ConsumerWidget {
                                             style: AppTextStyle.textStyle4,
                                           ),
                                           Text(
-                                            " ${box.values.toList()[i].name}",
+                                            " ${boxProduct.values.toList()[i].name}",
                                             style: AppTextStyle.textStyle1__,
                                           ),
                                         ],
@@ -65,7 +64,7 @@ class SearchingPages extends ConsumerWidget {
                                             style: AppTextStyle.textStyle4,
                                           ),
                                           Text(
-                                            " ${sellCtr.xotradagiSumma(box.values.toList()[i].price)}",
+                                            " ${sellCtr.xotradagiSumma(boxProduct.values.toList()[i].price)}",
                                             style: AppTextStyle.textStyle1__,
                                           ),
                                         ],
@@ -77,7 +76,7 @@ class SearchingPages extends ConsumerWidget {
                                             style: AppTextStyle.textStyle4,
                                           ),
                                           Text(
-                                            " ${box.values.toList()[i].barCode}",
+                                            " ${boxProduct.values.toList()[i].barCode}",
                                             style: AppTextStyle.textStyle1__,
                                           ),
                                         ],

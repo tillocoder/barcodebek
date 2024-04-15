@@ -1,4 +1,6 @@
 import 'package:barcodbek/main.dart';
+import 'package:barcodbek/src/core/services/internetcheker/internet_cheker.dart';
+import 'package:barcodbek/src/core/services/products/post_product.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/data/entity/products_model.dart';
@@ -21,7 +23,9 @@ class WDialog extends ConsumerWidget {
     var ctr = ref.read(scannController);
     ref.watch(pricesController);
     var ctr1 = ref.read(pricesController);
-    box.get('scann');
+    ref.watch(internetController);
+    var internetCtr = ref.read(internetController);
+    var postProductCtr = ref.read(postProduct);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -67,21 +71,38 @@ class WDialog extends ConsumerWidget {
               WOutlinedButton(
                 text: "Qo'shish",
                 barcodeValue: barcodeValue,
-                onPressed: () {
-                  debugPrint(context.toString());
+                onPressed: () async {
+                  debugPrint('\x1B[33m${'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'}\x1B[0m');
+                  internetCtr.checkInternetConnection();
+
+                  debugPrint('CHASHHHHHH: ${boxProductCache.values.length.toString()}');
                   ProductsModel model = ProductsModel(
                     barCode: int.parse(barcodeValue),
                     price: ctr.controllerPrice.text,
                     name: ctr.controllerName.text,
-                    comment: 'salom',
-                    createdAt: '2024 01 2023',
+                    comment: ctr.controllerOther.text,
+                    createdAt: DateTime.now().toString(),
                   );
-                  ctr1.addProduct(model);
+                  if (boxProductCache.values.length > 2) {
+                    // ignore: unrelated_type_equality_checks
+                    if (internetCtr.status[0] != ConnectionState.none) {
+                      ctr1.addCacheProduct(model);
+
+                      await postProductCtr.postProduct();
+                      Navigator.pop(context);
+                    } else {
+                      ctr1.addCacheProduct(model);
+                      Navigator.pop(context);
+                    }
+                  } else {
+                    ctr1.addCacheProduct(model);
+                    Navigator.pop(context);
+                  }
                   ctr.isCheck();
                   ctr.controllerName.clear();
                   ctr.controllerPrice.clear();
                   ctr.controllerOther.clear();
-                  Navigator.pop(context);
+                  // ignore: use_build_context_synchronously
                 },
               ),
               WOutlinedButton(

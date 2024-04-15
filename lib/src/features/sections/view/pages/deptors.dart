@@ -1,7 +1,4 @@
 import 'package:barcodbek/main.dart';
-import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
@@ -9,8 +6,11 @@ import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
+import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
 import 'package:barcodbek/src/features/sections/controller/bosilganda.dart';
 import 'package:barcodbek/src/features/sections/view/widgets/w_elwationbutton.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DeptorsPages extends ConsumerWidget {
   const DeptorsPages({Key? key}) : super(key: key);
@@ -45,14 +45,18 @@ class DeptorsPages extends ConsumerWidget {
                             child: Column(
                               children: [
                                 ListTile(
-                                  contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                                  title: WText(boxdeptors.values.toList()[index].ismFamilya),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  title: WText(boxdeptors.values
+                                      .toList()[index]
+                                      .ismFamilya),
                                   trailing: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Card(
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         color: AppColorss.c_FFFFFF,
                                         child: Padding(
@@ -65,7 +69,8 @@ class DeptorsPages extends ConsumerWidget {
                                       ),
                                       Card(
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         color: AppColorss.c_FFFFFF,
                                         child: Padding(
@@ -77,36 +82,50 @@ class DeptorsPages extends ConsumerWidget {
                                                 builder: (context) {
                                                   return AlertDialog(
                                                     content: Column(
-                                                      mainAxisSize: MainAxisSize.min,
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
                                                       children: [
                                                         WText(
                                                           "Davlat Salimov",
-                                                          style: AppTextStyle.textStyle1__,
+                                                          style: AppTextStyle
+                                                              .textStyle1__,
                                                         ),
                                                         WText(
                                                           "120.000.000 so’m",
-                                                          style: AppTextStyle.textStyle4,
+                                                          style: AppTextStyle
+                                                              .textStyle4,
                                                         ),
                                                         WText(
-                                                          Words.is_it_paid.tr(context),
-                                                          style: AppTextStyle.textStyle1__,
+                                                          Words.is_it_paid
+                                                              .tr(context),
+                                                          style: AppTextStyle
+                                                              .textStyle1__,
                                                         ),
                                                         WGap.gap20,
                                                         Row(
-                                                          mainAxisSize: MainAxisSize.min,
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
                                                           children: [
                                                             WShowElvationButton(
-                                                              text: Words.yes.tr(context),
+                                                              text: Words.yes
+                                                                  .tr(context),
                                                               onTap: () {
-                                                                con.delete(index);
-                                                                Navigator.pop(context);
+                                                                con.delete(
+                                                                    index);
+                                                                Navigator.pop(
+                                                                    context);
                                                               },
                                                             ),
                                                             WGap.gap10,
                                                             WShowElvationButton(
-                                                              text: Words.no.tr(context),
-                                                              onTap: () => Navigator.pop(context),
+                                                              text: Words.no
+                                                                  .tr(context),
+                                                              onTap: () =>
+                                                                  Navigator.pop(
+                                                                      context),
                                                             ),
                                                           ],
                                                         )
@@ -127,7 +146,9 @@ class DeptorsPages extends ConsumerWidget {
                                   children: [
                                     // Inside the ListView.builder
                                     Visibility(
-                                      visible: index < con.isChecked.length && con.isChecked[index], // Check if index is within bounds
+                                      visible: index < con.isChecked.length &&
+                                          con.isChecked[
+                                              index], // Check if index is within bounds
                                       child: Expanded(
                                         flex: 2,
                                         child: SizedBox(
@@ -135,15 +156,18 @@ class DeptorsPages extends ConsumerWidget {
                                           child: Padding(
                                             padding: const EdgeInsets.all(6),
                                             child: TextField(
-                                              textAlignVertical: TextAlignVertical.bottom,
+                                              textAlignVertical:
+                                                  TextAlignVertical.bottom,
                                               decoration: InputDecoration(
                                                 border: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(14),
+                                                  borderRadius:
+                                                      BorderRadius.circular(14),
                                                   borderSide: BorderSide.none,
                                                 ),
                                                 filled: true,
                                                 fillColor: AppColorss.c_FFFFFF,
-                                                hintText: Words.send_a_message.tr(context),
+                                                hintText: Words.send_a_message
+                                                    .tr(context),
                                               ),
                                             ),
                                           ),
@@ -153,7 +177,9 @@ class DeptorsPages extends ConsumerWidget {
 
 // Inside the ListView.builder
                                     Visibility(
-                                      visible: index < con.isChecked.length && con.isChecked[index], // Check if index is within bounds
+                                      visible: index < con.isChecked.length &&
+                                          con.isChecked[
+                                              index], // Check if index is within bounds
                                       child: Expanded(
                                         child: SizedBox(
                                           height: 46,
