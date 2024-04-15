@@ -21,7 +21,7 @@ class ProfilePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(authConttroler);
-    var con = ref.read(authConttroler);
+    // var con = ref.read(authConttroler);
 
     return Scaffold(
       appBar: AppBar(

@@ -5,7 +5,6 @@ import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
-import 'package:barcodbek/src/features/auth/controller/register_controller.dart';
 import 'package:barcodbek/src/features/home/controller/homeController.dart';
 import 'package:barcodbek/src/features/home/view/pages/vendor_home_page.dart';
 import 'package:barcodbek/src/features/home/view/widgets/best_vendor.dart';
@@ -31,7 +30,6 @@ class HomePage extends ConsumerWidget {
     bool rebuild = false;
     ref.watch(homeController);
     var authCtr = ref.read(authConttroler);
-    var regsterCtr = ref.read(registerController);
     String? ega = boxUser.get('user')?.type ?? '';
     ega == 'Director' ? authCtr.egalik = false : authCtr.egalik = true;
     return !(authCtr.egalik!)

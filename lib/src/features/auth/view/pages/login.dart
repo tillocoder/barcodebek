@@ -17,7 +17,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-
 import 'register_page.dart';
 
 class LoginPage extends ConsumerWidget {
@@ -93,12 +92,12 @@ class LoginPage extends ConsumerWidget {
               await boxToken.put('number', regsterCtr.loginNumber.text);
               await AuthLoginServices.getToken(authModel);
 
-              Navigator.push(
+            boxToken.get('tokenn')!=null?  Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const WBottomNav(),
                 ),
-              );
+              ):const LoginPage();
             },
             child: const Icon(
               Icons.arrow_forward_rounded,

@@ -1,4 +1,5 @@
 import 'package:barcodbek/main.dart';
+import 'package:barcodbek/src/features/prices/controller/prices_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
@@ -15,7 +16,7 @@ class ScanController extends ChangeNotifier {
   }
 
   void boxAddFor() {
-    for (var e in box.values.toList()) {
+    for (var e in listtt) {
       barcodlar.add(e.barCode.toString());
     }
     notifyListeners();

@@ -44,6 +44,11 @@ class ProductsModel {
         "price": price,
         "comment": comment,
         "bar_code": barCode,
-        "created_at": barCode,
+        "created_at": createdAt,
       };
+      @override
+String toString() {
+  return 'ProductsModel(name: $name, price: $price, comment: $comment, barCode: $barCode, createdAt: $createdAt)';
+}
+
 }

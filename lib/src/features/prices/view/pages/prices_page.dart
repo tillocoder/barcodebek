@@ -1,6 +1,8 @@
 import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
+import 'package:barcodbek/src/core/services/internetcheker/internet_cheker.dart';
+import 'package:barcodbek/src/core/services/products/delete_product.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
@@ -14,10 +16,10 @@ class PricesPages extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(pricesController);
-
-    var ctr = ref.read(pricesController);
-
+    ref.watch(deleteproductController);
+    var deleteCtr = ref.read(deleteproductController);
+    ref.watch(internetController);
+    var internetCtr = ref.read(internetController);
     return Scaffold(
       backgroundColor: AppColorss.scaffoldColor,
       body: Padding(
@@ -30,6 +32,7 @@ class PricesPages extends ConsumerWidget {
                 children: [
                   IconButton(
                     onPressed: () {
+                      debugPrint(listtt[0].name);
                       showDialog(
                         context: context,
                         builder: (context) {
@@ -67,8 +70,13 @@ class PricesPages extends ConsumerWidget {
               Expanded(
                 child: SizedBox(
                   child: ListView.builder(
-                    itemCount: box.values.length,
+                    itemCount: listtt.length,
                     itemBuilder: (context, index) {
+                      var item = listtt[index];
+
+                      // if (index == boxProduct.values.length) {
+                      //   const Divider();
+                      // }
                       return Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: SizedBox(
@@ -94,11 +102,11 @@ class PricesPages extends ConsumerWidget {
                               child: ListTile(
                                 contentPadding: EdgeInsets.zero,
                                 title: Text(
-                                  box.values.toList()[index].name,
+                                  item.name,
                                   style: AppTextStyle.textPrces,
                                 ),
                                 subtitle: Text(
-                                  box.values.toList()[index].barCode.toString(),
+                                  item.barCode.toString(),
                                   style: AppTextStyle.textBarcode,
                                 ),
                                 trailing: Row(
@@ -108,18 +116,41 @@ class PricesPages extends ConsumerWidget {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Text(
-                                          pricesCalculating(box.values.toList()[index].price.substring(0,box.values.toList()[index].price.length-3)),
+                                          pricesCalculating(item.price.replaceAll('.00', '')),
                                           style: AppTextStyle.textNarxi,
                                         ),
                                         Text(
-                                          box.values.toList()[index].createdAt.toString(),
+                                          item.createdAt.toString(),
                                           style: AppTextStyle.textDateTime,
                                         ),
                                       ],
                                     ),
                                     IconButton(
-                                      onPressed: () {
-                                        ctr.removIndex(index);
+                                      onPressed: () async {
+                                        internetCtr.checkInternetConnection();
+                                        bool incheke = internetCtr.status[0] == ConnectionState.none ? false : true;
+                                        String? ega = boxUser.get('user')?.type ?? '';
+                                        debugPrint('EGA :$ega');
+                                        debugPrint('index :$index');
+                                        debugPrint('boxlengt :${boxProduct.values.length}');
+                                        debugPrint('boxlengt :${boxProduct.values.length}');
+                                        debugPrint('Tekshirdim internet : ${internetCtr.status[0]}');
+                                        debugPrint('internet : $incheke');
+                                        if (incheke) {
+                                          await deleteCtr.deleteProduct(context, item.barCode, index);
+                                        } else {
+                                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('NO')));
+                                        }
+
+                                        // if (ega == 'Director' && index < boxProduct.values.length) {
+                                        //   await deleteCtr.deleteProduct(context, item.barCode, index);
+                                        // } else if (index > boxProduct.values.length) {
+                                        //   ctrPrice.removCahcheIndex(index);
+                                        // } else {
+                                        //   ctrPrice.removCahcheIndex(index);
+
+                                        //   snakebar(context, 'Direktor uchun');
+                                        // }
                                       },
                                       icon: const Icon(
                                         CupertinoIcons.delete,
@@ -146,14 +177,13 @@ class PricesPages extends ConsumerWidget {
 
   String umumiSumma() {
     int total = 0;
-    for (var i = 0; i < box.values.length; ++i) {
-      total += int.parse(box.values.toList()[i].price.substring(
+    for (var i = 0; i < boxProduct.values.length; ++i) {
+      total += int.parse(boxProduct.values.toList()[i].price.substring(
             0,
-            box.values.toList()[i].price.length - 3,
+            boxProduct.values.toList()[i].price.length - 3,
           ));
     }
     return total.toString();
-    
   }
 }
 

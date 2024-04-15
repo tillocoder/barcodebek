@@ -46,6 +46,7 @@ dependencies:
   table_calendar: ^3.0.9
   url_launcher: ^6.2.5
   dio: ^5.4.2+1
+  connectivity_plus: ^6.0.2
 
 dev_dependencies:
   flutter_test:
