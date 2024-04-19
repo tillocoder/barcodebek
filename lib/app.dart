@@ -14,8 +14,7 @@ class App extends StatelessWidget {
       localController: localController,
       child: Builder(builder: (context) {
         return MaterialApp(
-          locale: InheritedLocalNotifier.maybeOf(context)?.appLocale ??
-              const Locale('ru', 'Ru'),
+          locale: InheritedLocalNotifier.maybeOf(context)?.appLocale ?? const Locale('ru', 'Ru'),
           supportedLocales: const [
             Locale('en', 'US'),
             Locale('ru', 'RU'),

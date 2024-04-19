@@ -120,7 +120,9 @@ class PricesPages extends ConsumerWidget {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Text(
-                                          pricesCalculating(item.price.replaceAll('.00', '')),
+                                          pricesCalculating(
+                                            item.price.replaceAll('.00', ''),
+                                          ),
                                           style: AppTextStyle.textNarxi,
                                         ),
                                         Text(
@@ -131,22 +133,40 @@ class PricesPages extends ConsumerWidget {
                                     ),
                                     IconButton(
                                       onPressed: () async {
+                                        debugPrint('0');
                                         internetCtr.checkInternetConnection();
 
                                         String? ega = boxUser.get('user')?.type ?? '';
-                                        if (internetCtr.tekshirdim && ega == 'Director' && index < boxProductCache.values.length) {
-                                          debugPrint('internet orqali');
-                                          await deleteCtr.deleteProduct(context, item.barCode, index);
-                                        }
-                                        if (internetCtr.tekshirdim == false && ega == 'Director' ) {
-                                          debugPrint('internet yoq');
-                                          snakebar(context, 'Sizda Internet Mavjud emas.');
-                                        }
-                                        if (internetCtr.tekshirdim == false && index > boxProduct.values.length) {
-                                          debugPrint('internetsiz kashda');
+                                        if (ega == 'Director') {
+                                          debugPrint('1');
 
-                                          pricesCtr.removCahcheIndex(index);
+                                          internetCtr.checkInternetConnection();
+                                          if (internetCtr.tekshirdim && index < boxProduct.values.length) {
+                                            debugPrint('2');
+
+                                            await deleteCtr.deleteProduct(context, item.barCode, index);
+                                          } else if (internetCtr.tekshirdim == false && boxProduct.values.length > index) {
+                                            pricesCtr.removCahcheIndex(index);
+                                            debugPrint('3');
+                                          } else {
+                                            snakebar(context, 'NO Internet');
+                                          }
+                                        } else {
+                                          snakebar(context, 'Vendor');
                                         }
+                                        // if (internetCtr.tekshirdim && ega == 'Director' && index < boxProductCache.values.length) {
+                                        //   debugPrint('internet orqali');
+                                        //   await deleteCtr.deleteProduct(context, item.barCode, index);
+                                        // }
+                                        // if (internetCtr.tekshirdim == false && ega == 'Director' ) {
+                                        //   debugPrint('internet yoq');
+                                        //   snakebar(context, 'Sizda Internet Mavjud emas.');
+                                        // }
+                                        // if (internetCtr.tekshirdim == false && index > boxProduct.values.length) {
+                                        //   debugPrint('internetsiz kashda');
+
+                                        //   pricesCtr.removCahcheIndex(index);
+                                        // }
                                       },
                                       icon: const Icon(
                                         CupertinoIcons.delete,

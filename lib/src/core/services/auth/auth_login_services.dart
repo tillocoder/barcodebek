@@ -2,6 +2,7 @@ import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/services/AppUrls/app_url.dart';
 import 'package:barcodbek/src/core/services/products/get_products.dart';
 import 'package:barcodbek/src/core/services/sellerget/seller_get.dart';
+import 'package:barcodbek/src/core/services/trade/get_trade.dart';
 import 'package:barcodbek/src/data/entity/auth_login_model.dart';
 import 'package:barcodbek/src/data/entity/user_get_model.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
@@ -77,6 +78,7 @@ class AuthLoginServices {
           listtt.clear();
           boxProductCache.clear();
           await AuthLoginServices.getData();
+         await GetTradeServices.get();
         } else {
           return;
         }

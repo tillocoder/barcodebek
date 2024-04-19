@@ -1,11 +1,11 @@
 import 'dart:core';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
+import 'package:barcodbek/src/core/services/trade/get_trade.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
 import 'package:barcodbek/src/data/entity/products_model.dart';
-import 'package:barcodbek/src/features/profile/view/pages/edit_profile/controller/edit_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,13 +27,8 @@ class SavdoTarixPage extends StatelessWidget {
               ),
               WGap.gap10,
               Expanded(
-                child: SizedBox(
-                  child: ListView.builder(
-                    itemCount: savdoList.length,
-                    itemBuilder: (context, index) {
-                      return SavdoItem(model: savdoList[index]);
-                    },
-                  ),
+                child: const SizedBox(
+                  child: SavdoItem(),
                 ),
               ),
             ],
@@ -45,9 +40,9 @@ class SavdoTarixPage extends StatelessWidget {
 }
 
 class SavdoItem extends ConsumerWidget {
-  final TaxrixMadel model;
-
-  const SavdoItem({Key? key, required this.model}) : super(key: key);
+  const SavdoItem({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -56,7 +51,7 @@ class SavdoItem extends ConsumerWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-          child: Text(dateFormat(model.data), style: AppTextStyle.textStyle11),
+          child: Text('salom', style: AppTextStyle.textStyle11),
         ),
         WGap.gap10,
         DecoratedBox(
@@ -77,19 +72,20 @@ class SavdoItem extends ConsumerWidget {
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: model.praduct.length,
+                itemCount: GetTradeServices.list.length,
                 itemBuilder: (context, index) {
+                  var item = GetTradeServices.list[index];
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         WText(
-                          model.praduct[index].name,
+                          item.createdAt,
                           style: AppTextStyle.textStyle4,
                         ),
                         WText(
-                          model.praduct[index].price,
+                          formatNumber(int.parse(item.totalAmount.replaceAll('.00', ' '))),
                           style: AppTextStyle.textStyle4_,
                         ),
                       ],
@@ -108,10 +104,12 @@ class SavdoItem extends ConsumerWidget {
     );
   }
 
+
+
   String umumiSumma() {
     int total = 0;
-    for (var i = 0; i < model.praduct.length; ++i) {
-      total += int.parse(model.praduct[i].price.replaceAll(" ", ""));
+    for (var i = 0; i < GetTradeServices.list.length; ++i) {
+      total += int.parse(GetTradeServices.list[i].totalAmount.replaceAll(".00", " "));
     }
     return formatNumber(total);
   }
