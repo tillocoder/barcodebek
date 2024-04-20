@@ -1,7 +1,10 @@
 // ignore_for_file: file_names, no_leading_underscores_for_local_identifiers
 
+import 'package:barcodbek/keraksiz.dart';
+import 'package:barcodbek/kk.dart';
 import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
+import 'package:barcodbek/src/core/services/debtors/get_services.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
@@ -38,7 +41,11 @@ class HomePage extends ConsumerWidget {
               elevation: 0,
               scrolledUnderElevation: 0,
               leading: IconButton(
-                onPressed: () {},
+                onPressed: () async {
+
+                 await GetDebtorsServices.GET();
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => KeraksizPages()));
+                },
                 icon: AppIcons.notification,
               ),
               centerTitle: true,
@@ -46,15 +53,6 @@ class HomePage extends ConsumerWidget {
                 boxUser.values.toList()[0].market,
                 style: AppTextStyle.textStyle1_,
               ),
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    debugPrint(DateTime.now().toString());
-                    userT = !userT;
-                  },
-                  icon: AppIcons.search,
-                )
-              ],
             ),
             key: _scaffoldKey,
             backgroundColor: Colors.white,

@@ -8,4 +8,7 @@ class Urls {
   static const getProducts = '/products/products/';
   static const postProducts = '/products/products/';
   static const deleteProducts = '/products/products/';
+  static const getDebTors = '/debtors/debtors/';
+  static const postDebTors = '/debtors/debtors/';
+  static const deletDebTors = '/debtors/debtors/';
 }

@@ -5,19 +5,20 @@ import 'package:flutter/services.dart';
 class WTextFild extends StatelessWidget {
   final String hintText;
   final List<TextInputFormatter>? formatter;
-  final int? maxLength;
   final Widget? iconPath;
   final Widget? suffixIcon;
   final TextEditingController? controller;
-  const WTextFild(
-  {
+  final String? startNumber;
+
+  const WTextFild({
     super.key,
     required this.hintText,
     this.iconPath,
     this.suffixIcon,
-    this.controller, this.maxLength, this.formatter,
-  }
-  );
+    this.controller,
+    this.formatter,
+    this.startNumber,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +37,21 @@ class WTextFild extends StatelessWidget {
       ),
       child: SizedBox(
         child: TextFormField(
-          maxLength: maxLength,
           controller: controller,
           inputFormatters: formatter,
           decoration: InputDecoration(
-            prefixIcon: iconPath != null
-                ? Padding(
-              padding: const EdgeInsets.all(14),
-              child: iconPath ?? const SizedBox.shrink(),
-            )
-                : null,
+            prefixIcon: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                iconPath != null
+                    ? Padding(
+                        padding: const EdgeInsets.all(14),
+                        child: iconPath ?? const SizedBox.shrink(),
+                      )
+                    : Text(''),
+                Text("${startNumber ?? ''}\t" ),
+              ],
+            ),
             hintText: hintText,
             suffixIcon: Padding(
               padding: const EdgeInsets.all(14),
@@ -63,3 +69,5 @@ class WTextFild extends StatelessWidget {
     );
   }
 }
+
+String raqam = "+998";

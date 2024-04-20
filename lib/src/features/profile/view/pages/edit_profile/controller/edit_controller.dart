@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final editController = ChangeNotifierProvider((ref) => EditControler());
 
 class EditControler extends ChangeNotifier {
-  TextEditingController editingController = TextEditingController();
+  // TextEditingController editingController = TextEditingController();
   bool isOnTap = false;
 
   void onTap() {

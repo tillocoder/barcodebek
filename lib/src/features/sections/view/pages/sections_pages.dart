@@ -33,20 +33,21 @@ class SectionsPages extends StatelessWidget {
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  // mainAxisSpacing: 30,
-                  // crossAxisSpacing: 40,
                 ),
                 itemCount: 4,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 18,
+                    ),
                     child: wSWButton(
                       index: index,
                       page: [
                         const SellPages(),
                         const SearchingPages(),
                         const CalculatingPages(),
-                        const DeptorsPages(),
+                        const DeptorsPages()
                       ],
                       context: context,
                       child: DecoratedBox(
@@ -105,6 +106,7 @@ InkWell wSWButton({
           continue;
         }
       }
+
     },
     child: child,
   );

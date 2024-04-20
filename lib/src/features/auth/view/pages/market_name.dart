@@ -53,7 +53,7 @@ class MarketName extends ConsumerWidget {
               onPressed: () async {
 
                 AuthRegisterModel model = AuthRegisterModel(
-                  phoneNumber: regsterCtr.phoneNumber.text,
+                  phoneNumber: "$raqam${regsterCtr.phoneNumber.text.split(' ').join()}",
                   password: regsterCtr.password.text,
                   type: con.egalik == false ? 'Director' : 'Vendor',
                   market: regsterCtr.marketName.text,
@@ -62,10 +62,11 @@ class MarketName extends ConsumerWidget {
                 );
 
                 AuthLoginModel authModel = AuthLoginModel(
-                  phoneNumber: regsterCtr.phoneNumber.text,
+                  phoneNumber: '$raqam${regsterCtr.phoneNumber.text.split(' ').join()}',
                   password: regsterCtr.password.text,
                 );
                 debugPrint('MODEL : ${model.toString()}');
+
 
                 if (regsterCtr.stir.text.isNotEmpty &&
                     regsterCtr.marketName.text.isNotEmpty) {

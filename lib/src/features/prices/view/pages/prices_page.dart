@@ -116,7 +116,8 @@ class PricesPages extends ConsumerWidget {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Text(
-                                          pricesCalculating(item.price.replaceAll('.00', '')),
+                                          pricesCalculating(
+                                              item.price.replaceAll('.00', '')),
                                           style: AppTextStyle.textNarxi,
                                         ),
                                         Text(
@@ -128,18 +129,19 @@ class PricesPages extends ConsumerWidget {
                                     IconButton(
                                       onPressed: () async {
                                         internetCtr.checkInternetConnection();
-                                        bool incheke = internetCtr.status[0] == ConnectionState.none ? false : true;
-                                        String? ega = boxUser.get('user')?.type ?? '';
-                                        debugPrint('EGA :$ega');
-                                        debugPrint('index :$index');
-                                        debugPrint('boxlengt :${boxProduct.values.length}');
-                                        debugPrint('boxlengt :${boxProduct.values.length}');
-                                        debugPrint('Tekshirdim internet : ${internetCtr.status[0]}');
-                                        debugPrint('internet : $incheke');
+                                        bool incheke = internetCtr.status[0] ==
+                                                ConnectionState.none
+                                            ? false
+                                            : true;
+                                        String? ega =
+                                            boxUser.get('user')?.type ?? '';
                                         if (incheke) {
-                                          await deleteCtr.deleteProduct(context, item.barCode, index);
+                                          await deleteCtr.deleteProduct(
+                                              context, item.barCode, index);
                                         } else {
-                                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('NO')));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                                  content: Text('NO')));
                                         }
 
                                         // if (ega == 'Director' && index < boxProduct.values.length) {
@@ -178,10 +180,12 @@ class PricesPages extends ConsumerWidget {
   String umumiSumma() {
     int total = 0;
     for (var i = 0; i < boxProduct.values.length; ++i) {
-      total += int.parse(boxProduct.values.toList()[i].price.substring(
-            0,
-            boxProduct.values.toList()[i].price.length - 3,
-          ));
+      total += int.parse(
+        boxProduct.values.toList()[i].price.substring(
+              0,
+              boxProduct.values.toList()[i].price.length - 3,
+            ),
+      );
     }
     return total.toString();
   }

@@ -1,4 +1,7 @@
+import 'package:barcodbek/src/core/services/debtors/post_services.dart';
+import 'package:barcodbek/src/data/entity/debtor_user_model.dart';
 import 'package:barcodbek/src/data/entity/products_model.dart';
+import 'package:barcodbek/src/features/sections/view/pages/lending/controller/db_lending_ctr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
@@ -19,6 +22,7 @@ class WCustomBottomNav extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final sellctr = ref.read(sellController);
+    // var ctrlending = ref.read(lendingController);
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Column(
@@ -46,14 +50,18 @@ class WCustomBottomNav extends ConsumerWidget {
                           ? AppColorss.c_8F00FF
                           : AppColorss.c_707070,
                   text: "Lending",
-                  onPressed: () {
+                  onPressed: () async {
                     sellctr.onTap(true);
+
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const LendingPages(),
                       ),
                     );
+
+
                   },
                 ),
               ),
@@ -67,7 +75,8 @@ class WCustomBottomNav extends ConsumerWidget {
                   text: "Selling",
                   onPressed: () {
                     sellctr.onTap(false);
-                    String data = DateTime.now().toIso8601String().substring(0, 10);
+                    String data =
+                        DateTime.now().toIso8601String().substring(0, 10);
                     final taxrixModel = TaxrixMadel(
                       data: data,
                       praduct: sellctr.savat,
