@@ -10,6 +10,7 @@ class SellerGetServices {
   static Dio dio = Dio(Baseoption.baseOptions);
 
   static Future<void> sellerGetData() async {
+    seller.clear();
     Response result = await dio.get(Urls.apiSeller);
     debugPrint("${result.data}");
     seller = (result.data as List).map((e) => UserGetData.fromJson(e)).toList();

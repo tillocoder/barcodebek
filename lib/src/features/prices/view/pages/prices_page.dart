@@ -8,7 +8,6 @@ import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/prices/controller/prices_controller.dart';
 import 'package:barcodbek/src/features/scanner/view/widgets/snakebar.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -136,16 +135,23 @@ class PricesPages extends ConsumerWidget {
                                         debugPrint('0');
                                         internetCtr.checkInternetConnection();
 
-                                        String? ega = boxUser.get('user')?.type ?? '';
+                                        String? ega =
+                                            boxUser.get('user')?.type ?? '';
                                         if (ega == 'Director') {
                                           debugPrint('1');
 
                                           internetCtr.checkInternetConnection();
-                                          if (internetCtr.tekshirdim && index < boxProduct.values.length) {
+                                          if (internetCtr.tekshirdim &&
+                                              index <
+                                                  boxProduct.values.length) {
                                             debugPrint('2');
 
-                                            await deleteCtr.deleteProduct(context, item.barCode, index);
-                                          } else if (internetCtr.tekshirdim == false && boxProduct.values.length > index) {
+                                            await deleteCtr.deleteProduct(
+                                                context, item.barCode, index);
+                                          } else if (internetCtr.tekshirdim ==
+                                                  false &&
+                                              boxProduct.values.length >
+                                                  index) {
                                             pricesCtr.removCahcheIndex(index);
                                             debugPrint('3');
                                           } else {
