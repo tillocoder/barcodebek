@@ -35,13 +35,13 @@ class LendingPages extends ConsumerWidget {
                   WGap.gap20,
                   WTextFild(hintText: Words.phone_number.tr(context)),
                   WGap.gap20,
-                  WTextFild(hintText: Words.received_products.tr(context)),
-                  WGap.gap20,
-                  WTextFild(hintText: Words.amount_of_debt.tr(context)),
+                  WTextFild(
+                    hintText: 'Qoshimcha',
+                  ),
                 ],
               ),
               const Spacer(
-                flex: 6,
+                flex: 8,
               ),
               WElevatedButton(
                 text: Words.save.tr(context),

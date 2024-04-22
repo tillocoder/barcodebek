@@ -1,13 +1,10 @@
 import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
-import 'package:barcodbek/src/core/services/internetcheker/internet_cheker.dart';
-import 'package:barcodbek/src/core/services/products/delete_product.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/prices/controller/prices_controller.dart';
-import 'package:barcodbek/src/features/scanner/view/widgets/snakebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,12 +14,10 @@ class PricesPages extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(deleteproductController);
-    var deleteCtr = ref.read(deleteproductController);
-    ref.watch(internetController);
-    var internetCtr = ref.read(internetController);
     ref.watch(pricesController);
-    var pricesCtr = ref.read(pricesController);
+
+    var ctr = ref.read(pricesController);
+
     return Scaffold(
       backgroundColor: AppColorss.scaffoldColor,
       body: Padding(
@@ -33,35 +28,7 @@ class PricesPages extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                    onPressed: () {
-                      debugPrint(listtt[0].name);
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  "Umumiy Mahsulotlarning Narxi",
-                                  style: AppTextStyle.textStyle4,
-                                ),
-                                Text(
-                                  umumiSumma(),
-                                  style: AppTextStyle.textStyle1_,
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    icon: const Icon(
-                      Icons.monetization_on_rounded,
-                      color: AppColorss.c_9745FF,
-                    ),
-                  ),
+                  WGap.gap15,
                   Text(
                     Words.prices.tr(context),
                     style: AppTextStyle.textStyle2,
@@ -73,13 +40,8 @@ class PricesPages extends ConsumerWidget {
               Expanded(
                 child: SizedBox(
                   child: ListView.builder(
-                    itemCount: listtt.length,
+                    itemCount: box.values.length,
                     itemBuilder: (context, index) {
-                      var item = listtt[index];
-
-                      // if (index == boxProduct.values.length) {
-                      //   const Divider();
-                      // }
                       return Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: SizedBox(
@@ -105,11 +67,11 @@ class PricesPages extends ConsumerWidget {
                               child: ListTile(
                                 contentPadding: EdgeInsets.zero,
                                 title: Text(
-                                  item.name,
+                                  box.values.toList()[index].name,
                                   style: AppTextStyle.textPrces,
                                 ),
                                 subtitle: Text(
-                                  item.barCode.toString(),
+                                  box.values.toList()[index].barcode,
                                   style: AppTextStyle.textBarcode,
                                 ),
                                 trailing: Row(
@@ -120,59 +82,18 @@ class PricesPages extends ConsumerWidget {
                                       children: [
                                         Text(
                                           pricesCalculating(
-                                            item.price.replaceAll('.00', ''),
-                                          ),
+                                              box.values.toList()[index].price),
                                           style: AppTextStyle.textNarxi,
                                         ),
                                         Text(
-                                          item.createdAt.toString(),
+                                          box.values.toList()[index].dateTime,
                                           style: AppTextStyle.textDateTime,
                                         ),
                                       ],
                                     ),
                                     IconButton(
-                                      onPressed: () async {
-                                        debugPrint('0');
-                                        internetCtr.checkInternetConnection();
-
-                                        String? ega =
-                                            boxUser.get('user')?.type ?? '';
-                                        if (ega == 'Director') {
-                                          debugPrint('1');
-
-                                          internetCtr.checkInternetConnection();
-                                          if (internetCtr.tekshirdim &&
-                                              index <
-                                                  boxProduct.values.length) {
-                                            debugPrint('2');
-
-                                            await deleteCtr.deleteProduct(
-                                                context, item.barCode, index);
-                                          } else if (internetCtr.tekshirdim ==
-                                                  false &&
-                                              boxProduct.values.length >
-                                                  index) {
-                                            pricesCtr.removCahcheIndex(index);
-                                            debugPrint('3');
-                                          } else {
-                                            snakebar(context, 'NO Internet');
-                                          }
-                                        } else {
-                                          snakebar(context, 'Vendor');
-                                        }
-                                        // if (internetCtr.tekshirdim && ega == 'Director' && index < boxProductCache.values.length) {
-                                        //   debugPrint('internet orqali');
-                                        //   await deleteCtr.deleteProduct(context, item.barCode, index);
-                                        // }
-                                        // if (internetCtr.tekshirdim == false && ega == 'Director' ) {
-                                        //   debugPrint('internet yoq');
-                                        //   snakebar(context, 'Sizda Internet Mavjud emas.');
-                                        // }
-                                        // if (internetCtr.tekshirdim == false && index > boxProduct.values.length) {
-                                        //   debugPrint('internetsiz kashda');
-
-                                        //   pricesCtr.removCahcheIndex(index);
-                                        // }
+                                      onPressed: () {
+                                        ctr.removIndex(index);
                                       },
                                       icon: const Icon(
                                         CupertinoIcons.delete,
@@ -199,13 +120,10 @@ class PricesPages extends ConsumerWidget {
 
   String umumiSumma() {
     int total = 0;
-    for (var i = 0; i < boxProduct.values.length; ++i) {
-      total += int.parse(boxProduct.values.toList()[i].price.substring(
-            0,
-            boxProduct.values.toList()[i].price.length - 3,
-          ));
+    for (var i = 0; i < box.values.length; ++i) {
+      total += int.parse(box.values.toList()[i].price);
     }
-    return total.toString();
+    return pricesCalculating(total.toString());
   }
 }
 

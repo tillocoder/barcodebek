@@ -65,24 +65,11 @@ class HomePageState extends State<HomePage> {
 
   List<Map> barAnimData = [];
 
-  late Timer timer;
-
   final priceVolumeStream = StreamController<GestureEvent>.broadcast();
 
   final heatmapStream = StreamController<Selected?>.broadcast();
 
   bool rebuild = false;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    timer.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,29 +99,6 @@ class HomePageState extends State<HomePage> {
             ),
             key: _scaffoldKey,
             backgroundColor: Colors.white,
-            // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-            // floatingActionButton: Column(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     FloatingActionButton(
-            //       onPressed: () => setState(() {
-            //         rebuild = true;
-            //       }),
-            //       child: const Icon(Icons.refresh),
-            //     ),
-            //     FloatingActionButton(
-            //       onPressed: () {
-            //         Navigator.push(
-            //           context,
-            //           MaterialPageRoute(
-            //             builder: (contex) => const HomePage(),
-            //           ),
-            //         );
-            //       },
-            //       child: const Icon(Icons.next_plan_outlined),
-            //     ),
-            //   ],
-            // ),
             body: SafeArea(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
