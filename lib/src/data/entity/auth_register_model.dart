@@ -1,47 +1,46 @@
-
 import 'dart:convert';
 
-AuthRegisterModel authRegisterModelFromJson(String str) => AuthRegisterModel.fromJson(json.decode(str));
-
-String authRegisterModelToJson(AuthRegisterModel data) => json.encode(data.toJson());
-
 class AuthRegisterModel {
+  final String firstName;
   final String phoneNumber;
   final String password;
   final String type;
   final String market;
   final String stir;
-  final String firstName;
 
   AuthRegisterModel({
+    required this.firstName,
     required this.phoneNumber,
     required this.password,
     required this.type,
     required this.market,
     required this.stir,
-    required this.firstName,
   });
 
+  factory AuthRegisterModel.fromRawJson(String str) => AuthRegisterModel.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
   factory AuthRegisterModel.fromJson(Map<String, dynamic> json) => AuthRegisterModel(
+    firstName: json["first_name"],
     phoneNumber: json["phone_number"],
     password: json["password"],
     type: json["type"],
     market: json["market"],
     stir: json["stir"],
-    firstName: json["first_name"],
   );
 
   Map<String, dynamic> toJson() => {
+    "first_name": firstName,
     "phone_number": phoneNumber,
     "password": password,
     "type": type,
     "market": market,
     "stir": stir,
-    "first_name": firstName,
   };
+
   @override
   String toString() {
-    return 'AuthRegisterModel{phoneNumber: $phoneNumber, password: $password, type: $type, market: $market, stir: $stir, firstName: $firstName}';
+    return 'AuthRegisterModel(firstName: $firstName, phoneNumber: $phoneNumber, password: $password, type: $type, market: $market, stir: $stir)';
   }
-
 }

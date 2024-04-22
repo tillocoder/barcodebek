@@ -11,4 +11,5 @@ class Urls {
   static const getDebTors = '/debtors/debtors/';
   static const postDebTors = '/debtors/debtors/';
   static const deletDebTors = '/debtors/debtors/';
+  static const vendor = '/users/vendor-confirmation/';
 }

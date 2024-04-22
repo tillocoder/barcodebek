@@ -16,7 +16,7 @@ class AuthCreateServices {
   static Dio dio = Dio(postCommetOptions);
 
   //
-  static Future<void> POST(AuthRegisterModel data, BuildContext context) async {
+  static Future<void> POST(AuthRegisterModel data) async {
     var response = await dio.post(Urls.authResgsterApi, data: data.toJson());
     if (response.statusCode == 200 || response.statusCode == 201) {
       debugPrint('CODEE: ${response.statusCode.toString()}');

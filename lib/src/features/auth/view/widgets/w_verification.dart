@@ -9,11 +9,12 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 class Wotp extends StatelessWidget {
   final String? otpText;
   final String? otpsubText;
+  final TextEditingController? controller;
 
   const Wotp({
     super.key,
     this.otpText,
-    this.otpsubText,
+    this.otpsubText, this.controller,
   });
 
   @override
@@ -35,6 +36,7 @@ class Wotp extends StatelessWidget {
           ),
           Gap(MediaQuery.of(context).size.height * 0.030),
           PinCodeTextField(
+            controller: controller,
             cursorColor: AppColorss.c_000000,
             keyboardType: TextInputType.number,
             appContext: context,

@@ -22,4 +22,9 @@ class AuthLoginModel {
     "phone_number": phoneNumber,
     "password": password,
   };
+
+  @override
+  String toString() {
+    return 'AuthLoginModel(phoneNumber: $phoneNumber, password: $password)';
+  }
 }

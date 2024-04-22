@@ -33,26 +33,19 @@ class AuthLoginServices {
   static String number = (boxToken.get('number') ?? '').substring(4);
 
   static Future<void> getData() async {
+    debugPrint("salom getData");
     var response = await userget.get('${Urls.userGetApi}$number/');
-    debugPrint('DATA${response.data}');
-    debugPrint('DATA${Urls.baseUrl}${Urls.userGetApi}$number/');
-
+    debugPrint("malumod get bo'ldi");
     if (response.statusCode == 200 || response.statusCode == 201) {
-      debugPrint('TOKK$tokenn');
       var responseData = response.data;
+      debugPrint("responseData  oldi");
       if (responseData is List) {
-        commentslist = responseData.map((e) => UserGetData.fromJson(e)).toList();
+        commentslist =
+            responseData.map((e) => UserGetData.fromJson(e)).toList();
+        debugPrint("Listga Joylashtrdi  ");
         await boxUser.put('user', commentslist[0]);
         SellerGetServices.sellerGetData();
         GetProductServices.get();
-
-        AuthConttroler actr = AuthConttroler();
-
-        // String? ega = boxUser.get('user')?.type ?? '';
-        // actr.logintap(ega);
-        debugPrint('LENGTH : ${actr.length.toString()}');
-        debugPrint('Model: ${boxUser.get('user') ?? ''}');
-        debugPrint('LIST: ${commentslist.toString()}');
       }
     } else {
       return;
@@ -62,12 +55,9 @@ class AuthLoginServices {
   static Future<void> getToken(
     AuthLoginModel data,
   ) async {
-    debugPrint(boxToken.get('tokenn').toString());
-    debugPrint(boxToken.get('number').toString());
-    debugPrint(boxUser.get('user').toString());
-    debugPrint(boxProduct.clear().toString());
     try {
-      var response = await token.post('${Urls.baseUrl}${Urls.postToken}', data: data.toJson());
+      var response = await token.post('${Urls.baseUrl}${Urls.postToken}',
+          data: data.toJson());
       if (response.statusCode == 200 || response.statusCode == 201) {
         var responseData = response.data as Map<String, dynamic>;
         String? accessToken = responseData["access"] as String?;

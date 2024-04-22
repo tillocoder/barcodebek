@@ -2,16 +2,13 @@ import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
-import 'package:barcodbek/src/core/services/auth/auth_login_services.dart';
 import 'package:barcodbek/src/core/services/auth/authcread_services.dart';
-import 'package:barcodbek/src/core/services/auth/otp_services.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
 import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
-import 'package:barcodbek/src/data/entity/auth_login_model.dart';
 import 'package:barcodbek/src/data/entity/auth_register_model.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
 import 'package:barcodbek/src/features/auth/controller/register_controller.dart';
+import 'package:barcodbek/src/features/auth/view/pages/verification.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/wtext_fild.dart';
 import 'package:barcodbek/src/features/scanner/view/widgets/snakebar.dart';
 import 'package:flutter/material.dart';
@@ -61,26 +58,13 @@ class MarketName extends ConsumerWidget {
                   firstName: regsterCtr.name.text,
                 );
 
-                AuthLoginModel authModel = AuthLoginModel(
-                  phoneNumber: '$raqam${regsterCtr.phoneNumber.text.split(' ').join()}',
-                  password: regsterCtr.password.text,
-                );
-                debugPrint('MODEL : ${model.toString()}');
-
-
                 if (regsterCtr.stir.text.isNotEmpty &&
                     regsterCtr.marketName.text.isNotEmpty) {
-                  await AuthCreateServices.POST(model, context);
-                  await OTPServices.POST({
-                    "phone_number": regsterCtr.phoneNumber.text,
-                    "code": con.egalik == false ? '1111' : '2222'
-                  }, context);
-                  await AuthLoginServices.getToken(authModel);
-                  await AuthLoginServices.getData();
+                  await AuthCreateServices.POST(model);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const WBottomNav(),
+                      builder: (context) => const VerificationPages(),
                     ),
                   );
                 } else {
