@@ -8,14 +8,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final internetController = ChangeNotifierProvider.autoDispose((ref) => InternetCheker());
 
 class InternetCheker extends ChangeNotifier {
-  bool tekshirdim = false;
 //? natija yuklanadi
   List<ConnectivityResult> status = [ConnectivityResult.none];
   final Connectivity _connectivity = Connectivity();
   //! tekshiruvchi
   Future<void> updateConnectionStatus(List<ConnectivityResult> result) async {
     status = result;
-    debugPrint('INTERNET : ${ tekshirdim =  status[0]!=ConnectivityResult.none?true:false}');
+    debugPrint('INTERNET : $status');
     notifyListeners();
   }
 

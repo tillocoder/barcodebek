@@ -5,6 +5,7 @@ import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
 import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
+import 'package:barcodbek/src/features/auth/controller/register_controller.dart';
 import 'package:barcodbek/src/features/profile/view/pages/edit_profile/controller/edit_controller.dart';
 import 'package:barcodbek/src/features/profile/view/pages/edit_profile/view/widgets/wedit.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,6 +22,7 @@ class EditeProfile extends ConsumerWidget {
     ref.watch(db);
     var con = ref.read(editController);
     var con1 = ref.read(db);
+    var regsterController = ref.read(registerController);
 
     return Scaffold(
       body: SafeArea(
@@ -53,7 +55,7 @@ class EditeProfile extends ConsumerWidget {
                 children: [
                   WEdit(
                     text: Words.send_a_message.tr(context),
-                    controller: con.editingController,
+                    controller: regsterController.name,
                     con: con,
                     visible: con.isOnTap,
                     textInputType: TextInputType.text,
@@ -67,9 +69,9 @@ class EditeProfile extends ConsumerWidget {
                         child: WElevatedButton(
                           text: Words.send.tr(context),
                           onPressed: () {
-                            if (con.editingController.text.isNotEmpty) {
-                              con1.save(con.editingController.text);
-                              con.editingController.clear();
+                            if (regsterController.name.text.isNotEmpty) {
+                              con1.save(regsterController.name.text);
+                              regsterController.name.clear();
                               con.isOnTap = !con.isOnTap;
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
@@ -87,7 +89,7 @@ class EditeProfile extends ConsumerWidget {
               ),
               const Divider(),
               WText(
-                "+998 90 000 00 00",
+                "${regsterController.loginNumber.text}",
                 style: AppTextStyle.textStyle2,
               ),
               const Divider()

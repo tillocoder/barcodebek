@@ -1,11 +1,8 @@
-
-
 import 'package:barcodbek/src/core/services/AppUrls/app_url.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 
 class OTPServices{
-
   static Dio dio =Dio();
   static Future<void> POST(Map<String,dynamic> data, BuildContext context) async {
     var response = await dio.post('${Urls.baseUrl}${Urls.otp}', data: data);
@@ -18,8 +15,6 @@ class OTPServices{
       var responseData = response.data as Map<String, dynamic>;
       String? accessToken = responseData["message"] as String?;
       debugPrint('MASSENGE: $accessToken');
-
-
     }
   } 
   // static Future<void> getUserPassword(Map<String,dynamic> data, BuildContext context) async {

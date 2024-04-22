@@ -2,7 +2,6 @@ import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/services/AppUrls/app_url.dart';
 import 'package:barcodbek/src/core/services/products/get_products.dart';
 import 'package:barcodbek/src/core/services/sellerget/seller_get.dart';
-import 'package:barcodbek/src/core/services/trade/get_trade.dart';
 import 'package:barcodbek/src/data/entity/auth_login_model.dart';
 import 'package:barcodbek/src/data/entity/user_get_model.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
@@ -34,18 +33,18 @@ class AuthLoginServices {
   static String number = (boxToken.get('number') ?? '').substring(4);
 
   static Future<void> getData() async {
+    debugPrint("salom getData");
     var response = await userget.get('${Urls.userGetApi}$number/');
-    debugPrint('DATA${response.data}');
-    debugPrint('DATA${Urls.baseUrl}${Urls.userGetApi}$number/');
-
+    debugPrint("malumod get bo'ldi");
     if (response.statusCode == 200 || response.statusCode == 201) {
-      debugPrint('TOKK$tokenn');
       var responseData = response.data;
+      debugPrint("responseData  oldi");
       if (responseData is List) {
-        commentslist = responseData.map((e) => UserGetData.fromJson(e)).toList();
+        commentslist =
+            responseData.map((e) => UserGetData.fromJson(e)).toList();
         await boxUser.put('user', commentslist[0]);
         SellerGetServices.sellerGetData();
-        GetProductServices.get();
+        GetProductServices.GET();
 
         AuthConttroler actr = AuthConttroler();
 
@@ -55,9 +54,7 @@ class AuthLoginServices {
         debugPrint('Model: ${boxUser.get('user') ?? ''}');
         debugPrint('LIST: ${commentslist.toString()}');
       }
-    } else {
-      return;
-    }
+    } else {}
   }
 
   static Future<void> getToken(
@@ -66,9 +63,19 @@ class AuthLoginServices {
     debugPrint(boxToken.get('tokenn').toString());
     debugPrint(boxToken.get('number').toString());
     debugPrint(boxUser.get('user').toString());
-    debugPrint(boxProduct.clear().toString());
+    debugPrint(box.clear().toString());
     try {
-      var response = await token.post('${Urls.baseUrl}${Urls.postToken}', data: data.toJson());
+      var response = await token.post('${Urls.baseUrl}${Urls.postToken}',
+          data: data.toJson());
+        commentslist =
+            responseData.map((e) => UserGetData.fromJson(e)).toList();
+        debugPrint("Listga Joylashtrdi  ");
+        GetProductServices.get();
+    } else {
+      return;
+    }
+      var response = await token.post('${Urls.baseUrl}${Urls.postToken}',
+          data: data.toJson());
       if (response.statusCode == 200 || response.statusCode == 201) {
         var responseData = response.data as Map<String, dynamic>;
         String? accessToken = responseData["access"] as String?;
@@ -78,7 +85,6 @@ class AuthLoginServices {
           listtt.clear();
           boxProductCache.clear();
           await AuthLoginServices.getData();
-         await GetTradeServices.get();
         } else {
           return;
         }

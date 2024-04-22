@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:barcodbek/src/core/services/AppUrls/app_url.dart';
 import 'package:barcodbek/src/data/entity/auth_register_model.dart';
 import 'package:dio/dio.dart';
@@ -17,7 +15,6 @@ class AuthCreateServices {
 
   //
   static Future<void> POST(AuthRegisterModel data, BuildContext context) async {
-    debugPrint('salom');
     var response = await dio.post(Urls.authResgsterApi, data: data.toJson());
     if (response.statusCode == 200 || response.statusCode == 201) {
       debugPrint('CODEE: ${response.statusCode.toString()}');
@@ -26,4 +23,5 @@ class AuthCreateServices {
       return response.data;
     } else {}
   }
+  static Future<void> POST(AuthRegisterModel data) async {
 }

@@ -1,5 +1,4 @@
 import 'dart:core';
-
 import 'package:barcodbek/src/data/entity/products_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,6 +9,10 @@ class SellController extends ChangeNotifier {
   SellController() {
     savatGetBarcode();
   }
+
+  TextEditingController name = TextEditingController();
+  TextEditingController phoneNumber = TextEditingController();
+  TextEditingController commit = TextEditingController();
 
   List<ProductsModel> savat = [];
   List<String> savatBarcode = [];
@@ -24,6 +27,7 @@ class SellController extends ChangeNotifier {
     for (var i = 0; i < savat.length; ++i) {
       savatBarcode.add(savat[i].barCode.toString());
     }
+
     notifyListeners();
   }
 
@@ -78,6 +82,11 @@ class SellController extends ChangeNotifier {
 
   void onTap(bool value) {
     egalik = value;
+    notifyListeners();
+  }
+
+  void yaglash() async {
+    savat.clear();
     notifyListeners();
   }
 }

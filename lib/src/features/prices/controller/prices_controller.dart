@@ -25,8 +25,8 @@ class PricesControler extends ChangeNotifier {
     notifyListeners();
   }
 
-  void removCahcheIndex(int index)async {
-  await  boxProductCache.delete(index);
+  void removCahcheIndex(int index) {
+    boxProductCache.deleteAt(index);
     listtt.removeAt(index);
     notifyListeners();
   }

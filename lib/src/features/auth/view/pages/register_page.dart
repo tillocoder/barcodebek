@@ -7,6 +7,7 @@ import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
 import 'package:barcodbek/src/features/auth/controller/register_controller.dart';
+import 'package:barcodbek/src/features/auth/view/pages/login.dart';
 import 'package:barcodbek/src/features/auth/view/pages/market_name.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/skib_button.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/w_position.dart';
@@ -48,8 +49,16 @@ class RegistorPages extends ConsumerWidget {
             MediaQuery.of(context).size.height * 0.02,
           ),
           WTextFild(
+            startNumber: raqam,
+            formatter: [
+              MaskedTextInputFormatter(
+                mask: '## ### ## ##',
+                separator: ' ',
+                filter: RegExp('[0-9]'),
+              ),
+            ],
             controller: regsterCtr.phoneNumber,
-            hintText: "+998 XX XXX XXXX",
+            hintText: " XX XXX XXXX",
             iconPath: AppIcons.phone,
           ),
           Gap(
@@ -117,7 +126,7 @@ class RegistorPages extends ConsumerWidget {
                   regsterCtr.phoneNumber.text.isNotEmpty &&
                   regsterCtr.password.text.isNotEmpty &&
                   regsterCtr.confirmPassword.text.isNotEmpty) {
-                await boxToken.put('number', regsterCtr.phoneNumber.text);
+                await boxToken.put('number', '$raqam${regsterCtr.phoneNumber.text.split(' ').join()}');
                 Navigator.push(
                   context,
                   MaterialPageRoute(

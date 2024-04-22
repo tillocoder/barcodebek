@@ -13,5 +13,6 @@ class RegisterController extends ChangeNotifier {
    TextEditingController marketName = TextEditingController();
    TextEditingController loginNumber = TextEditingController();
    TextEditingController logenPasword = TextEditingController();
+   TextEditingController otpController = TextEditingController();
 
 }
