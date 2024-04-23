@@ -1,7 +1,9 @@
+import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/componets/w_padding.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
+import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
 import 'package:barcodbek/src/features/onbording/view/pages/onbording_pages.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +19,7 @@ class _SplashPagesState extends State<SplashPages> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.push(context, MaterialPageRoute(builder: (contex)=>OnbordingPages()));
+      Navigator.push(context, MaterialPageRoute(builder: (contex) => boxToken.get('tokenn') == null  ? const OnbordingPages() : const WBottomNav()));
     });
     super.initState();
   }

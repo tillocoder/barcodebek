@@ -83,11 +83,9 @@ class WDialog extends ConsumerWidget {
                     comment: ctr.controllerOther.text,
                     createdAt: DateTime.now().toString(),
                   );
-                  if (boxProductCache.values.length > 2) {
-                    // ignore: unrelated_type_equality_checks
+                  if (boxProductCache.values.length > 0) {
                     if (internetCtr.status[0] != ConnectionState.none) {
                       ctr1.addCacheProduct(model);
-
                       await postProductCtr.postProduct();
                       Navigator.pop(context);
                     } else {
@@ -102,7 +100,6 @@ class WDialog extends ConsumerWidget {
                   ctr.controllerName.clear();
                   ctr.controllerPrice.clear();
                   ctr.controllerOther.clear();
-                  // ignore: use_build_context_synchronously
                 },
               ),
               WOutlinedButton(

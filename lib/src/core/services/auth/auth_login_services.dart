@@ -58,6 +58,7 @@ class AuthLoginServices {
       var response = await token.post('${Urls.baseUrl}${Urls.postToken}',
           data: data.toJson());
       if (response.statusCode == 200 || response.statusCode == 201) {
+        box.clear();
         var responseData = response.data as Map<String, dynamic>;
         String? accessToken = responseData["access"] as String?;
         if (accessToken != null) {
@@ -70,9 +71,11 @@ class AuthLoginServices {
           return;
         }
       } else {
+        debugPrint('token ololmadi tasdiqlanmagan user');
         return;
       }
     } catch (e) {
+      debugPrint('token ololmadi tasdiqlanmagan user');
       return;
     }
   }

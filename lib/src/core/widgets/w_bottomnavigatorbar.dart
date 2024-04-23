@@ -1,3 +1,4 @@
+import 'package:barcodbek/src/core/services/products/get_products.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
@@ -9,9 +10,22 @@ import 'package:barcodbek/src/features/sections/view/pages/sections_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class WBottomNav extends ConsumerWidget {
-  const WBottomNav({Key? key}) : super(key: key);
+class WBottomNav extends ConsumerStatefulWidget {
+  const WBottomNav({super.key});
 
+  @override
+  WBottomNavState createState() => WBottomNavState();
+}
+
+class WBottomNavState extends ConsumerState<WBottomNav> {
+  @override
+  void initState() {
+    getPradeuct();
+    super.initState();
+  }
+  Future<void> getPradeuct() async {
+   await GetProductServices.get();
+  }
   final List<Widget> pages = const [
     HomePage(),
     SectionsPages(),
@@ -21,11 +35,11 @@ class WBottomNav extends ConsumerWidget {
   ];
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     ref.watch(bottomnavctr);
-    var ctr= ref.read(bottomnavctr);
+    final bottomNavCtrl = ref.read(bottomnavctr);
     return Scaffold(
-      body: pages[ctr.currentIndex],
+      body: pages[bottomNavCtrl.currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         elevation: 0,
@@ -59,14 +73,16 @@ class WBottomNav extends ConsumerWidget {
             label: '',
           ),
         ],
-        currentIndex: ctr.currentIndex,
-        onTap: ctr.onTab,
+        currentIndex: bottomNavCtrl.currentIndex,
+        onTap: bottomNavCtrl.onTab,
       ),
     );
   }
+
 }
 
-final bottomnavctr = ChangeNotifierProvider.autoDispose((ref) => BottomNavCtrl());
+final bottomnavctr =
+    ChangeNotifierProvider((ref) => BottomNavCtrl());
 
 class BottomNavCtrl extends ChangeNotifier {
   int currentIndex = 0;

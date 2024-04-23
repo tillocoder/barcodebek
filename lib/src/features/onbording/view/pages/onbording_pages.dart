@@ -1,7 +1,9 @@
+import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
+import 'package:barcodbek/src/features/auth/view/pages/confirmation.dart';
 import 'package:barcodbek/src/features/auth/view/pages/login.dart';
 import 'package:flutter/material.dart';
 
@@ -19,12 +21,14 @@ class OnbordingPages extends StatelessWidget {
             children: [
               WText("KESKAL", style: AppTextStyle.textStyle1_),
               const Image(
-                image: AssetImage("assets/images/splash_onbording/onboarding.png"),
+                image:
+                    AssetImage("assets/images/splash_onbording/onboarding.png"),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  WText(Words.assistant.tr(context), style: AppTextStyle.textStyle2),
+                  WText(Words.assistant.tr(context),
+                      style: AppTextStyle.textStyle2),
                   Text(
                     Words.onboarding_text.tr(context),
                     style: AppTextStyle.textStyle3,
@@ -35,7 +39,12 @@ class OnbordingPages extends StatelessWidget {
               WElevatedButton(
                 text: Words.getStarted.tr(context),
                 onPressed: () {
-                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginPage()), (route) => false);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => box.get('password') == null ?const LoginPage():const Confirmation(),
+                    ),
+                  );
                 },
               )
             ],

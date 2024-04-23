@@ -1,4 +1,3 @@
-import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/services/auth/auth_login_services.dart';
@@ -10,7 +9,7 @@ import 'package:barcodbek/src/data/entity/auth_login_model.dart';
 import 'package:barcodbek/src/data/entity/user_venndor_madel.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
 import 'package:barcodbek/src/features/auth/controller/register_controller.dart';
-import 'package:barcodbek/src/features/auth/view/pages/market_name.dart';
+import 'package:barcodbek/src/features/auth/view/pages/confirmation.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/w_verification.dart';
 import 'package:barcodbek/src/features/auth/view/widgets/wtext_fild.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +38,8 @@ class VerificationPages extends ConsumerWidget {
             child: WElevatedButton(
               text: Words.next.tr(context),
               onPressed: () async {
-                AuthLoginModel authModel = AuthLoginModel(
-                  phoneNumber: '$raqam${regsterCtr.phoneNumber.text.split(' ').join()}',
+                  phoneNumber:
+                      '$raqam${regsterCtr.phoneNumber.text.split(' ').join()}',
                   password: regsterCtr.password.text,
                 );
                 debugPrint(authModel.toString());
@@ -50,12 +49,16 @@ class VerificationPages extends ConsumerWidget {
                   "code": regsterCtr.otpController.text
                 }, context);
                 debugPrint(authModel.toString());
-                await AuthLoginServices.getToken(authModel);
-                await AuthLoginServices.getData();
+                UserVendorModel vendorMadel = UserVendorModel(
+                    phoneNumber:
+                        "$raqam${regsterCtr.phoneNumber.text.split(' ').join()}",
+                    confirm: true);
+                await VendorServices.POST(
+                    "$raqam${regsterCtr.phoneNumber.text.split(' ').join()}");
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const WBottomNav(),
+                    builder: (context) => const Confirmation(),
                   ),
                 );
               },
