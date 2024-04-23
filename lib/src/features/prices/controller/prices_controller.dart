@@ -4,7 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 List<ProductsModel> listtt = [];
-final pricesController = ChangeNotifierProvider.autoDispose((ref) => PricesControler());
+final pricesController =
+    ChangeNotifierProvider.autoDispose((ref) => PricesControler());
 
 class PricesControler extends ChangeNotifier {
   get products => null;

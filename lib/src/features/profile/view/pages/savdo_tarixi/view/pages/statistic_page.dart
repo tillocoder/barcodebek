@@ -4,36 +4,23 @@ import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/services/trade/get_trade.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
 import 'package:barcodbek/src/data/entity/products_model.dart';
+import 'package:barcodbek/src/features/profile/view/pages/savdo_tarixi/controller/history_controller;.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SavdoTarixPage extends StatelessWidget {
+class SavdoTarixPage extends ConsumerWidget {
   const SavdoTarixPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      appBar: AppBar(),
       backgroundColor: AppColorss.scaffoldColor,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            children: [
-              const WBeacButton(
-                isChec: true,
-                title: 'Sado Tarixi',
-              ),
-              WGap.gap10,
-              Expanded(
-                child: const SizedBox(
-                  child: SavdoItem(),
-                ),
-              ),
-            ],
-          ),
-        ),
+      body: const Column(
+        children: [
+          SavdoItem(),
+        ],
       ),
     );
   }
@@ -46,12 +33,14 @@ class SavdoItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(historyController);
+    var ctr = ref.read(historyController);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-          child: Text('salom', style: AppTextStyle.textStyle11),
+          child: Text('Bugun', style: AppTextStyle.textStyle11),
         ),
         WGap.gap10,
         DecoratedBox(
@@ -71,7 +60,7 @@ class SavdoItem extends ConsumerWidget {
             children: [
               ListView.builder(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+                // physics: const NeverScrollableScrollPhysics(),
                 itemCount: GetTradeServices.list.length,
                 itemBuilder: (context, index) {
                   var item = GetTradeServices.list[index];
@@ -103,8 +92,6 @@ class SavdoItem extends ConsumerWidget {
       ],
     );
   }
-
-
 
   String umumiSumma() {
     int total = 0;

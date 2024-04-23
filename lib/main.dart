@@ -1,5 +1,4 @@
 import 'package:barcodbek/app.dart';
-import 'package:barcodbek/src/data/entity/debtors_model.dart';
 import 'package:barcodbek/src/data/entity/user_get_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,7 @@ late Box<ProductsModel> boxProductCache;
 late Box<String> boxToken;
 late Box<UserGetData> boxUser;
 late SharedPreferences prefs;
-// late Box<Debtors> boxdeptors;
+// Rlate Box<Debtors> boxdeptors;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

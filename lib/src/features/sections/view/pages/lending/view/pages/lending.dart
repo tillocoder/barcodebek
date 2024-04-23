@@ -1,9 +1,7 @@
-import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/services/debtors/get_services.dart';
 import 'package:barcodbek/src/core/services/debtors/post_services.dart';
-import 'package:barcodbek/src/core/services/products/get_products.dart';
 import 'package:barcodbek/src/core/widgets/w_beac_button.dart';
 import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
 import 'package:barcodbek/src/data/entity/debtor_user_model.dart';
@@ -23,8 +21,11 @@ class LendingPages extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(deptorsController);
     var con = ref.read(deptorsController);
+    ref.watch(lendingController);
     var ctrlending = ref.read(lendingController);
+    ref.watch(sellController);
     var sellCtr = ref.read(sellController);
     return Scaffold(
       body: SingleChildScrollView(
@@ -68,9 +69,7 @@ class LendingPages extends ConsumerWidget {
                     // } else {
                     //   qarzmuddati = ctrcalendar.focusedDay.toString();
                     // }
-                    if (ctrlending.ismFamilya.text.isNotEmpty &&
-                        ctrlending.phoneNumber.text.isNotEmpty &&
-                        ctrlending.qoshimcha.text.isNotEmpty) {
+                    if (ctrlending.ismFamilya.text.isNotEmpty && ctrlending.phoneNumber.text.isNotEmpty && ctrlending.qoshimcha.text.isNotEmpty) {
                       List<Product> productModel = [];
                       for (var i = 0; i < sellCtr.savat.length; ++i) {
                         productModel.add(

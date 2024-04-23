@@ -1,11 +1,12 @@
+import 'dart:developer' as developer;
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:developer' as developer;
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final internetController = ChangeNotifierProvider.autoDispose((ref) => InternetCheker());
+final internetController =
+    ChangeNotifierProvider.autoDispose((ref) => InternetCheker());
 
 class InternetCheker extends ChangeNotifier {
 //? natija yuklanadi

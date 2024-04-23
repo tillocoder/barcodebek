@@ -2,7 +2,6 @@ import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
-import 'package:barcodbek/src/features/prices/view/pages/prices_page.dart';
 import 'package:barcodbek/src/features/scanner/controller/scan_controller.dart';
 import 'package:barcodbek/src/features/scanner/view/widgets/camera.dart';
 import 'package:barcodbek/src/features/scanner/view/widgets/flash.dart';
@@ -35,9 +34,10 @@ class SellPages extends ConsumerWidget {
               height: MediaQuery.of(context).size.height * 0.5,
               child: ScannnBarcodeAddPage(
                 (capture) {
+                  debugPrint(ctr.savat.toString());
                   final List<Barcode> barcodes = capture.barcodes;
 
-                  for (final barcode in barcodes ) {
+                  for (final barcode in barcodes) {
                     var barcodeValue = barcode.rawValue.toString();
                     if (scanCtr.barcodlar.contains(barcodeValue)) {
                       if (!ctr.savatBarcode.contains(barcodeValue)) {
@@ -52,7 +52,7 @@ class SellPages extends ConsumerWidget {
                         snakebar(context, "Bunaqa Praduct Bazada Bor");
                       }
                     } else {
-                       // snakebar(context, "Bunaqa Praduct Bazada Yo'q");
+                      // snakebar(context, "Bunaqa Praduct Bazada Yo'q");
                     }
                   }
                 },
@@ -78,10 +78,7 @@ class SellPages extends ConsumerWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery
-                .of(context)
-                .size
-                .height * 0.20,
+            top: MediaQuery.of(context).size.height * 0.20,
             left: 20,
             right: 20,
             child: Padding(
@@ -135,7 +132,8 @@ class SellPages extends ConsumerWidget {
                                   ctr.savat[index].name,
                                   style: AppTextStyle.textPrces,
                                 ),
-                                Text(pricesCalculating(ctr.savat[index].price.replaceAll('.00', '')),
+                                Text(
+                                  ctr.savat[index].price.toString().replaceAll('.00', ''),
                                   style: AppTextStyle.textStyle1_,
                                 ),
                               ],
@@ -154,7 +152,7 @@ class SellPages extends ConsumerWidget {
           )
         ],
       ),
-      bottomNavigationBar: const WCustomBottomNav(),
+      bottomNavigationBar: WCustomBottomNav(),
     );
   }
 }

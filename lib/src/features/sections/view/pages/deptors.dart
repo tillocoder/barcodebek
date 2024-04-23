@@ -1,11 +1,8 @@
-import 'package:barcodbek/src/core/services/debtors/delet_services.dart';
-import 'package:barcodbek/src/core/services/debtors/get_services.dart';
-import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
+import 'package:barcodbek/src/core/services/debtors/delet_services.dart';
+import 'package:barcodbek/src/core/services/debtors/get_services.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
@@ -53,7 +50,9 @@ class DeptorsPages extends ConsumerWidget {
                                 ListTile(
                                   contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 10),
-                                  title: WText(GetDebtorsServices.model1.toList()[index].fullName),
+                                  title: WText(GetDebtorsServices.model1
+                                      .toList()[index]
+                                      .fullName),
                                   trailing: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -125,8 +124,18 @@ class DeptorsPages extends ConsumerWidget {
                                                               text: Words.yes
                                                                   .tr(context),
                                                               onTap: () async {
-                                                                debugPrint(GetDebtorsServices.model1[index].fullName);
-                                                                await servicesControler.deleteDebtors(context, GetDebtorsServices.model1[index].id,index);
+                                                                debugPrint(
+                                                                    GetDebtorsServices
+                                                                        .model1[
+                                                                            index]
+                                                                        .fullName);
+                                                                await servicesControler
+                                                                    .deleteDebtors(
+                                                                        context,
+                                                                        GetDebtorsServices
+                                                                            .model1[index]
+                                                                            .id,
+                                                                        index);
 
                                                                 Navigator.pop(
                                                                     context);

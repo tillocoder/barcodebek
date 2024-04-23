@@ -27,8 +27,12 @@ class UserGetData {
   final String type;
   @HiveField(4)
   final String market;
+  @HiveField(5)
+  final bool is_active;
+  
 
   UserGetData({
+    required this.is_active,
     required this.id,
     required this.firstName,
     required this.phoneNumber,
@@ -43,6 +47,7 @@ class UserGetData {
         phoneNumber: json["phone_number"],
         type: json["type"],
         market: json["market"],
+        is_active: json["is_active"],
       );
 
   Map<String, dynamic> toJson() =>
@@ -52,10 +57,11 @@ class UserGetData {
         "phone_number": phoneNumber,
         "type": type,
         "market": market,
+        "is_active": is_active,
       };
 
   @override
   String toString() {
-    return 'UserGetData{id: $id, first_name: $firstName, phone_number: $phoneNumber, type: $type, market: $market}';
+    return 'UserGetData{id: $id, first_name: $firstName, phone_number: $phoneNumber, type: $type, market: $market,is_active: $is_active}';
   }
 }

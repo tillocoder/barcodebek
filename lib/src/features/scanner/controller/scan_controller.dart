@@ -1,4 +1,3 @@
-import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/features/prices/controller/prices_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

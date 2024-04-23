@@ -4,7 +4,6 @@ import 'package:barcodbek/src/core/services/products/get_products.dart';
 import 'package:barcodbek/src/core/services/sellerget/seller_get.dart';
 import 'package:barcodbek/src/data/entity/auth_login_model.dart';
 import 'package:barcodbek/src/data/entity/user_get_model.dart';
-import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
 import 'package:barcodbek/src/features/prices/controller/prices_controller.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -42,38 +41,20 @@ class AuthLoginServices {
       if (responseData is List) {
         commentslist =
             responseData.map((e) => UserGetData.fromJson(e)).toList();
+        debugPrint("Listga Joylashtrdi  ");
         await boxUser.put('user', commentslist[0]);
         SellerGetServices.sellerGetData();
-        GetProductServices.GET();
-
-        AuthConttroler actr = AuthConttroler();
-
-        // String? ega = boxUser.get('user')?.type ?? '';
-        // actr.logintap(ega);
-        debugPrint('LENGTH : ${actr.length.toString()}');
-        debugPrint('Model: ${boxUser.get('user') ?? ''}');
-        debugPrint('LIST: ${commentslist.toString()}');
+        GetProductServices.get();
       }
-    } else {}
+    } else {
+      return;
+    }
   }
 
   static Future<void> getToken(
     AuthLoginModel data,
   ) async {
-    debugPrint(boxToken.get('tokenn').toString());
-    debugPrint(boxToken.get('number').toString());
-    debugPrint(boxUser.get('user').toString());
-    debugPrint(box.clear().toString());
     try {
-      var response = await token.post('${Urls.baseUrl}${Urls.postToken}',
-          data: data.toJson());
-        commentslist =
-            responseData.map((e) => UserGetData.fromJson(e)).toList();
-        debugPrint("Listga Joylashtrdi  ");
-        GetProductServices.get();
-    } else {
-      return;
-    }
       var response = await token.post('${Urls.baseUrl}${Urls.postToken}',
           data: data.toJson());
       if (response.statusCode == 200 || response.statusCode == 201) {

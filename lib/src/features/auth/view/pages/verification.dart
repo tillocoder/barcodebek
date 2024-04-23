@@ -50,8 +50,6 @@ class VerificationPages extends ConsumerWidget {
                   "code": regsterCtr.otpController.text
                 }, context);
                 debugPrint(authModel.toString());
-                UserVendorModel vendorMadel = UserVendorModel(phoneNumber: "$raqam${regsterCtr.phoneNumber.text.split(' ').join()}" , confirm: true);
-               await VendorServices.POST("$raqam${regsterCtr.phoneNumber.text.split(' ').join()}");
                 await AuthLoginServices.getToken(authModel);
                 await AuthLoginServices.getData();
                 Navigator.push(

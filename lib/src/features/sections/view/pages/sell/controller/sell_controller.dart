@@ -36,7 +36,7 @@ class SellController extends ChangeNotifier {
   String umumisuma() {
     int totalSum = 0;
     for (int i = 0; i < savat.length; i++) {
-      totalSum += int.parse(savat[i].price) * count[i];
+      totalSum += int.parse(savat[i].price.replaceAll('.00', '')) * count[i];
     }
     return pricesCalculating(totalSum.toString());
   }
