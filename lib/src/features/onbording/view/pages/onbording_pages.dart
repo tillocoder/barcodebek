@@ -42,7 +42,9 @@ class OnbordingPages extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => box.get('password') == null ?const LoginPage():const Confirmation(),
+                      builder: (context) => box.get('password') == null
+                          ? const LoginPage()
+                          : const Confirmation(),
                     ),
                   );
                 },

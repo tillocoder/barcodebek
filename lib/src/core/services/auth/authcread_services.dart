@@ -17,6 +17,12 @@ class AuthCreateServices {
 
   //
   static Future<void> POST(AuthRegisterModel data) async {
+    AuthLoginModel authModel = AuthLoginModel(
+      phoneNumber: data.phoneNumber,
+      password: data.password,
+    );
+    await box.put('number', authModel.phoneNumber);
+    await box.put('password', authModel.password);
     var response = await dio.post(Urls.authResgsterApi, data: data.toJson());
     if (response.statusCode == 200 || response.statusCode == 201) {
       debugPrint('CODEE: ${response.statusCode.toString()}');
@@ -25,11 +31,4 @@ class AuthCreateServices {
       return response.data;
     } else {}
   }
-  static Future<void> POST(AuthRegisterModel data) async {
-    AuthLoginModel authModel = AuthLoginModel(
-      phoneNumber: data.phoneNumber,
-      password: data.password,
-    );
-    await box.put('number', authModel.phoneNumber);
-    await box.put('password', authModel.password);
 }

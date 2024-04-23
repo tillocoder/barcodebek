@@ -5,7 +5,7 @@ import 'package:barcodbek/src/core/services/trade/get_trade.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/data/entity/products_model.dart';
-import 'package:barcodbek/src/features/profile/view/pages/savdo_tarixi/controller/history_controller;.dart';
+import 'package:barcodbek/src/features/profile/view/pages/savdo_tarixi/controller/history_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

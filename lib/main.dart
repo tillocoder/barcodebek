@@ -14,7 +14,7 @@ late Box<ProductsModel> boxProductCache;
 late Box<String> boxToken;
 late Box<UserGetData> boxUser;
 late SharedPreferences prefs;
- late Box box;
+late Box box;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -3,6 +3,7 @@ import 'package:barcodbek/src/core/services/auth/auth_login_services.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
 import 'package:barcodbek/src/data/entity/auth_login_model.dart';
+import 'package:barcodbek/src/features/app_password/view/pages/app_password.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,7 +30,7 @@ class ConfirmationState extends ConsumerState<Confirmation> {
     await AuthLoginServices.getData();
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const WBottomNav()),
+        MaterialPageRoute(builder: (context) => const  AppPasswordPages()),
         (route) => false);
   }
 

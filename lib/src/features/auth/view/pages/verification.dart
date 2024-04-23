@@ -1,12 +1,8 @@
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
-import 'package:barcodbek/src/core/services/auth/auth_login_services.dart';
 import 'package:barcodbek/src/core/services/auth/otp_services.dart';
-import 'package:barcodbek/src/core/services/vendor_active/vendor_servaces.dart';
-import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
 import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
-import 'package:barcodbek/src/data/entity/auth_login_model.dart';
-import 'package:barcodbek/src/data/entity/user_venndor_madel.dart';
+import 'package:barcodbek/src/features/app_password/view/pages/app_password.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
 import 'package:barcodbek/src/features/auth/controller/register_controller.dart';
 import 'package:barcodbek/src/features/auth/view/pages/confirmation.dart';
@@ -38,23 +34,11 @@ class VerificationPages extends ConsumerWidget {
             child: WElevatedButton(
               text: Words.next.tr(context),
               onPressed: () async {
-                  phoneNumber:
-                      '$raqam${regsterCtr.phoneNumber.text.split(' ').join()}',
-                  password: regsterCtr.password.text,
-                );
-                debugPrint(authModel.toString());
                 await OTPServices.POST({
                   "phone_number":
                       "$raqam${regsterCtr.phoneNumber.text.split(' ').join()}",
                   "code": regsterCtr.otpController.text
                 }, context);
-                debugPrint(authModel.toString());
-                UserVendorModel vendorMadel = UserVendorModel(
-                    phoneNumber:
-                        "$raqam${regsterCtr.phoneNumber.text.split(' ').join()}",
-                    confirm: true);
-                await VendorServices.POST(
-                    "$raqam${regsterCtr.phoneNumber.text.split(' ').join()}");
                 Navigator.push(
                   context,
                   MaterialPageRoute(

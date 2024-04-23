@@ -8,6 +8,7 @@ import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
 import 'package:barcodbek/src/data/entity/auth_login_model.dart';
+import 'package:barcodbek/src/features/app_password/view/pages/app_password.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
 import 'package:barcodbek/src/features/auth/controller/register_controller.dart';
 import 'package:barcodbek/src/features/auth/view/pages/password_reset.dart';
@@ -105,7 +106,7 @@ class LoginPage extends ConsumerWidget {
                   ? Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const WBottomNav(),
+                        builder: (context) => const AppPasswordPages(),
                       ),
                     )
                   : const LoginPage();
