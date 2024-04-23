@@ -15,8 +15,9 @@ class GetProductServices extends ChangeNotifier {
     boxProduct.clear();
     var responsData = await dio.get(Urls.getProducts);
     if (responsData.statusCode == 200 || responsData.statusCode == 201) {
-      model = (responsData.data as List).map((e) => ProductsModel.fromJson(e)).toList();
-      debugPrint(model.toString());
+      model = (responsData.data as List)
+          .map((e) => ProductsModel.fromJson(e))
+          .toList();
       await boxProduct.addAll(model);
       listtt.insertAll(0, boxProduct.values);
       return responsData.data;

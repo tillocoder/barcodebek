@@ -1,7 +1,9 @@
+import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_elvated_button.dart';
+import 'package:barcodbek/src/features/auth/view/pages/confirmation.dart';
 import 'package:barcodbek/src/features/auth/view/pages/login.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +42,7 @@ class OnbordingPages extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const LoginPage(),
+                      builder: (context) => box.get('password') == null ?const LoginPage():const Confirmation(),
                     ),
                   );
                 },

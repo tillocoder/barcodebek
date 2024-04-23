@@ -14,19 +14,18 @@ late Box<ProductsModel> boxProductCache;
 late Box<String> boxToken;
 late Box<UserGetData> boxUser;
 late SharedPreferences prefs;
-// late Box<Debtors> boxdeptors;
+ late Box box;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(ProductsModelAdapter());
   Hive.registerAdapter(UserGetDataAdapter());
-  // Hive.registerAdapter(DebtorsAdapter());
   boxProduct = await Hive.openBox<ProductsModel>("Scanner");
   boxProductCache = await Hive.openBox<ProductsModel>("product");
   boxUser = await Hive.openBox<UserGetData>("user");
   boxToken = await Hive.openBox('Token');
-  // boxdeptors = await Hive.openBox<Debtors>("deptors");
+  box = await Hive.openBox('boxUser');
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

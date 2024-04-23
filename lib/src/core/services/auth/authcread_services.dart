@@ -1,11 +1,11 @@
+import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/services/AppUrls/app_url.dart';
+import 'package:barcodbek/src/data/entity/auth_login_model.dart';
 import 'package:barcodbek/src/data/entity/auth_register_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 
 class AuthCreateServices {
-
-
   static BaseOptions postCommetOptions = BaseOptions(
     baseUrl: Urls.baseUrl,
     connectTimeout: const Duration(seconds: 4),
@@ -17,6 +17,12 @@ class AuthCreateServices {
 
   //
   static Future<void> POST(AuthRegisterModel data) async {
+    AuthLoginModel authModel = AuthLoginModel(
+      phoneNumber: data.phoneNumber,
+      password: data.password,
+    );
+    await box.put('number', authModel.phoneNumber);
+    await box.put('password', authModel.password);
     var response = await dio.post(Urls.authResgsterApi, data: data.toJson());
     if (response.statusCode == 200 || response.statusCode == 201) {
       debugPrint('CODEE: ${response.statusCode.toString()}');
@@ -25,6 +31,4 @@ class AuthCreateServices {
       return response.data;
     } else {}
   }
-
-
 }
