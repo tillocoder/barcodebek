@@ -6,6 +6,7 @@ import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
+import 'package:barcodbek/src/features/auth/view/pages/login.dart';
 import 'package:barcodbek/src/features/profile/view/pages/edit_profile/view/pages/edit_profile.dart';
 import 'package:barcodbek/src/features/profile/view/pages/savdo_tarixi/view/pages/statistic_page.dart';
 import 'package:barcodbek/src/features/profile/view/pages/seller/view/pages/seller_page.dart';
@@ -46,7 +47,7 @@ class ProfilePage extends ConsumerWidget {
                   const SettingPage(),
                   const SavdoTarixPage(),
                   const PrivacyPolicyPage(),
-                  const EditeProfile(),
+                  const LoginPage(),
                 ],
                 context: context,
                 child: ListTile(

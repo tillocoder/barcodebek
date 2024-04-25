@@ -1,7 +1,6 @@
 import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/services/auth/auth_login_services.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
-import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
 import 'package:barcodbek/src/data/entity/auth_login_model.dart';
 import 'package:barcodbek/src/features/app_password/view/pages/app_password.dart';
 
@@ -33,13 +32,12 @@ class ConfirmationState extends ConsumerState<Confirmation> {
         MaterialPageRoute(builder: (context) => const  AppPasswordPages()),
         (route) => false);
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Text(
-          "Director tasqlashdi kutig",
+          "Tasqlashdi kutig",
           style: AppTextStyle.textStyle1__,
         ),
       ),

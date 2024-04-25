@@ -7,6 +7,7 @@ import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/prices/controller/prices_controller.dart';
+import 'package:barcodbek/src/features/scanner/view/widgets/snakebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -116,8 +117,7 @@ class PricesPages extends ConsumerWidget {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Text(
-                                          pricesCalculating(
-                                              item.price.replaceAll('.00', '')),
+                                          pricesCalculating(item.price.replaceAll('.00', '')),
                                           style: AppTextStyle.textNarxi,
                                         ),
                                         Text(
@@ -126,39 +126,29 @@ class PricesPages extends ConsumerWidget {
                                         ),
                                       ],
                                     ),
-                                    IconButton(
-                                      onPressed: () async {
-                                        internetCtr.checkInternetConnection();
-                                        bool incheke = internetCtr.status[0] ==
-                                                ConnectionState.none
-                                            ? false
-                                            : true;
-                                        String? ega =
-                                            boxUser.get('user')?.type ?? '';
-                                        if (incheke) {
-                                          await deleteCtr.deleteProduct(
-                                              context, item.barCode, index);
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(SnackBar(
-                                                  content: Text('NO')));
-                                        }
-
-                                        // if (ega == 'Director' && index < boxProduct.values.length) {
-                                        //   await deleteCtr.deleteProduct(context, item.barCode, index);
-                                        // } else if (index > boxProduct.values.length) {
-                                        //   ctrPrice.removCahcheIndex(index);
-                                        // } else {
-                                        //   ctrPrice.removCahcheIndex(index);
-
-                                        //   snakebar(context, 'Direktor uchun');
-                                        // }
-                                      },
-                                      icon: const Icon(
-                                        CupertinoIcons.delete,
-                                        color: AppColorss.red,
-                                      ),
-                                    ),
+                                    boxUser.get('user')?.type == 'Director'
+                                        ? IconButton(
+                                            onPressed: () async {
+                                              await deleteCtr.deleteProduct(context, item.barCode, index);
+                                              String? ega = boxUser.get('user')?.type ?? '';
+                                              debugPrint('WIFI: ${internetCtr.tekshirdim}');
+                                              debugPrint('EGA: $ega');
+                                              internetCtr.checkInternetConnection();
+                                              if (ega == 'Director') {
+                                                internetCtr.checkInternetConnection();
+                                                if (internetCtr.tekshirdim) {
+                                                  await deleteCtr.deleteProduct(context, item.barCode, index);
+                                                }
+                                              } else {
+                                                snakebar(context, 'nima gap');
+                                              }
+                                            },
+                                            icon: const Icon(
+                                              CupertinoIcons.delete,
+                                              color: AppColorss.red,
+                                            ),
+                                          )
+                                        : const Text(''),
                                   ],
                                 ),
                               ),

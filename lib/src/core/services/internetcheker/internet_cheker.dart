@@ -5,17 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final internetController =
-    ChangeNotifierProvider.autoDispose((ref) => InternetCheker());
+final internetController = ChangeNotifierProvider.autoDispose((ref) => InternetCheker());
 
 class InternetCheker extends ChangeNotifier {
 //? natija yuklanadi
   List<ConnectivityResult> status = [ConnectivityResult.none];
   final Connectivity _connectivity = Connectivity();
+  late bool tekshirdim;
+
   //! tekshiruvchi
   Future<void> updateConnectionStatus(List<ConnectivityResult> result) async {
     status = result;
-    debugPrint('INTERNET : $status');
+    debugPrint('INTERNET :${tekshirdim=status[0].toString()=='ConnectivityResult.none'?false:true} $status');
     notifyListeners();
   }
 

@@ -17,11 +17,13 @@ class SavdoTarixPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: AppColorss.scaffoldColor,
-      body: const Column(
-        children: [
-          SavdoItem(),
-        ],
-      ),
+      body: ListView.builder(
+        itemCount: 3,
+        itemBuilder: (context, index) {
+        return SizedBox(
+          height: 200,
+          child: SavdoItem());
+      }),
     );
   }
 }
@@ -61,7 +63,7 @@ class SavdoItem extends ConsumerWidget {
               ListView.builder(
                 shrinkWrap: true,
                 // physics: const NeverScrollableScrollPhysics(),
-                itemCount: GetTradeServices.list.length,
+                itemCount: GetTradeServices.bugun.length,
                 itemBuilder: (context, index) {
                   var item = GetTradeServices.list[index];
                   return Padding(

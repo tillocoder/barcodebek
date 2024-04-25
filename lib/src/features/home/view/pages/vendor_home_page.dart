@@ -1,5 +1,4 @@
 import 'package:barcodbek/keraksiz.dart';
-import 'package:barcodbek/kk.dart';
 import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_gap.dart';
 import 'package:barcodbek/src/core/services/debtors/get_services.dart';
