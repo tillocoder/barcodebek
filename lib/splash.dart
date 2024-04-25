@@ -20,7 +20,10 @@ class _SplashPagesState extends State<SplashPages> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.push(context, MaterialPageRoute(builder: (contex) => boxToken.get('tokenn') == null  ? const OnbordingPages() : const AppPasswordPages()));
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (contex) => boxToken.get('tokenn') == null ? const OnbordingPages() : const AppPasswordPages()),
+              (route) => false);
     });
     super.initState();
   }

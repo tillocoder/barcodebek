@@ -72,7 +72,6 @@ class WDialog extends ConsumerWidget {
                 text: "Qo'shish",
                 barcodeValue: barcodeValue,
                 onPressed: () async {
-                  debugPrint('\x1B[33m${'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO'}\x1B[0m');
                   internetCtr.checkInternetConnection();
 
                   debugPrint('CHASHHHHHH: ${boxProductCache.values.length.toString()}');
@@ -83,8 +82,10 @@ class WDialog extends ConsumerWidget {
                     comment: ctr.controllerOther.text,
                     createdAt: DateTime.now().toString(),
                   );
-                  if (boxProductCache.values.length > 0) {
-                    if (internetCtr.status[0] != ConnectionState.none) {
+                  if (boxProductCache.values.length >= 0) {
+                    internetCtr.checkInternetConnection();
+
+                    if (internetCtr.tekshirdim) {
                       ctr1.addCacheProduct(model);
                       await postProductCtr.postProduct();
                       Navigator.pop(context);

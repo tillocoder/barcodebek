@@ -48,6 +48,7 @@ class LoginPage extends ConsumerWidget {
               WTextFild(
                 startNumber: raqam,
                 formatter: [
+                  FilteringTextInputFormatter.digitsOnly,
                   MaskedTextInputFormatter(
                     mask: '## ### ## ##',
                     separator: ' ',
@@ -91,8 +92,6 @@ class LoginPage extends ConsumerWidget {
           SkipButton(
             text: Words.next.tr(context),
             onTap: () async {
-              await boxToken.clear();
-              await boxUser.clear();
               AuthLoginModel authModel = AuthLoginModel(
                 phoneNumber:
                     '$raqam${regsterCtr.loginNumber.text.split(' ').join('')}',
@@ -109,7 +108,9 @@ class LoginPage extends ConsumerWidget {
                         builder: (context) => const AppPasswordPages(),
                       ),
                     )
-                  : const LoginPage();
+                  : const SizedBox.shrink();
+              regsterCtr.loginNumber.clear();
+              regsterCtr.logenPasword.clear();
             },
             child: const Icon(
               Icons.arrow_forward_rounded,

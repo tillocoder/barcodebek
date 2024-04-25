@@ -1,7 +1,9 @@
+import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
+import 'package:barcodbek/src/features/auth/view/pages/login.dart';
 import 'package:barcodbek/src/features/sections/view/pages/calculating.dart';
 import 'package:barcodbek/src/features/sections/view/pages/deptors.dart';
 import 'package:barcodbek/src/features/sections/view/pages/searching.dart';
@@ -93,7 +95,7 @@ InkWell wSWButton({
   required Widget child,
 }) {
   return InkWell(
-    onTap: () {
+    onTap: () async {
       for (var i = 0; i < page.length; i++) {
         if (index == i && page[i] != null) {
           Navigator.push(
@@ -106,7 +108,6 @@ InkWell wSWButton({
           continue;
         }
       }
-
     },
     child: child,
   );
@@ -125,3 +126,5 @@ List<Words> listText = [
   Words.calculation,
   Words.debtors,
 ];
+
+var a = const LoginPage();

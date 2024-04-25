@@ -13,6 +13,7 @@ class GetProductServices extends ChangeNotifier {
 
   static Future<void> get() async {
     boxProduct.clear();
+    model.clear();
     var responsData = await dio.get(Urls.getProducts);
     if (responsData.statusCode == 200 || responsData.statusCode == 201) {
       model = (responsData.data as List)

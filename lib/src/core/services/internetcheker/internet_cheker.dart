@@ -9,13 +9,13 @@ final internetController =
     ChangeNotifierProvider.autoDispose((ref) => InternetCheker());
 
 class InternetCheker extends ChangeNotifier {
-//? natija yuklanadi
   List<ConnectivityResult> status = [ConnectivityResult.none];
   final Connectivity _connectivity = Connectivity();
-  //! tekshiruvchi
+  late bool tekshirdim;
+
   Future<void> updateConnectionStatus(List<ConnectivityResult> result) async {
     status = result;
-    debugPrint('INTERNET : $status');
+    debugPrint('INTERNET :${tekshirdim = status[0].toString() == 'ConnectivityResult.none' ? false : true} $status');
     notifyListeners();
   }
 

@@ -10,6 +10,8 @@ import 'package:barcodbek/src/features/sections/view/pages/sections_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../features/profile/view/pages/seller/controller/seller_controller.dart';
+
 class WBottomNav extends ConsumerStatefulWidget {
   const WBottomNav({super.key});
 
@@ -18,14 +20,19 @@ class WBottomNav extends ConsumerStatefulWidget {
 }
 
 class WBottomNavState extends ConsumerState<WBottomNav> {
+  SellerController controller = SellerController();
+
   @override
   void initState() {
     getPradeuct();
     super.initState();
   }
+
   Future<void> getPradeuct() async {
-   await GetProductServices.get();
+    await GetProductServices.get();
+    controller.sellerget();
   }
+
   final List<Widget> pages = const [
     HomePage(),
     SectionsPages(),
@@ -78,11 +85,9 @@ class WBottomNavState extends ConsumerState<WBottomNav> {
       ),
     );
   }
-
 }
 
-final bottomnavctr =
-    ChangeNotifierProvider((ref) => BottomNavCtrl());
+final bottomnavctr = ChangeNotifierProvider((ref) => BottomNavCtrl());
 
 class BottomNavCtrl extends ChangeNotifier {
   int currentIndex = 0;

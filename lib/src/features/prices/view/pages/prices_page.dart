@@ -16,8 +16,8 @@ class PricesPages extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(deleteproductController);
-    var deleteCtr = ref.read(deleteproductController);
+    ref.watch(deleteProductController);
+    var deleteCtr = ref.read(deleteProductController);
     ref.watch(internetController);
     var internetCtr = ref.read(internetController);
     return Scaffold(
@@ -73,10 +73,6 @@ class PricesPages extends ConsumerWidget {
                     itemCount: listtt.length,
                     itemBuilder: (context, index) {
                       var item = listtt[index];
-
-                      // if (index == boxProduct.values.length) {
-                      //   const Divider();
-                      // }
                       return Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: SizedBox(
@@ -114,6 +110,8 @@ class PricesPages extends ConsumerWidget {
                                   children: [
                                     Column(
                                       mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
                                       children: [
                                         Text(
                                           pricesCalculating(
@@ -126,39 +124,29 @@ class PricesPages extends ConsumerWidget {
                                         ),
                                       ],
                                     ),
-                                    IconButton(
-                                      onPressed: () async {
-                                        internetCtr.checkInternetConnection();
-                                        bool incheke = internetCtr.status[0] ==
-                                                ConnectionState.none
-                                            ? false
-                                            : true;
-                                        String? ega =
-                                            boxUser.get('user')?.type ?? '';
-                                        if (incheke) {
-                                          await deleteCtr.deleteProduct(
-                                              context, item.barCode, index);
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(SnackBar(
-                                                  content: Text('NO')));
-                                        }
-
-                                        // if (ega == 'Director' && index < boxProduct.values.length) {
-                                        //   await deleteCtr.deleteProduct(context, item.barCode, index);
-                                        // } else if (index > boxProduct.values.length) {
-                                        //   ctrPrice.removCahcheIndex(index);
-                                        // } else {
-                                        //   ctrPrice.removCahcheIndex(index);
-
-                                        //   snakebar(context, 'Direktor uchun');
-                                        // }
-                                      },
-                                      icon: const Icon(
-                                        CupertinoIcons.delete,
-                                        color: AppColorss.red,
-                                      ),
-                                    ),
+                                    boxUser.get('user')?.type == 'Director'
+                                        ? IconButton(
+                                            onPressed: () async {
+                                              String? ega =
+                                                  boxUser.get('user')?.type ??
+                                                      '';
+                                              internetCtr
+                                                  .checkInternetConnection();
+                                              if (ega == 'Director') {
+                                                internetCtr
+                                                    .checkInternetConnection();
+                                                if (internetCtr.tekshirdim) {
+                                                  await deleteCtr.deleteProduct(
+                                                      item.barCode, index);
+                                                }
+                                              }
+                                            },
+                                            icon: const Icon(
+                                              CupertinoIcons.delete,
+                                              color: AppColorss.red,
+                                            ),
+                                          )
+                                        : const Text(''),
                                   ],
                                 ),
                               ),

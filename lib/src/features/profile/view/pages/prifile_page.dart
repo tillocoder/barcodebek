@@ -1,11 +1,14 @@
 // ignore_for_file: empty_statements
 
+import 'package:barcodbek/main.dart';
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/local/app_words.dart';
 import 'package:barcodbek/src/core/style/app_colors.dart';
 import 'package:barcodbek/src/core/style/app_icons.dart';
+import 'package:barcodbek/src/core/style/app_images.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/features/auth/controller/auth_conttroler.dart';
+import 'package:barcodbek/src/features/auth/view/pages/login.dart';
 import 'package:barcodbek/src/features/profile/view/pages/edit_profile/view/pages/edit_profile.dart';
 import 'package:barcodbek/src/features/profile/view/pages/savdo_tarixi/view/pages/statistic_page.dart';
 import 'package:barcodbek/src/features/profile/view/pages/seller/view/pages/seller_page.dart';
@@ -34,47 +37,118 @@ class ProfilePage extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          ...List.generate(
-            6,
-            (index) => Padding(
-              padding: const EdgeInsets.all(5),
-              child: wSWButton(
-                index: index,
-                page: [
-                  const EditeProfile(),
-                  const SellerPage(),
-                  const SettingPage(),
-                  const SavdoTarixPage(),
-                  const PrivacyPolicyPage(),
-                  const EditeProfile(),
-                ],
-                context: context,
-                child: ListTile(
-                  leading: SizedBox(
-                    height: 54,
-                    width: 54,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                          color: AppColorss.c_D6BEFF,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: AppIcons.profileIcons[index],
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: 6,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () async {
+                      index == 0
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const EditeProfile()))
+                          : index == 1
+                              ? Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const SellerPage()))
+                              : index == 2
+                                  ? Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SettingPage()))
+                                  : index == 3
+                                      ? Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const SavdoTarixPage()))
+                                      : index == 4
+                                          ? Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const PrivacyPolicyPage()))
+                                          : Navigator.pushAndRemoveUntil(
+                                              context, MaterialPageRoute(
+                                                  builder: (context) {
+                                              boxToken.clear();
+                                              return const LoginPage();
+                                            }), (route) => false);
+                    },
+                    child: ListTile(
+                      leading: SizedBox(
+                        height: 54,
+                        width: 54,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: AppColorss.c_D6BEFF,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: AppIcons.profileIcons[index],
+                          ),
+                        ),
+                      ),
+                      title: WText(
+                        profileTexts[index].tr(context),
+                        style: AppTextStyle.textStyle5,
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        color: Colors.indigo,
                       ),
                     ),
                   ),
-                  title: WText(
-                    profileTexts[index].tr(context),
-                    style: AppTextStyle.textStyle5,
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios_outlined,
-                    color: Colors.indigo,
-                  ),
-                ),
-              ),
-            ),
-          )
+                );
+              }),
+          // ...List.generate(
+          //   6,
+          //   (index) => Padding(
+          //     padding: const EdgeInsets.all(5),
+          //     child: wSWButton(
+          //       index: index,
+          //       page: [
+          //         const EditeProfile(),
+          //         const SellerPage(),
+          //         const SettingPage(),
+          //         const SavdoTarixPage(),
+          //         const PrivacyPolicyPage(),
+          //         a
+          //       ],
+          //       context: context,
+          //       child: ListTile(
+          //         leading: SizedBox(
+          //           height: 54,
+          //           width: 54,
+          //           child: DecoratedBox(
+          //             decoration: BoxDecoration(
+          //               color: AppColorss.c_D6BEFF,
+          //               borderRadius: BorderRadius.circular(10),
+          //             ),
+          //             child: Padding(
+          //               padding: const EdgeInsets.all(8.0),
+          //               child: AppIcons.profileIcons[index],
+          //             ),
+          //           ),
+          //         ),
+          //         title: WText(
+          //           profileTexts[index].tr(context),
+          //           style: AppTextStyle.textStyle5,
+          //         ),
+          //         trailing: const Icon(
+          //           Icons.arrow_forward_ios_outlined,
+          //           color: Colors.indigo,
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );
@@ -88,4 +162,18 @@ List<Words> profileTexts = [
   Words.trade_history,
   Words.terms_privacy_policy,
   Words.logout,
+];
+
+List<Widget> listIcons = [
+  AppImages.sell,
+  AppImages.bsearch,
+  AppImages.count,
+  AppImages.debtors,
+];
+
+List<Words> listText = [
+  Words.selling,
+  Words.search,
+  Words.calculation,
+  Words.debtors,
 ];

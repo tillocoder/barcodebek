@@ -27,7 +27,7 @@ class VendorServices {
     } catch (e) {
       // Handle Dio errors
       debugPrint("Dio error occurred: $e");
-      throw Exception('Failed to post vendor data: $e');
+      // throw Exception('Failed to post vendor data: $e');
     }
   }
 }

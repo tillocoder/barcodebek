@@ -18,7 +18,9 @@ class Confirmation extends ConsumerStatefulWidget {
 class ConfirmationState extends ConsumerState<Confirmation> {
   @override
   void initState() {
-    getToken();
+    getToken().then((value) => (){
+      getToken();
+    });
     super.initState();
   }
 

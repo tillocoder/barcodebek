@@ -1,11 +1,9 @@
 import 'dart:async';
-
 import 'package:barcodbek/src/core/componets/w_text.dart';
 import 'package:barcodbek/src/core/constants/widgets/custom_scaffold.dart';
 import 'package:barcodbek/src/core/database/app_password.dart';
 import 'package:barcodbek/src/core/style/text_style.dart';
 import 'package:barcodbek/src/core/widgets/w_bottomnavigatorbar.dart';
-import 'package:barcodbek/src/features/auth/view/pages/confirmation.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -23,14 +21,9 @@ class AppPasswordPages extends StatefulWidget {
 class _AppPasswordPagesState extends State<AppPasswordPages> {
   @override
   void initState() {
+    AppPassword.textPin = TextEditingController();
     errorController = StreamController<ErrorAnimationType>();
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    errorController!.close();
-    super.dispose();
   }
 
   @override
@@ -78,8 +71,8 @@ class _AppPasswordPagesState extends State<AppPasswordPages> {
                   cursorColor: Colors.black,
                   controller: AppPassword.textPin,
                   keyboardType: TextInputType.number,
-                  onChanged: (value) async {
-                    pinCode(context);
+                  onChanged: (value) {
+                    _checkPin(context, value);
                   },
                 ),
               ],
@@ -92,7 +85,50 @@ class _AppPasswordPagesState extends State<AppPasswordPages> {
       ),
     );
   }
+
+  void _checkPin(BuildContext context, String value) async {
+    if (value.length == 4) {
+      if (AppPassword.pin == null) {
+        if (isB) {
+          pwrd = value;
+          AppPassword.textPin.clear();
+          isB = false;
+        } else {
+          await AppPassword.save(value);
+          if (value == pwrd) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const WBottomNav(),
+              ),
+            );
+          } else {
+            errorController!.add(ErrorAnimationType.shake);
+          }
+        }
+      } else {
+        if (AppPassword.pin == value) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const WBottomNav(),
+            ),
+          );
+        } else {
+          errorController!.add(ErrorAnimationType.shake);
+        }
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    AppPassword.textPin.dispose(); // Dispose the controller
+    errorController?.close();
+    super.dispose();
+  }
 }
+
 
 void pinCode(BuildContext context) async {
   if (AppPassword.textPin.text.length == 4 && AppPassword.pin == null) {
@@ -105,7 +141,10 @@ void pinCode(BuildContext context) async {
     } else {
       await AppPassword.save(AppPassword.textPin.text);
       if (AppPassword.textPin.text == pwrd) {
-        Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => const WBottomNav(),
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const WBottomNav(),
           ),
         );
       } else {
